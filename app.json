@@ -1,0 +1,69 @@
+{
+  "pages": [
+    "pages/main/main",
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/trouble/trouble",
+    "pages/train/train",
+    "pages/drill/drill",
+    "pages/trouble/addtrouble",
+    "pages/trouble/troubledetail",
+    "pages/trouble/addtroublezg",
+    "pages/trouble/addtroublezp",
+    "pages/parttree/index",
+    "pages/todo/todo",
+    "pages/trouble/troubletodo",
+    "pages/trouble/accesstrouble",
+    "pages/bind/binduser",
+    "pages/observe/addobserve",
+    "pages/observe/observe",
+    "pages/observe/observedetail",
+    "pages/miss/miss",
+    "pages/miss/missdetail",
+    "pages/miss/addmiss",
+    "pages/user/userdetail",
+    "pages/socert/socert",
+    "pages/socert/socertdetail",
+    "pages/suggest/suggest",
+    "pages/suggest/add",
+    "pages/suggest/detail",
+    "pages/notice/notice",
+    "pages/notice/detail",
+    "pages/public/public",
+    "pages/public/detail",
+    "pages/operation/operation",
+    "pages/operation/operationcheck",
+    "pages/operation/operationdetail",
+    "pages/footer/footer",
+    "pages/userSelect/userSelect",
+    "components/footer/footer",
+    "pages/operation/operationadd",
+    "pages/train/add"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "安全预警lite",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#3cc51f",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/main/main",
+        "text": "主页",
+        "iconPath": "image/home.png",
+        "selectedIconPath": "image/homec.png"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "text": "个人中心",
+        "iconPath": "image/me.png",
+        "selectedIconPath": "image/mec.png"
+      }
+    ]
+  }
+}

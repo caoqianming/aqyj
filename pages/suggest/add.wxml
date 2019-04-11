@@ -1,0 +1,71 @@
+<view class="page">
+  <view class="page__bd">
+    <view class="weui-toptips weui-toptips_warn" wx:if="{{popErrorMsg}}">{{popErrorMsg}}</view>
+
+
+    <view class="weui-cells__title">现场图片(如有)</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell">
+        <view class="weui-cell__bd weui-cell_primary">
+          <view class="weui-uploader">
+            <view class="weui-uploader__bd">
+              <view class="weui-uploader__files">
+                <block wx:for="{{jyimg}}" wx:for-item="image" wx:key="unique">
+                  <view class="weui-uploader__file">
+                    <image class="weui-uploader__img" src="{{image}}" data-src="{{image}}" bindtap="previewImage" bindlongpress="deleteImage" data-index="{{index}}"></image>
+                  </view>
+                </block>
+              </view>
+              <view class="weui-uploader__input-box">
+                <view class="weui-uploader__input" bindtap="chooseImage"></view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+        <view class="weui-cells">
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">建议类别</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker bindchange="bindjylbChange" value="{{jylbIndex}}" range="{{jylbArray}}" range-key="text">
+            <view class="weui-select">{{jylbArray[jylbIndex].text}}</view>
+          </picker>
+        </view>
+      </view>
+    </view>
+    <view class="weui-cells__title">当前现状</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell">
+        <view class="weui-cell__bd">
+          <textarea class="weui-textarea" placeholder="请输入" style="height: 3.3em" bindinput="binddqxzInput" />
+          
+        </view>
+      </view>
+    </view>
+    <view class="weui-cells__title">建议内容</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell">
+        <view class="weui-cell__bd">
+          <textarea class="weui-textarea" placeholder="请输入" style="height: 3.3em" bindinput="bindjynrInput" />
+          
+        </view>
+      </view>
+    </view>
+    <view class="weui-cells__title">期望效果</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell">
+        <view class="weui-cell__bd">
+          <textarea class="weui-textarea" placeholder="请输入" style="height: 3.3em" bindinput="bindqwxgInput" />
+          
+        </view>
+      </view>
+    </view>
+    
+    <view class="btn-area">
+      <button class="weui-btn" type="primary" bindtap="submit">提交</button>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,20 @@
+<view class="page__bd">
+
+  <view class="head">共{{total}}条未遂事件</view>
+  <view class="weui-cells weui-cells_after-title" >
+    <block wx:for="{{wslist}}" wx:key="unique">
+      <navigator url="missdetail?missid={{item.missid}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+        <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+          <view class="weui-media-box__title">{{item.missplace}}</view>
+          <view class="weui-media-box__desc">{{item.missnum}} {{item.misser__name}}填报</view>
+          <view class="weui-media-box__desc">{{item.misstime}}</view>
+        </view>
+      </navigator>
+    </block>
+  </view>
+</view>
+<view style="position:fixed; bottom:0;width:100%;">
+  <navigator url="/pages/miss/addmiss" hover-class="navigator-hover">
+    <button class="weui-btn" type="primary">新增</button>
+  </navigator>
+</view>

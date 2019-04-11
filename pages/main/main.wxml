@@ -1,0 +1,51 @@
+<view class="page">
+    <view class="page__bd">
+        <view class="weui-cells__title">数据采集</view>
+        <view class="weui-grids">
+            <navigator url="/pages/trouble/trouble" class="weui-grid" hover-class="weui-grid_active">
+                <image class="weui-grid__icon" src="../images/trouble.png" />
+                <view class="weui-grid__label">事故隐患</view>
+                <view class="weui-badge" style="position: absolute;top: 1em;right: 1em;" wx:if="{{yhtodonum!=0}}">{{yhtodonum}}</view>
+            </navigator>
+            <navigator url="/pages/observe/observe" class="weui-grid" hover-class="weui-grid_active">
+                <image class="weui-grid__icon" src="../images/watch.png" />
+                <view class="weui-grid__label">行为观察</view>
+            </navigator>
+            <navigator url="/pages/miss/miss" class="weui-grid" hover-class="weui-grid_active">
+                <image class="weui-grid__icon" src="../images/miss.png" />
+                <view class="weui-grid__label">未遂事件</view>
+            </navigator> 
+            <navigator url="/pages/suggest/suggest" class="weui-grid" hover-class="weui-grid_active">
+                <image class="weui-grid__icon" src="../images/suggest.png" />
+                <view class="weui-grid__label">合理化建议</view>
+            </navigator>
+            <navigator url="/pages/operation/operation" class="weui-grid" hover-class="weui-grid_active">
+                <image class="weui-grid__icon" src="../images/operation.png" />
+                <view class="weui-grid__label">作业许可</view>
+                <view class="weui-badge" style="position: absolute;top: 1em;right: 1em;" wx:if="{{zytodonum!=0}}">{{zytodonum}}</view>
+            </navigator>
+        </view>
+        <view class="weui-cells__title">学习园地</view>
+          <view class="weui-grids">
+          <navigator url="/pages/public/public" class="weui-grid" hover-class="weui-grid_active">
+                <image class="weui-grid__icon" src="../images/public.png" />
+                <view class="weui-grid__label">公告</view>
+            </navigator>
+            <navigator url="/pages/notice/notice" class="weui-grid" hover-class="weui-grid_active">
+                <image class="weui-grid__icon" src="../images/send.png" />
+                <view class="weui-grid__label">通知</view>
+
+                <view class="weui-badge" style="position: absolute;top: 1em;right: 1em;" wx:if="{{noread!=0}}">{{noread}}</view>
+            </navigator>
+              <navigator url="/pages/train/train" class="weui-grid" hover-class="weui-grid_active">
+                <image class="weui-grid__icon" src="../images/train.png" />
+                <view class="weui-grid__label">线下培训</view>
+                <view class="weui-badge" style="position: absolute;top: 1em;right: 1em;" wx:if="{{dqdnum!=0}}">{{dqdnum}}</view>
+            </navigator>
+              <navigator url="e" class="weui-grid" hover-class="weui-grid_active">
+                <image class="weui-grid__icon" src="../images/test.png" />
+                <view class="weui-grid__label">即将上线..</view>
+            </navigator>
+        </view>
+    </view>
+</view>

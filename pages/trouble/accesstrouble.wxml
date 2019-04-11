@@ -1,0 +1,422 @@
+<view class="weui-cells__title">
+  隐患详情
+  <span wx:if="{{sybzt == 0 && yhzt==5}}"> {{fxbm__partname}} {{fxr__name}}填报并完成整改</span>
+  <span wx:else>{{fxbm__partname}} {{fxr__name}}填报</span>
+</view>
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell weui-cell_access">
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>当前状态</view>
+    </view>
+    <view class="weui-cell__ft" wx:if="{{yhzt == 7}}" style="color:red">措施/方案待提交</view>
+    <view class="weui-cell__ft" wx:elif="{{yhzt == 5}}" style="color:red">待复查</view>
+    <view class="weui-cell__ft" wx:elif="{{yhzt == 1}}" style="color:red">待评估</view>
+    <view class="weui-cell__ft" wx:elif="{{yhzt == 3}}" style="color:red">待整改</view>
+    <view class="weui-cell__ft" wx:elif="{{yhzt == 6}}" style="color:red">已归档</view>
+    <view class="weui-cell__ft" wx:elif="{{yhzt == 2}}" style="color:red">措施/方案待确认</view>
+    <view class="weui-cell__ft" wx:elif="{{yhzt == 4}}" style="color:red">待审核</view>
+    <view class="weui-cell__ft" wx:elif="{{yhzt == 0}}" style="color:red">待新增</view>
+  </view>
+  <view class="weui-cell weui-cell_access">
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>隐患等级</view>
+    </view>
+    <view class="weui-cell__ft">
+      {{yhdj__dickeyname}}
+    </view>
+  </view>
+  <view class="weui-cell weui-cell_access">
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>检查类型</view>
+    </view>
+    <view class="weui-cell__ft">
+      {{jclx__dickeyname}}
+    </view>
+  </view>
+  <view class="weui-cell weui-cell_access">
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>发现时间</view>
+    </view>
+    <view class="weui-cell__ft">
+      {{fxsj}}
+    </view>
+  </view>
+  <view class="weui-cell weui-cell_access">
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>发现部门</view>
+    </view>
+    <view class="weui-cell__ft">
+      {{fxbm__partname}}
+    </view>
+  </view>
+  <view class="weui-cell weui-cell_access">
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>发现人</view>
+    </view>
+    <view class="weui-cell__ft">
+      {{fxr__name}}
+    </view>
+  </view>
+  <view class="weui-cell weui-cell_access">
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>隐患地点</view>
+    </view>
+    <view class="weui-cell__fd" wx:if="{{yhzt==0}}">
+      <input class="weui-input" bindinput="bindyhddInput" value='{{yhdd}}' />
+    </view>
+    <view class="weui-cell__ft" wx:else>
+      {{yhdd}}
+    </view>
+  </view>
+
+  <view class="weui-cell weui-cell_access">
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>隐患描述</view>
+      <view class="weui-cell__bd" wx:if="{{(yhzt == 0)}}">
+        <textarea class="weui-textarea" style="height: 3.3em" bindinput="bindyhmsInput" value="{{yhms}}" placeholder='{{yhms}}' />
+        <!-- <view class="weui-textarea-counter">0/200</view> -->
+      </view>
+      <view class="weui-cell__ft" wx:else>
+        {{yhms}}
+      </view>
+    </view>
+  </view>
+  <view class="weui-cell weui-cell_access">
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>隐患图片</view>
+      <view class="weui-uploader__files">
+        <block wx:for="{{yhtp}}" wx:for-item="image" wx:key="unique">
+          <view class="weui-uploader__file">
+            <image class="weui-uploader__img" src="{{image}}" data-src="{{image}}" bindtap="yhtpPreview" bindlongpress="deleteyhImage"></image>
+          </view>
+        </block>
+        <view class="weui-uploader__input-box" wx:if="{{yhzt ==0}}">
+          <view class="weui-uploader__input" bindtap="chooseyhImage"></view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="weui-cell weui-cell_switch" wx:if="{{yhzt ==1}}">
+  <view class="weui-cell__bd">转交他人</view>
+  <view class="weui-cell__ft">
+    <switch bindchange="zppg" checked='{{zppg_c}}' disabled='{{zppg_d}}' />
+  </view>
+</view>
+<view class="weui-cell weui-cell_switch" wx:if="{{yhzt ==1}}">
+  <view class="weui-cell__bd">退回重填</view>
+  <view class="weui-cell__ft">
+    <switch bindchange="bhct" checked='{{bhct_c}}' disabled='{{bhct_d}}' />
+  </view>
+</view>
+<view wx:if='{{yhzt!=0}}'>
+  <view wx:if="{{zppg=='yes' && shresult !='reject' }}">
+    <view class="weui-cells__title">新评估人</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">评估部门</view>
+        </view>
+        <view class="weui-cell__bd">
+          <navigator url="/pages/parttree/index">
+            <view class="weui-select">
+              {{newbm__partname}}
+            </view>
+          </navigator>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">新评估人</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker bindchange="bindnewrChange" value="{{newrIndex}}" range="{{newrArray}}" range-key="text">
+            <view class="weui-select">{{newrArray[newrIndex].text}}</view>
+          </picker>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{shresult != 'reject' && zppg == 'no'}}">
+    <view class="weui-cells__title">评估详情
+      <span wx:if="{{pgr__name != ''&& yhzt != 1}}"> {{pgr__ubelongpart__partname}} {{pgr__name}}完成评估</span>
+    </view>
+    <view class="weui-cells weui-cells_after-title" wx:if="{{yhzt==1}}">
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">隐患评估</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker bindchange="bindyhpgChange" value="{{yhpgIndex}}" range="{{yhpgArray}}" range-key="text">
+            <view class="weui-select">{{yhpgArray[yhpgIndex].text}}</view>
+          </picker>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">隐患类型</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker bindchange="bindyhlxChange" value="{{yhlxIndex}}" range="{{yhlxArray}}" range-key="text">
+            <view class="weui-select">{{yhlxArray[yhlxIndex].text}}</view>
+          </picker>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">隐患类别</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker bindchange="bindyhlbChange" value="{{yhlbIndex}}" range="{{yhlbArray}}" range-key="text">
+            <view class="weui-select">{{yhlbArray[yhlbIndex].text}}</view>
+          </picker>
+        </view>
+      </view>
+    </view>
+    <view class="weui-cells weui-cells_after-title" wx:else>
+      <view class="weui-cell weui-cell_access">
+        <view class="weui-cell__bd weui-cell_primary">
+          <view>隐患评估</view>
+        </view>
+        <view class="weui-cell__ft">
+          {{yhpg__dickeyname}}
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_access">
+        <view class="weui-cell__bd weui-cell_primary">
+          <view>隐患类型</view>
+        </view>
+        <view class="weui-cell__ft">
+          {{yhlx__dicname}}
+        </view>
+      </view>
+
+      <view class="weui-cell weui-cell_access">
+        <view class="weui-cell__bd weui-cell_primary">
+          <view>隐患类别</view>
+        </view>
+        <view class="weui-cell__ft">
+          {{yhlb__dickeyname}}
+        </view>
+      </view>
+
+    </view>
+
+
+    <view class="weui-cells__title">整改通知
+      <span wx:if="{{zpr__name != ''&& sybzt !=0}}"> {{zpr__ubelongpart__partname}} {{zpr__name}}指派整改</span>
+    </view>
+    <view class="weui-cells weui-cells_after-title" wx:if="{{yhzt==1}}">
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">整改部门</view>
+        </view>
+        <view class="weui-cell__bd">
+          <navigator url="/pages/parttree/index?a=zp">
+            <view class="weui-select">
+              {{zgbm__partname}}
+            </view>
+          </navigator>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">整改人</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker bindchange="bindzgrChange" value="{{zgrIndex}}" range="{{zgrArray}}" range-key="text">
+            <view class="weui-select">{{zgrArray[zgrIndex].text}}</view>
+          </picker>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">整改期限</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker mode="multiSelector" value="{{dateTime1}}" bindchange="changeDateTime1" bindcolumnchange="changeDateTimeColumn1" range="{{dateTimeArray1}}">
+                        <view class="weui-select" wx:if="{{dateshow==1}}">
+              {{dateTimeArray1[0][dateTime1[0]]}}-{{dateTimeArray1[1][dateTime1[1]]}}-{{dateTimeArray1[2][dateTime1[2]]}} {{dateTimeArray1[3][dateTime1[3]]}}:{{dateTimeArray1[4][dateTime1[4]]}}
+            </view>
+          <view class="weui-select" wx:else>
+            </view>
+          </picker>
+        </view>
+      </view>
+    </view>
+    <view class="weui-cells weui-cells_after-title" wx:else>
+      <view class="weui-cell weui-cell_access">
+        <view class="weui-cell__bd weui-cell_primary">
+          <view>整改部门</view>
+        </view>
+        <view class="weui-cell__ft" wx:if="{{zgbm__partid != ''&&zgbm__partid != null}}">
+          {{zgbm__partname}}
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_access">
+        <view class="weui-cell__bd weui-cell_primary">
+          <view>整改人</view>
+        </view>
+        <view class="weui-cell__ft" wx:if="{{zgr != ''&&zgr != null}}">
+          {{zgr__name}}
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_access">
+        <view class="weui-cell__bd weui-cell_primary">
+          <view>整改期限</view>
+        </view>
+        <view class="weui-cell__ft" wx:if="{{zgqx != ''&&zgqx != null}}">
+          {{zgqx}}
+        </view>
+      </view>
+    </view>
+
+
+    <view class="weui-cells__title">措施/方案
+      <span wx:if="{{csqrr__name != ''&& sybzt !=0}}"> {{csqrr__ubelongpart__partname}} {{csqrr__name}}确认方案</span>
+    </view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_access">
+        <view class="weui-cell__bd weui-cell_primary">
+          <view>原因分析</view>
+          <view class="weui-cell__ft" wx:if="{{yyfx != ''&&yhzt != 2}}">
+            {{yyfx}}
+          </view>
+          <view class="weui-cell__bd" wx:if="{{yhzt == 1}}">
+            <textarea class="weui-textarea" placeholder="如不填写将由整改人填写" style="height: 3.3em" bindinput="bindyyfxInput" />
+            <!-- <view class="weui-textarea-counter">0/200</view> -->
+          </view>
+          <view class="weui-cell__bd" wx:if="{{yhzt == 7}}">
+            <textarea class="weui-textarea" placeholder="请填写原因分析" style="height: 3.3em" bindinput="bindyyfxInput" />
+            <!-- <view class="weui-textarea-counter">0/200</view> -->
+          </view>
+          <view class="weui-cell__bd" wx:if="{{yhzt == 2}}">
+            <textarea class="weui-textarea" value="yyfx" style="height: 3.3em" bindinput="bindyyfxInput" />
+            <!-- <view class="weui-textarea-counter">0/200</view> -->
+          </view>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_access">
+        <view class="weui-cell__bd weui-cell_primary">
+          <view>整改措施</view>
+          <view class="weui-cell__ft" wx:if="{{zgcs != ''&&yhzt != 2}}">
+            {{zgcs}}
+          </view>
+          <view class="weui-cell__bd" wx:if="{{yhzt == 1}}">
+            <textarea class="weui-textarea" placeholder="如不填写将由整改人填写" style="height: 3.3em" bindinput="bindzgcsInput" />
+            <!-- <view class="weui-textarea-counter">0/200</view> -->
+          </view>
+          <view class="weui-cell__bd" wx:if="{{yhzt == 7}}">
+            <textarea class="weui-textarea" placeholder="请填写整改措施" style="height: 3.3em" bindinput="bindzgcsInput" />
+            <!-- <view class="weui-textarea-counter">0/200</view> -->
+          </view>
+          <view class="weui-cell__bd" wx:if="{{yhzt == 2}}">
+            <textarea class="weui-textarea" value='{{zgcs}}' style="height: 3.3em" bindinput="bindzgcsInput" />
+            <!-- <view class="weui-textarea-counter">0/200</view> -->
+          </view>
+        </view>
+      </view>
+    </view>
+
+
+    <view class="weui-cells__title" wx:if="{{yhzt>2 && yhzt !=7}}">整改结果
+      <span wx:if="{{(yhzt == 4 || yhzt==5)&& sybzt !=0}}"> {{zgbm__partname}} {{zgr__name}}完成整改</span>
+    </view>
+    <view class="weui-cells weui-cells_after-title" wx:if="{{yhzt>2 && yhzt !=7}}">
+      <view class="weui-cell weui-cell_access">
+        <view class="weui-cell__bd weui-cell_primary">
+          <view>整改描述</view>
+          <view class="weui-cell__bd" wx:if="{{(sybzt == 4 || sybzt == 5)}}">
+            <textarea class="weui-textarea" style="height: 3.3em" bindinput="bindzgmsInput" value="{{zgms}}" />
+            <!-- <view class="weui-textarea-counter">0/200</view> -->
+          </view>
+          <view class="weui-cell__ft" wx:elif="{{yhzt == 4 || yhzt==5}}">
+            {{zgms}}
+          </view>
+          <view class="weui-cell__bd" wx:else>
+            <textarea class="weui-textarea" placeholder="请输入整改描述" style="height: 3.3em" bindinput="bindzgmsInput" />
+            <!-- <view class="weui-textarea-counter">0/200</view> -->
+          </view>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_access">
+        <view class="weui-cell__bd weui-cell_primary">
+          <view>整改图片</view>
+          <view class="weui-uploader__files">
+            <block wx:for="{{zghtp}}" wx:for-item="image" wx:key="unique">
+              <view class="weui-uploader__file">
+                <image class="weui-uploader__img" src="{{image}}" data-src="{{image}}" bindtap="zghtpPreview" bindlongpress="deleteImage"></image>
+              </view>
+            </block>
+          </view>
+          <view class="weui-uploader__input-box" wx:if="{{yhzt ==3}}">
+            <view class="weui-uploader__input" bindtap="choosezgImage"></view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+
+
+    <view class="weui-cells__title" wx:if="{{yhzt==4||yhzt==5||shresult==2}}">审核信息
+      <span wx:if="{{shresult==3}}">{{shr__ubelongpart__partname}} {{shr__name}}退回</span>
+    </view>
+    <view class="weui-cells weui-cells_after-title" wx:if="{{yhzt==4||yhzt==5||shresult==2}}">
+      <view class="weui-cell weui-cell_access">
+        <view class="weui-cell__bd weui-cell_primary">
+          <view>审核意见</view>
+          <view class="weui-cell__bd" wx:if="{{yhzt==4}}">
+            <textarea class="weui-textarea" placeholder="请输入审核意见" style="height: 3.3em" bindinput="bindshyjInput" />
+          </view>
+          <view class="weui-cell__ft" wx:else>
+            {{shyj}}
+          </view>
+        </view>
+      </view>
+    </view>
+
+
+    <view class="weui-cells__title" wx:if="{{yhzt==5||shresult==3}}">复查信息
+      <span wx:if="{{shresult==3}}">{{fcr__ubelongpart__partname}} {{fcr__name}}退回</span>
+    </view>
+    <view class="weui-cells weui-cells_after-title" wx:if="{{yhzt==5||shresult==3}}">
+      <view class="weui-cell weui-cell_access">
+        <view class="weui-cell__bd weui-cell_primary">
+          <view>复查意见</view>
+          <view class="weui-cell__bd" wx:if="{{yhzt==5}}">
+            <textarea class="weui-textarea" placeholder="请输入复查意见" style="height: 3.3em" bindinput="bindfcyjInput" />
+          </view>
+          <view class="weui-cell__ft" wx:else>
+            {{fcyj}}
+            <!-- <view class="weui-textarea-counter">0/200</view> -->
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="weui-cell weui-cell_switch" wx:if="{{yhzt ==4||yhzt==5}}">
+      <view class="weui-cell__bd">是否通过</view>
+      <view class="weui-cell__ft">
+        <switch checked bindchange="shChange" />
+      </view>
+    </view>
+  </view>
+</view>
+<view class="weui-cells weui-cells_after-title" wx:if="{{yhzt==0||shresult=='reject'}}">
+  <view class="weui-cell weui-cell_access">
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>退回原因</view>
+      <view class="weui-cell__bd" wx:if="{{yhzt==0}}">
+        {{pgyj}}
+      </view>
+      <view class="weui-cell__bd" wx:if="{{shresult=='reject'}}">
+        <textarea class="weui-textarea" placeholder="请输入" style="height: 3.3em" bindinput="bindpgyjInput" />
+      </view>
+    </view>
+  </view>
+</view>
+<view class="btn-area">
+  <button class="weui-btn" type="primary" bindtap="submit" wx:if='{{yhzt!=0}}'>提交</button>
+  <button class="weui-btn" type="primary" bindtap="submit" wx:if='{{yhzt==0}}'>再次提交</button>
+</view>

@@ -1,0 +1,5 @@
+/* pages/operation/operationcheck.wxss */
+.weui-btn{
+  width:auto;
+  margin: 5px;
+}

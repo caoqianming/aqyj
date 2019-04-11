@@ -1,0 +1,93 @@
+<view class="weui-cells__title">
+  未遂事件概况</view>
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell weui-cell_access">
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>事件编号</view>
+    </view>
+    <view class="weui-cell__ft">
+      {{missnum}}
+    </view>
+  </view>
+  <view class="weui-cell weui-cell_access">
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>填报时间</view>
+    </view>
+    <view class="weui-cell__ft">
+      {{submittime}}
+    </view>
+  </view>
+  <view class="weui-cell weui-cell_access">
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>发生部门</view>
+    </view>
+    <view class="weui-cell__ft">
+      {{misspart__partname}}
+    </view>
+  </view>
+  <view class="weui-cell weui-cell_access">
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>当事人</view>
+    </view>
+    <view class="weui-cell__ft">
+      {{misser__name}}
+    </view>
+  </view>
+  <view class="weui-cell weui-cell_access">
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>发生时间</view>
+    </view>
+    <view class="weui-cell__ft">
+      {{misstime}}
+    </view>
+  </view>
+  <view class="weui-cell weui-cell_access">
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>发生地点</view>
+    </view>
+    <view class="weui-cell__ft">
+      {{missplace}}
+    </view>
+  </view>
+  <view class="weui-cell weui-cell_access">
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>现场图片</view>
+      <view class="weui-uploader__files">
+        <block wx:for="{{missimg}}" wx:for-item="image" wx:key="unique">
+          <view class="weui-uploader__file">
+            <image class="weui-uploader__img" src="{{image}}" data-src="{{image}}" bindtap="missimgPreview"></image>
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="weui-cells__title">详细内容</view>
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell weui-cell_access">
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>简要描述</view>
+      <view class="weui-cell__ft">
+        {{description}}
+      </view>
+    </view>
+  </view>
+  <view class="weui-cell weui-cell_access">
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>防范措施</view>
+      <view class="weui-cell__ft">
+        {{prevent}}
+      </view>
+    </view>
+  </view>
+  <view class="weui-cell weui-cell_access">
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>经验教训</view>
+      <view class="weui-cell__ft">
+        {{lesson}}
+      </view>
+    </view>
+  </view>
+</view>
+

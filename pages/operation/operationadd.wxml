@@ -1,0 +1,139 @@
+<view class="page">
+  <view class="page__bd">
+    <view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">错误提示</view>
+
+
+    <view class="weui-cells__title">作业详情</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">开始时间</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker mode="multiSelector" value="{{dateTime1}}" bindchange="changeDateTime1" bindcolumnchange="changeDateTimeColumn1" range="{{dateTimeArray1}}">
+            <view class="weui-select" wx:if="{{dateshow1==1}}">
+              {{dateTimeArray1[0][dateTime1[0]]}}-{{dateTimeArray1[1][dateTime1[1]]}}-{{dateTimeArray1[2][dateTime1[2]]}} {{dateTimeArray1[3][dateTime1[3]]}}:{{dateTimeArray1[4][dateTime1[4]]}}
+            </view>
+            <view class="weui-select" wx:else>
+            </view>
+          </picker>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">结束时间</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker mode="multiSelector" value="{{dateTime2}}" bindchange="changeDateTime2" bindcolumnchange="changeDateTimeColumn2" range="{{dateTimeArray2}}">
+            <view class="weui-select" wx:if="{{dateshow2==1}}">
+              {{dateTimeArray2[0][dateTime2[0]]}}-{{dateTimeArray2[1][dateTime2[1]]}}-{{dateTimeArray2[2][dateTime2[2]]}} {{dateTimeArray2[3][dateTime2[3]]}}:{{dateTimeArray2[4][dateTime2[4]]}}
+            </view>
+            <view class="weui-select" wx:else>
+            </view>
+          </picker>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">作业地点</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" placeholder="请输入" bindinput="bindzyddInput" />
+        </view>
+      </view>
+            <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">属地部门</view>
+        </view>
+
+        <view class="weui-cell__bd">
+          <navigator url="/pages/parttree/index">
+            <view class="weui-select">
+              {{sdbm__partname}}
+            </view>
+          </navigator>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">作业人员</view>
+        </view>
+        <view class="weui-cell__bd">
+          <navigator url="/pages/userSelect/userSelect">
+        <view class="weui-select">请选择</view>
+          </navigator>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_access" style="height: 4.3em">
+        {{zyryname}}
+      </view>
+    </view>
+    <view class="weui-cells__title">作业内容</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell">
+        <view class="weui-cell__bd">
+          <textarea  class="weui-textarea" placeholder="请输入描述" style="height: 3.3em" bindinput="bindzynrInput"/>
+          
+        </view>
+      </view>
+    </view>
+    <view class="weui-cells__title">现场图片(如有)</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell">
+        <view class="weui-cell__bd weui-cell_primary">
+          <view class="weui-uploader">
+            <view class="weui-uploader__bd">
+              <view class="weui-uploader__files">
+                <block wx:for="{{zyimg}}" wx:for-item="image" wx:key="unique">
+                  <view class="weui-uploader__file">
+                    <image class="weui-uploader__img" src="{{image}}" data-src="{{image}}" bindtap="previewImage" bindlongpress="deleteImage" data-index="{{index}}"></image>
+                  </view>
+                </block>
+              </view>
+              <view class="weui-uploader__input-box">
+                <view class="weui-uploader__input" bindtap="chooseImage"></view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="weui-cells__title">风险分析和安全措施</view>
+        <view class="weui-cells weui-cells_after-title">
+      <checkbox-group bindchange="checkboxChangefxcs">
+        <label class="weui-cell weui-check__label" wx:for="{{fxcslist}}" wx:key="value">
+          <checkbox class="weui-check" value="{{item.id}}" />
+          <view class="weui-cell__hd weui-check__hd_in-checkbox">
+            <icon class="weui-icon-checkbox_circle" type="circle" size="23" wx:if="{{!item.checked}}"></icon>
+            <icon class="weui-icon-checkbox_success" type="success" size="23" wx:if="{{item.checked}}"></icon>
+          </view>
+          <view>
+          <view class="weui-media-box__desc" style='color:red'>{{item.fxfx}}</view>
+          <view class="weui-media-box__desc" style='color:green'>{{item.aqcs}}</view>
+          <view class="weui-media-box__desc">{{item.cslx}}</view>
+          </view>
+        </label>
+      </checkbox-group>
+</view>
+<!-- <view class="weui-cells__title">审批人</view>
+          <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">审批人</view>
+        </view>
+        <view class="weui-cell__bd">
+          <navigator url="/pages/userSelect/userSelect">
+        <view class="weui-select">请依次选择审批人</view>
+          </navigator>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_access" style="height: 4.3em">
+        {{spryname}}
+      </view> -->
+    <view class="btn-area">
+      <button class="weui-btn" type="primary" bindtap="submit">提交审批</button>
+    </view>
+  </view>
+</view>
+
+
+

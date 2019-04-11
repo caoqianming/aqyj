@@ -1,0 +1,148 @@
+<view class="page">
+  <view class="page__bd">
+    <view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">错误提示</view>
+
+
+    <view class="weui-cells__title">培训详情</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">培训时间</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker mode="multiSelector" value="{{dateTime1}}" bindchange="changeDateTime1" bindcolumnchange="changeDateTimeColumn1" range="{{dateTimeArray1}}">
+            <view class="weui-select" wx:if="{{dateshow1==1}}">
+              {{dateTimeArray1[0][dateTime1[0]]}}-{{dateTimeArray1[1][dateTime1[1]]}}-{{dateTimeArray1[2][dateTime1[2]]}} {{dateTimeArray1[3][dateTime1[3]]}}:{{dateTimeArray1[4][dateTime1[4]]}}
+            </view>
+            <view class="weui-select" wx:else>
+            </view>
+          </picker>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">培训地点</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" placeholder="请输入" bindinput="bindpxddInput" />
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">培训名称</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" placeholder="请输入" bindinput="bindpxmcInput" />
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">培训类型</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker bindchange="bindpxlxChange" value="{{pxlxIndex}}" range="{{pxlxArray}}" range-key="text">
+            <view class="weui-select">{{pxlxArray[pxlxIndex].text}}</view>
+          </picker>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">人员类型</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker bindchange="bindrylxChange" value="{{rylxIndex}}" range="{{rylxArray}}" range-key="text">
+            <view class="weui-select">{{rylxArray[rylxIndex].text}}</view>
+          </picker>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">培训级别</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker bindchange="bindpxjbChange" value="{{pxjbIndex}}" range="{{pxjbArray}}" range-key="text">
+            <view class="weui-select">{{pxjbArray[pxjbIndex].text}}</view>
+          </picker>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">培训内容</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker bindchange="bindpxnrChange" value="{{pxnrIndex}}" range="{{pxnrArray}}" range-key="text">
+            <view class="weui-select">{{pxnrArray[pxnrIndex].text}}</view>
+          </picker>
+        </view>
+      </view>
+      </view>
+          <view class="weui-cells__title">具体内容</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell">
+        <view class="weui-cell__bd">
+          <textarea class="weui-textarea" placeholder="请输入描述" style="height: 3.3em" bindinput="bindjtnrInput" />
+          <!-- <view class="weui-textarea-counter">0/200</view> -->
+        </view>
+      </view>
+    </view>
+    <view class="weui-cells__title">人员详情</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">培训部门</view>
+        </view>
+
+        <view class="weui-cell__bd">
+          <navigator url="/pages/parttree/index">
+            <view class="weui-select">
+              {{pxbm__partname}}
+            </view>
+          </navigator>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">授课人</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker bindchange="bindskrChange" value="{{skrIndex}}" range="{{skrArray}}" range-key="text">
+            <view class="weui-select">{{skrArray[skrIndex].text}}</view>
+          </picker>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">参加人员</view>
+        </view>
+        <view class="weui-cell__bd">
+          <navigator url="/pages/userSelect/userSelect">
+            <view class="weui-select">请选择</view>
+          </navigator>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_access" style="height: 5.3em">
+        {{cjryname}}
+      </view>
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">参加人数</view>
+        </view>
+        <view class="weui-cell__bd">
+          {{cjrs}}
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">培训时长</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" placeholder="请输入数字(小时)" bindinput="bindpxscInput" />
+        </view>
+      </view>
+</view>
+
+    <view class="btn-area">
+      <button class="weui-btn" type="primary" bindtap="submit">提交</button>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,5 @@
+{
+  "navigationBarTitleText": "行为观察",
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 50
+}

@@ -1,0 +1,31 @@
+<view class="page">
+  <view class="page__bd">
+    <view class="weui-cells__title">待办事项</view>
+    <view class="weui-cells weui-cells_after-title">
+      <navigator url="/pages/trouble/troubletodo">
+      <view class="weui-cell weui-cell_access">
+        <view class="weui-cell__bd">     
+          <view style="display: inline-block; vertical-align: middle">事故隐患</view>
+          <view class="weui-badge" style="margin-left: 5px;" wx:if="{{yhtodonum != 0 && yhtodonum !=null}}">{{yhtodonum}}</view>
+        </view>
+        <view class="weui-cell__ft weui-cell__ft_in-access">查看</view>
+        
+      </view>
+      </navigator>
+      <view class="weui-cell weui-cell_access">
+        <view class="weui-cell__bd">
+          <view style="display: inline-block; vertical-align: middle">作业许可</view>
+          <view class="weui-badge" style="margin-left: 5px;">8</view>
+        </view>
+        <view class="weui-cell__ft weui-cell__ft_in-access">详细信息</view>
+      </view>
+      <view class="weui-cell weui-cell_access">
+        <view class="weui-cell__bd">
+          <view style="display: inline-block; vertical-align: middle">应急演练</view>
+          <view class="weui-badge" style="margin-left: 5px;">8</view>
+        </view>
+        <view class="weui-cell__ft weui-cell__ft_in-access">详细信息</view>
+      </view>
+    </view>
+  </view>
+</view>

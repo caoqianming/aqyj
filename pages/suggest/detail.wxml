@@ -1,0 +1,78 @@
+<view class="weui-cells__title">
+  建议详情</view>
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell weui-cell_access">
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>建议编号</view>
+    </view>
+    <view class="weui-cell__ft">
+      {{jynum}}
+    </view>
+  </view>
+  <view class="weui-cell weui-cell_access">
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>填报时间</view>
+    </view>
+    <view class="weui-cell__ft">
+      {{submittime}}
+    </view>
+  </view>
+  <view class="weui-cell weui-cell_access">
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>建议部门</view>
+    </view>
+    <view class="weui-cell__ft">
+      {{jybm__partname}}
+    </view>
+  </view>
+  <view class="weui-cell weui-cell_access">
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>建议人</view>
+    </view>
+    <view class="weui-cell__ft">
+      {{jyr__name}}
+    </view>
+  </view>
+  <view class="weui-cell weui-cell_access">
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>现场图片</view>
+      <view class="weui-uploader__files">
+        <block wx:for="{{jyimg}}" wx:for-item="image" wx:key="unique">
+          <view class="weui-uploader__file">
+            <image class="weui-uploader__img" src="{{image}}" data-src="{{image}}" bindtap="jyimgPreview"></image>
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="weui-cells__title">详细内容</view>
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell weui-cell_access">
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>当前现状</view>
+      <view class="weui-cell__ft">
+        {{dqxz}}
+      </view>
+    </view>
+  </view>
+  <view class="weui-cell weui-cell_access">
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>建议内容</view>
+      <view class="weui-cell__ft">
+        {{jynr}}
+      </view>
+    </view>
+  </view>
+  <view class="weui-cell weui-cell_access">
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>期望效果</view>
+      <view class="weui-cell__ft">
+        {{qwxg}}
+      </view>
+    </view>
+  </view>
+</view>
+
+

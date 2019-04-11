@@ -1,0 +1,186 @@
+<view class="weui-cells__title">
+  隐患详情</view>
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell weui-cell_access">
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>当前状态</view>
+    </view>
+    <view class="weui-cell__ft" wx:if="{{yhzt == 7}}">措施/方案待提交</view>
+    <view class="weui-cell__ft" wx:elif="{{yhzt == 5}}">待复查</view>
+    <view class="weui-cell__ft" wx:elif="{{yhzt == 1}}">待评估</view>
+    <view class="weui-cell__ft" wx:elif="{{yhzt == 3}}">待整改</view>
+    <view class="weui-cell__ft" wx:elif="{{yhzt == 6}}">已归档</view>
+    <view class="weui-cell__ft" wx:elif="{{yhzt == 2}}">措施/方案待确认</view>
+    <view class="weui-cell__ft" wx:elif="{{yhzt == 4}}">待审核</view>
+    <view class="weui-cell__ft" wx:elif="{{yhzt == 0}}">待新增</view>
+  </view>
+  <view class="weui-cell weui-cell_access">
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>隐患等级</view>
+    </view>
+    <view class="weui-cell__ft">
+      {{yhdj__dickeyname}}
+    </view>
+  </view>
+  <view class="weui-cell weui-cell_access">
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>隐患类型</view>
+    </view>
+    <view class="weui-cell__ft">
+      {{yhlx__dicname}}
+    </view>
+  </view>
+  <view class="weui-cell weui-cell_access">
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>隐患类别</view>
+    </view>
+    <view class="weui-cell__ft">
+      {{yhlb__dickeyname}}
+    </view>
+  </view>
+  <view class="weui-cell weui-cell_access">
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>检查类型</view>
+    </view>
+    <view class="weui-cell__ft">
+      {{jclx__dickeyname}}
+    </view>
+  </view>
+  <view class="weui-cell weui-cell_access">
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>发现时间</view>
+    </view>
+    <view class="weui-cell__ft">
+      {{fxsj}}
+    </view>
+  </view>
+  <view class="weui-cell weui-cell_access">
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>发现部门</view>
+    </view>
+    <view class="weui-cell__ft">
+      {{fxbm__partname}}
+    </view>
+  </view>
+  <view class="weui-cell weui-cell_access">
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>发现人</view>
+    </view>
+    <view class="weui-cell__ft">
+      {{fxr__name}}
+    </view>
+  </view>
+  <view class="weui-cell weui-cell_access">
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>隐患地点</view>
+    </view>
+    <view class="weui-cell__ft">
+      {{yhdd}}
+    </view>
+  </view>
+  <view class="weui-cell weui-cell_access">
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>隐患评估</view>
+    </view>
+    <view class="weui-cell__ft">
+      {{yhpg__dickeyname}}
+    </view>
+  </view>
+  <view class="weui-cell weui-cell_access">
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>隐患描述</view>
+      <view class="weui-cell__ft">
+        {{yhms}}
+      </view>
+    </view>
+  </view>
+  <view class="weui-cell weui-cell_access">
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>隐患图片</view>
+      <view class="weui-uploader__files">
+        <block wx:for="{{yhtp}}" wx:for-item="image" wx:key="unique">
+          <view class="weui-uploader__file">
+            <image class="weui-uploader__img" src="{{image}}" data-src="{{image}}" bindtap="yhtpPreview"></image>
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+<view class="weui-cells__title">整改详情</view>
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell weui-cell_access">
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>整改部门</view>
+    </view>
+    <view class="weui-cell__ft">
+      {{zgbm__partname}}
+    </view>
+  </view>
+  <view class="weui-cell weui-cell_access">
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>整改人</view>
+    </view>
+    <view class="weui-cell__ft">
+      {{zgr__name}}
+    </view>
+  </view>
+  <view class="weui-cell weui-cell_access">
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>整改期限</view>
+    </view>
+    <view class="weui-cell__ft">
+      {{zgqx}}
+    </view>
+  </view>
+  <view class="weui-cell weui-cell_access">
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>原因分析</view>
+      <view class="weui-cell__ft">
+        {{yyfx}}
+      </view>
+    </view>
+  </view>
+  <view class="weui-cell weui-cell_access">
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>整改措施</view>
+      <view class="weui-cell__ft">
+        {{zgcs}}
+      </view>
+    </view>
+
+  </view>
+  <view class="weui-cell weui-cell_access">
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>整改描述</view>
+      <view class="weui-cell__ft">
+        {{zgms}}
+      </view>
+    </view>
+  </view>
+  <view class="weui-cell weui-cell_access">
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>整改图片</view>
+      <view class="weui-uploader__files">
+        <block wx:for="{{zghtp}}" wx:for-item="image" wx:key="unique">
+          <view class="weui-uploader__file">
+            <image class="weui-uploader__img" src="{{image}}" data-src="{{image}}" bindtap="zghtpPreview"></image>
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+<view class="weui-cells__title">流程详情</view>
+<view class="weui-cells weui-cells_after-title">
+  <block wx:for="{{lcxq}}" wx:key="unique">
+    <view class="weui-media-box">
+      <view class="weui-media-box__desc">{{item.clr__name}}</view>
+      <view class="weui-media-box__desc">{{item.accesssj}} {{item.action}}</view>
+    </view>
+  </block>
+</view>

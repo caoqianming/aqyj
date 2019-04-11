@@ -1,0 +1,6 @@
+<view class='container'>
+  <view class='scroll-wrapper'>
+    <scroll-view scroll-x style='scroll'>
+      <text id='{{index}}' class='text' wx:for='{{list}}' wx:key='{{index}}' bindtap='delete'>{{item.name}}</text> </scroll-view>
+  </view>
+  <text class='btn' bindtap='confirm'>确定</text> </view>

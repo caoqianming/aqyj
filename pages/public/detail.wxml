@@ -1,0 +1,20 @@
+<import src="../../wxParse/wxParse.wxml"/>
+<view class="page">
+    <view class="page__bd">
+        <view class="weui-article">
+            <view class="weui-article__h1">{{notice.title}}</view>
+            <view class="weui-article__h2">阅读量:<span style="color:blue">{{notice.reads}}</span></view>
+            <view class="weui-cells__title">附件</view>
+
+  <block wx:for="{{material}}" wx:key="unique">
+    <view class="weui-media-box" style="color:blue" data-id="{{item.value}}" bindtap='openfj'>
+      {{index+1}} {{item.name}}
+    </view>
+  </block>
+
+            <view class="weui-article__section">
+            <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+            </view>
+        </view>
+    </view>
+</view>

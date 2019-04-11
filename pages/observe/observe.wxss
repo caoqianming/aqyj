@@ -1,0 +1,14 @@
+.weui-btn{
+  width:auto;
+  margin: 5px;
+}
+.container {
+  background-color: #fff;  
+  color: #939393; 
+}
+.head{
+  color:#fff;
+  background-color: cornflowerblue;
+  text-align: center;
+}
+ 

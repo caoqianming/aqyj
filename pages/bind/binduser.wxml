@@ -1,0 +1,23 @@
+<view class="page">
+  <view class="page__hd">
+    <view class="page__title">登陆安全预警lite小程序</view>
+    <view class="page__desc">首次使用需要绑定账号</view>
+    <view class="page__desc">请输入预警系统账号密码</view>
+  </view>
+  <view class="page__bd">
+    <view class="weui-cells__title">登陆</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__bd">
+          <input class="weui-input" placeholder="请输入账号" bindinput="bindusernameInput"/>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__bd">
+          <input class="weui-input" placeholder="请输入密码" bindinput="bindpasswordInput" password="true"/>
+        </view>
+      </view>
+    </view>
+  </view>
+  <button class="weui-btn" type="primary" bindtap="denglu">登陆并绑定</button>
+</view>

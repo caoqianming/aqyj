@@ -1,0 +1,81 @@
+<view class="page">
+  <view class="page__bd">
+    <view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">错误提示</view>
+
+
+    <view class="weui-cells__title">事件信息</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">发生时间</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker mode="multiSelector" value="{{dateTime1}}" bindchange="changeDateTime1" bindcolumnchange="changeDateTimeColumn1" range="{{dateTimeArray1}}">
+            <view class="weui-select">
+              {{dateTimeArray1[0][dateTime1[0]]}}-{{dateTimeArray1[1][dateTime1[1]]}}-{{dateTimeArray1[2][dateTime1[2]]}} {{dateTimeArray1[3][dateTime1[3]]}}:{{dateTimeArray1[4][dateTime1[4]]}}
+            </view>
+          </picker>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">发生地点</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" placeholder="请输入发生地点" bindinput="bindmissplaceInput" />
+        </view>
+      </view>
+    </view>
+    <view class="weui-cells__title">现场图片(如有)</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell">
+        <view class="weui-cell__bd weui-cell_primary">
+          <view class="weui-uploader">
+            <view class="weui-uploader__bd">
+              <view class="weui-uploader__files">
+                <block wx:for="{{missimg}}" wx:for-item="image" wx:key="unique">
+                  <view class="weui-uploader__file">
+                    <image class="weui-uploader__img" src="{{image}}" data-src="{{image}}" bindtap="previewImage" bindlongpress="deleteImage" data-index="{{index}}"></image>
+                  </view>
+                </block>
+              </view>
+              <view class="weui-uploader__input-box">
+                <view class="weui-uploader__input" bindtap="chooseImage"></view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+<view class="weui-cells__title">简要描述</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell">
+        <view class="weui-cell__bd">
+          <textarea  class="weui-textarea" placeholder="请输入描述" style="height: 3.3em" bindinput="binddescriptionInput"/>
+          <view class="weui-textarea-counter">0/200</view>
+        </view>
+      </view>
+    </view>
+        <view class="weui-cells__title">防范措施</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell">
+        <view class="weui-cell__bd">
+          <textarea  class="weui-textarea" placeholder="请输入描述" style="height: 3.3em" bindinput="bindpreventInput"/>
+          <view class="weui-textarea-counter">0/200</view>
+        </view>
+      </view>
+    </view>
+    <view class="weui-cells__title">经验教训</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell">
+        <view class="weui-cell__bd">
+          <textarea  class="weui-textarea" placeholder="请输入描述" style="height: 3.3em" bindinput="bindlessonInput"/>
+          <view class="weui-textarea-counter">0/200</view>
+        </view>
+      </view>
+    </view>
+    <view class="btn-area">
+      <button class="weui-btn" type="primary" bindtap="submit">提交</button>
+    </view>
+  </view>
+</view>

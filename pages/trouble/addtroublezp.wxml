@@ -1,0 +1,98 @@
+<view class="page">
+  <view class="page__bd">
+    <view class="weui-cells__title">评估信息</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">隐患评估</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker bindchange="bindyhpgChange" value="{{yhpgIndex}}" range="{{yhpgArray}}" range-key="text">
+            <view class="weui-select">{{yhpgArray[yhpgIndex].text}}</view>
+          </picker>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">隐患类型</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker bindchange="bindyhlxChange" value="{{yhlxIndex}}" range="{{yhlxArray}}" range-key="text">
+            <view class="weui-select">{{yhlxArray[yhlxIndex].text}}</view>
+          </picker>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">隐患类别</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker bindchange="bindyhlbChange" value="{{yhlbIndex}}" range="{{yhlbArray}}" range-key="text">
+            <view class="weui-select">{{yhlbArray[yhlbIndex].text}}</view>
+          </picker>
+        </view>
+      </view>
+    </view>
+    <view class="weui-cells__title">整改通知单</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">整改部门</view>
+        </view>
+
+        <view class="weui-cell__bd">
+          <navigator url="/pages/parttree/index?a=zp">
+            <view class="weui-select">
+              {{zgbm__partname}}
+            </view>
+          </navigator>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">整改人</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker bindchange="bindzgrChange" value="{{zgrIndex}}" range="{{zgrArray}}" range-key="text">
+            <view class="weui-select">{{zgrArray[zgrIndex].text}}</view>
+          </picker>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">整改期限</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker mode="multiSelector" value="{{dateTime1}}" bindchange="changeDateTime1" bindcolumnchange="changeDateTimeColumn1" range="{{dateTimeArray1}}">
+            <view class="weui-select" wx:if="{{dateshow==1}}">
+              {{dateTimeArray1[0][dateTime1[0]]}}-{{dateTimeArray1[1][dateTime1[1]]}}-{{dateTimeArray1[2][dateTime1[2]]}} {{dateTimeArray1[3][dateTime1[3]]}}:{{dateTimeArray1[4][dateTime1[4]]}}
+            </view>
+          <view class="weui-select" wx:else>
+            </view>
+          </picker>
+        </view>
+      </view>
+    </view>
+    <view class="weui-cells__title">原因分析</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell">
+        <view class="weui-cell__bd">
+          <textarea class="weui-textarea" placeholder="如不填写将由整改人填写" style="height: 3.3em" bindinput="bindyyfxInput" />
+          <view class="weui-textarea-counter">0/200</view>
+        </view>
+      </view>
+    </view>
+    <view class="weui-cells__title">整改措施</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell">
+        <view class="weui-cell__bd">
+          <textarea class="weui-textarea" placeholder="如不填写将由整改人填写" style="height: 3.3em" bindinput="bindzgcsInput" />
+          <view class="weui-textarea-counter">0/200</view>
+        </view>
+      </view>
+    </view>
+    <view class="btn-area" >
+      <button class="weui-btn" type="primary" bindtap="submit">提交</button>
+    </view>
+  </view>
+</view>

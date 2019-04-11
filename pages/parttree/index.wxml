@@ -1,0 +1,8 @@
+
+
+<view class="container">
+  <text class="item">公司组织机构</text>
+  <path-view value="{{value}}"
+             btnTxt='选中本项'
+             catchtapBtn="selThis"></path-view>
+</view>
