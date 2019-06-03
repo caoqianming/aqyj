@@ -9,6 +9,7 @@ Page({
     dqxz:'',
     jynr:'',
     qwxg:'',
+    jylb:0,
     serverUrl: getApp().globalData.serverUrl,
   },
   ohShitfadeOut() {
@@ -49,7 +50,12 @@ Page({
         popErrorMsg: '请输入建议内容！',
       });
       this.ohShitfadeOut();
-    } else if (that.data.qwxg == '') {
+    } else if (that.data.jylb == 0) {
+      this.setData({
+        popErrorMsg: '请选择建议类别！',
+      });
+      this.ohShitfadeOut();
+    }else if (that.data.qwxg == '') {
       this.setData({
         popErrorMsg: '请输入期望效果！',
       });

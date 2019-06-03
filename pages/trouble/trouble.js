@@ -44,11 +44,19 @@ Page({
         success: res => {
           if (res.statusCode === 200) {
             if(res.data.rows.length==0){
-              wx.showModal({
-                content: "已经到底啦!",
-                showCancel: false,
-                confirmText: "确定",
-              })
+              if (page == 1) {
+                this.setData({
+                  alltotal: 0,
+                  allyhlist: []
+                })
+              }
+              else {
+                wx.showModal({
+                  content: "已经到底啦!",
+                  showCancel: false,
+                  confirmText: "确定",
+                })
+              }
             }else{
               let list
               if(page==1){
@@ -81,11 +89,19 @@ Page({
         success: res => {
           if (res.statusCode === 200) {
             if (res.data.rows.length == 0) {
-              wx.showModal({
-                content: "已经到底啦!",
-                showCancel: false,
-                confirmText: "确定",
-              })
+              if (page == 1) {
+                this.setData({
+                  mytotal: 0,
+                  myyhlist: []
+                })
+              }
+              else {
+                wx.showModal({
+                  content: "已经到底啦!",
+                  showCancel: false,
+                  confirmText: "确定",
+                })
+              }
             } else {
               let list
               if (page == 1) {
@@ -118,11 +134,19 @@ Page({
         success: res => {
           if (res.statusCode === 200) {
             if (res.data.rows.length == 0) {
-              wx.showModal({
-                content: "已经到底啦!",
-                showCancel: false,
-                confirmText: "确定",
-              })
+              if (page == 1) {
+                this.setData({
+                  todototal: 0,
+                  todoyhlist: []
+                })
+              }
+              else {
+                wx.showModal({
+                  content: "已经到底啦!",
+                  showCancel: false,
+                  confirmText: "确定",
+                })
+              }
             } else {
               let list
               if (page == 1) {
@@ -205,4 +229,9 @@ Page({
       this.getallYhlist();
     }
   },
+  add:function(){
+    wx.navigateTo({
+      url: 'addtrouble',
+    })
+  }
 });

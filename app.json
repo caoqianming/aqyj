@@ -38,7 +38,22 @@
     "pages/userSelect/userSelect",
     "components/footer/footer",
     "pages/operation/operationadd",
-    "pages/train/add"
+    "pages/train/add",
+    "pages/train/detail",
+    "pages/train/check",
+    "pages/train/qrcode",
+    "pages/operation/list",
+    "pages/examtest/index",
+    "pages/examtest/note",
+    "pages/examtest/main",
+    "pages/examtest/sheet",
+    "pages/examtest/result",
+    "pages/examtest/detail",
+    "pages/safecert/index",
+    "pages/safecert/detail",
+    "pages/exercise/index",
+    "pages/questioncat/index",
+    "pages/exercise/main"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -65,5 +80,6 @@
         "selectedIconPath": "image/mec.png"
       }
     ]
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }

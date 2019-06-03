@@ -1,0 +1,15 @@
+<view class="page__bd">
+
+  <view class="weui-cells__title">共{{total}}张证书</view>
+  <view class="weui-cells weui-cells_after-title" >
+    <block wx:for="{{safecertlist}}" wx:key="unique">
+      <navigator url="detail?id={{item.id}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+        <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+          <view class="weui-media-box__title">{{item.zglx}}  {{item.dwlx}}</view>
+          <view class="weui-media-box__desc">有效期结束日期 {{item.yxqjssj}}</view>
+          <view class="weui-media-box__desc">{{item.fzjg}}</view>
+        </view>
+      </navigator>
+    </block>
+  </view>
+</view>

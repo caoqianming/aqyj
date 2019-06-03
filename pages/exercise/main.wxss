@@ -1,0 +1,18 @@
+.head{
+  color:#fff;
+  background-color: cornflowerblue;
+}
+.txlabel{
+  color:#fff;
+  background-color: rgb(216, 140, 0);
+  padding: 2px
+}
+.weui-btn{
+  width:auto;
+  margin: 5px;
+}
+.sheet{
+  color:#fff;
+  background-color: red;
+  float:right
+}

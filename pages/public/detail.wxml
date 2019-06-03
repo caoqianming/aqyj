@@ -2,8 +2,8 @@
 <view class="page">
     <view class="page__bd">
         <view class="weui-article">
-            <view class="weui-article__h1">{{notice.title}}</view>
-            <view class="weui-article__h2">阅读量:<span style="color:blue">{{notice.reads}}</span></view>
+            <view class="weui-article__h1">{{title}}</view>
+            <view class="weui-article__h2">阅读量:<span style="color:blue">{{reads}}</span></view>
             <view class="weui-cells__title">附件</view>
 
   <block wx:for="{{material}}" wx:key="unique">

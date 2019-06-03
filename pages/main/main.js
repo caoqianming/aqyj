@@ -5,14 +5,18 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+      yhtodonum:0,
+      zytodonum:0,
+      noread:0,
+      dqdnum:0,
+      dknum:0,
+      kaoshi:false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
   },
 
   /**
@@ -29,16 +33,20 @@ Page({
     var that = this
     //获取待阅读通知数目
     if(wx.getStorageSync("sessionid")){
+      this.getrights()
       this.getnoread()
       this.getyhtodonum()
       this.getzytodonum()
       this.getpxqdnum()
+      this.getdknum() //待考
     }else{
       getApp().callback = () => {
+        this.getrights()
       this.getnoread()
       this.getyhtodonum()
       this.getzytodonum()
       this.getpxqdnum()
+      this.getdknum()
       };
     }
 
@@ -155,5 +163,47 @@ Page({
         }
       }
     });
-  }
+  },
+  getdknum: function () {
+    var that = this
+    //获取待考
+    wx.request({
+      url: getApp().globalData.serverUrl + 'api/examtestdetail?a=dknum',
+      header: {
+        'content-type': 'application/json', // 默认值
+        'Cookie': wx.getStorageSync("sessionid"),
+      },
+      data: {},
+      success: res => {
+        if (res.statusCode === 200) {
+          //console.log(res.data)
+          this.setData({
+            dknum: res.data.dknum,
+          })
+        }
+      }
+    });
+  },
+getrights:function(){
+  wx.request({
+    url: getApp().globalData.serverUrl + 'api/rights?a=have',
+    header: {
+      'content-type': 'application/json', // 默认值
+      'Cookie': wx.getStorageSync("sessionid"),
+    },
+    data: {},
+    success: res => {
+      if (res.statusCode === 200) {
+        //console.log(res.data.rights.indexOf('25'))
+        if (res.data.rights.indexOf('25') != -1) {//考试功能
+          this.setData({
+            kaoshi: true
+          })
+        }
+      }
+      console.log(this.data.kaoshi)
+    }
+  }); 
+}
+  
 })

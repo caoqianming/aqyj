@@ -136,11 +136,12 @@ Page({
               x['value'] = ggdata.notice.material[i]
               material.push(x)
             }
-            console.log(material)
+            //console.log(material)
             this.setData({
-              material: material
+              material: material,
+              title: ggdata.notice.title,
+              reads: ggdata.notice.reads
             })
-            this.setData(ggdata)
 
             WxParse.wxParse('article', 'html', ggdata.notice.content, this, 0)
           }

@@ -2,7 +2,7 @@
 <view class="page">
     <view class="page__bd">
         <view class="weui-article">
-            <view class="weui-article__h1">{{notice.title}}</view>
+            <view class="weui-article__h1">{{title}}</view>
             <view class="weui-article__h2">阅读人数:<span style="color:blue">{{readpeople}}  </span>阅读次数:<span style="color:blue">{{readsnum}}  </span></view>
             <view class="weui-cells__title">附件</view>
 

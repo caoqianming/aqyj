@@ -126,6 +126,7 @@ Page({
           if (res.statusCode === 200) {
             var tzdata = res.data
             let material = []
+            console.log(tzdata)
             console.log(tzdata.notice.material.length)
             for (var i = 0, len = tzdata.notice.material.length; i < len; i++) {
               let x = {}
@@ -135,9 +136,12 @@ Page({
             }
             console.log(material)
             this.setData({
-              material: material
+              material: material,
+              title:tzdata.notice.title,
+              readpeople:tzdata.readpeople,
+              readsnum:tzdata.readsnum
             })
-            this.setData(tzdata)
+            
 
             WxParse.wxParse('article', 'html', tzdata.notice.content, this, 0)
           }

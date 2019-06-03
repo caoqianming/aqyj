@@ -1,0 +1,13 @@
+<!--pages/examtest/sheet.wxml-->
+<view style="width:100%;display:flex;padding:20rpx;flex-wrap: wrap ">
+<view wx:for="{{tmlist}}" wx:key="id" >
+
+<view wx:if="{{item.userchecked && item.userchecked.length !=0 }}" class="ok" data-index="{{index}}" bindtap='back'>
+{{index+1}}
+</view>
+<view wx:else class="no" data-index="{{index}}" bindtap='back'>
+{{index+1}}
+</view>
+
+</view>
+</view>

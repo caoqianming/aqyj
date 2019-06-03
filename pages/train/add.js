@@ -285,6 +285,7 @@ Page({
       participantnum: this.data.cjrs,
       duration: this.data.pxsc
     }
+
     wx.showModal({
       title: '系统提示',
       content: '确认提交将发送培训通知!',
@@ -292,6 +293,9 @@ Page({
       cancelText: "取消",
       success: function (res) {
         if (res.confirm) {
+          wx.showLoading({
+            title: '正在发布...',
+          })
           wx.request({
             url: getApp().globalData.serverUrl + 'addtrain',
             header: {

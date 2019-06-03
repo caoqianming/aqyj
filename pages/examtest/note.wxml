@@ -1,0 +1,22 @@
+<view class="page">
+  <view class="page__title" style="text-align:center;margin-top:10rpx">考试须知</view>
+  <view class="page_bd">
+    <view class="weui-article">
+      <view class="weui-article__title">1.考试详情</view>
+      <view>名称：<span style="color:blue">{{name}}</span></view>
+      <view>答卷时长:<span style="color:red">{{duration}}分钟</span></view>
+      <view>满分{{totalscore}};{{passscore}}以上通过</view>
+      <view>{{exampaper__total.dx.num}}道单选题,{{exampaper__total.duox.num}}道多选题,{{exampaper__total.pd.num}}道判断题</view>
+    </view>
+    <view class="weui-article">
+      <view class="weui-article__title">2.答题须知</view>
+      <view style="color:red">进入答题后请不要后退或返回桌面</view>
+      <view>用户可点击上一题/下一题进行切换答题</view>
+      <view>用户选择好选项后会自动跳转至下一题</view>
+      <view>请合理安排时间答题,可提前交卷,超时会自动提交</view>
+    </view>
+  </view>
+</view>
+<view style="position:fixed;bottom:0;left:0;width:100%;">
+  <button class="weui-btn" type="primary" bindtap="start">开始考试</button>
+</view>

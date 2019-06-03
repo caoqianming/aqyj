@@ -1,0 +1,14 @@
+<view class="head">
+  选择作业类型</view>
+<view class="weui-cells weui-cells_after-title">
+  <block wx:for="{{zylxlist}}" wx:key="unique">
+    <navigator url="operationadd?zylx={{item.dickeyid}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+      <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+        <view class="weui-media-box__title">{{item.dickeyname}}
+        </view>
+        <view class="weui-media-box__desc" style="color:green">{{item.detail}}</view>
+        <view class="weui-media-box__desc" style="color:red">审批流程:{{item.splcdetail}}</view>
+      </view>
+    </navigator>
+  </block>
+</view>

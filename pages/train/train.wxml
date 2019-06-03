@@ -1,91 +1,104 @@
-<view class="page">
-  <view class="page__bd">
-    <view class="weui-tab">
-      <view class="weui-navbar">
-        <block wx:for="{{tabs}}" wx:key="*this">
-          <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
-            <view class="weui-navbar__title">{{item}}</view>
+<view class="weui-tab">
+  <view class="weui-navbar">
+    <block wx:for="{{tabs}}" wx:key="*this">
+      <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+        <view class="weui-navbar__title">{{item}}</view>
+      </view>
+    </block>
+    <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+  </view>
+  <view class="weui-tab__panel">
+    <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
+      <view class="head">
+        共{{fqtotal}}条线下培训</view>
+      <view class="weui-cells weui-cells_after-title">
+        <block wx:for="{{fqpxlist}}" wx:key="unique">
+          <view class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+
+            <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+              <navigator url="detail?trainid={{item.trainid}}">
+                <view class="weui-media-box__title">{{item.trainname}}
+                </view>
+                <view class="weui-media-box__desc" wx:if="{{item.lecturer__name != null}}">{{item.trainnum}} {{item.lecturer__name}}授课</view>
+                <view class="weui-media-box__desc" wx:else>{{item.trainnum}} {{item.teacher}}授课</view>
+                <view class="weui-media-box__desc">{{item.trainplace}}-{{item.starttime}}</view>
+              </navigator>
+            </view>
+            <view class="weui-panel__ft weui-cell__ft_in-access">
+              <view class="weui-media-box__title">
+                <view wx:if="{{item.state == 0}}">待评估</view>
+                <view wx:if="{{item.state == 1}}" style="color:white;background-color:green">已关闭</view>
+                <navigator url='qrcode?pxid={{item.trainid}}'>
+                  <view wx:if="{{item.state == 0}}">
+                    <button class="weui-btn mini-btn" type="primary" size="mini">签到二维码</button>
+                  </view>
+                </navigator>
+              </view>
+              <!-- <view wx:if="{{item.todouser__name != null}}">
+                    <view class="weui-media-box__desc">{{item.todouser__name}}</view>
+                  </view> -->
+            </view>
           </view>
         </block>
-        <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
       </view>
-      <view class="weui-tab__panel">
-        <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
-          <view class="head">
-            共{{fqtotal}}条线下培训</view>
-          <view class="weui-cells weui-cells_after-title">
-            <block wx:for="{{fqpxlist}}" wx:key="unique">
-              <navigator url="detail?pxid={{item.pxid}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
-                <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-                  <view class="weui-media-box__title">{{item.trainname}}
-                  </view>
-                  <view class="weui-media-box__desc" wx:if="{{item.lecturer__name != null}}">{{item.trainnum}} {{item.lecturer__name}}授课</view>
-                  <view class="weui-media-box__desc" wx:else>{{item.trainnum}} {{item.teacher}}授课</view>
-                  <view class="weui-media-box__desc">{{item.trainplace}}-{{item.starttime}}</view>
-                </view>
-                <view class="weui-panel__ft weui-cell__ft_in-access">
-                  <view class="weui-media-box__title" style="color:white;background-color:green" wx:if="{{item.state == 1}}">已关闭</view>
-                  <view class="weui-media-box__title" wx:if="{{item.state == 0}}">待评估</view>
-                  <!-- <view wx:if="{{item.todouser__name != null}}">
+
+    </view>
+    <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
+      <view class="head">
+        共{{cjtotal}}条线下培训</view>
+      <view class="weui-cells weui-cells_after-title">
+        <block wx:for="{{cjpxlist}}" wx:key="unique">
+          <navigator url="detail?trainid={{item.train__trainid}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+            <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+              <view class="weui-media-box__title">{{item.train__trainname}}
+              </view>
+              <view class="weui-media-box__desc" wx:if="{{item.train__lecturer__name != null}}">{{item.train__trainnum}} {{item.train__lecturer__name}}授课</view>
+              <view class="weui-media-box__desc" wx:else>{{item.train__trainnum}} {{item.train__teacher}}授课</view>
+              <view class="weui-media-box__desc">{{item.train__trainplace}}-{{item.train__starttime}}</view>
+            </view>
+            <view class="weui-panel__ft weui-cell__ft_in-access">
+              <view class="weui-media-box__title" style="color:white;background-color:green" wx:if="{{item.checked == 1}}">已签到</view>
+              <view class="weui-media-box__title" wx:if="{{item.checked == 0}}">未签到</view>
+              <view class="weui-media-box__title" wx:if="{{item.train__state == 0}}">待评估</view>
+              <view class="weui-media-box__title" wx:if="{{item.train__state == 1}}">已关闭</view>
+              <!-- <view wx:if="{{item.todouser__name != null}}">
                     <view class="weui-media-box__desc">{{item.todouser__name}}</view>
                   </view> -->
-                </view>
-              </navigator>
-            </block>
-          </view>
-          <view style="position:fixed;bottom:0;left:0;width:100%;">
-            <button class="weui-btn" type="primary" bindtap="open">发布培训</button>
-          </view>
-        </view>
-        <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
-          <view class="head">
-            共{{cjtotal}}条线下培训</view>
-          <view class="weui-cells weui-cells_after-title">
-            <block wx:for="{{cjpxlist}}" wx:key="unique">
-              <navigator url="detail?pxid={{item.pxid}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
-                <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-                  <view class="weui-media-box__title">{{item.train__trainname}}
-                  </view>
-                  <view class="weui-media-box__desc" wx:if="{{item.train__lecturer__name != null}}">{{item.train__trainnum}} {{item.train__lecturer__name}}授课</view>
-                  <view class="weui-media-box__desc" wx:else>{{item.train__trainnum}} {{item.train__teacher}}授课</view>
-                  <view class="weui-media-box__desc">{{item.train__trainplace}}-{{item.train__starttime}}</view>
-                </view>
-                <view class="weui-panel__ft weui-cell__ft_in-access">
-                  <view class="weui-media-box__title" style="color:white;background-color:green" wx:if="{{item.checked == 1}}">已签到</view>
-                  <view class="weui-media-box__title" wx:if="{{item.checked == 0}}">未签到</view>
-                  <!-- <view wx:if="{{item.todouser__name != null}}">
+            </view>
+          </navigator>
+        </block>
+      </view>
+
+    </view>
+    <view class="weui-tab__content" hidden="{{activeIndex != 2}}">
+      <view class="head">
+        共{{alltotal}}条线下培训</view>
+      <view class="weui-cells weui-cells_after-title">
+        <block wx:for="{{allpxlist}}" wx:key="unique">
+          <navigator url="detail?trainid={{item.trainid}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+            <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+              <view class="weui-media-box__title">{{item.trainname}}
+              </view>
+              <view class="weui-media-box__desc" wx:if="{{item.lecturer__name != null}}">{{item.trainnum}} {{item.lecturer__name}}授课</view>
+              <view class="weui-media-box__desc" wx:else>{{item.trainnum}} {{item.teacher}}授课</view>
+              <view class="weui-media-box__desc">{{item.trainplace}}-{{item.starttime}}</view>
+            </view>
+            <view class="weui-panel__ft weui-cell__ft_in-access">
+              <view class="weui-media-box__title" style="color:white;background-color:green" wx:if="{{item.state == 1}}">已关闭</view>
+              <view class="weui-media-box__title" wx:if="{{item.state == 0}}">待评估</view>
+              <!-- <view wx:if="{{item.todouser__name != null}}">
                     <view class="weui-media-box__desc">{{item.todouser__name}}</view>
                   </view> -->
-                </view>
-              </navigator>
-            </block>
-          </view>
-        </view>
-        <view class="weui-tab__content" hidden="{{activeIndex != 2}}">
-          <view class="head">
-            共{{alltotal}}条线下培训</view>
-          <view class="weui-cells weui-cells_after-title">
-            <block wx:for="{{allpxlist}}" wx:key="unique">
-              <navigator url="detail?pxid={{item.pxid}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
-                <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-                  <view class="weui-media-box__title">{{item.trainname}}
-                  </view>
-                  <view class="weui-media-box__desc" wx:if="{{item.lecturer__name != null}}">{{item.trainnum}} {{item.lecturer__name}}授课</view>
-                  <view class="weui-media-box__desc" wx:else>{{item.trainnum}} {{item.teacher}}授课</view>
-                  <view class="weui-media-box__desc">{{item.trainplace}}-{{item.starttime}}</view>
-                </view>
-                <view class="weui-panel__ft weui-cell__ft_in-access">
-                  <view class="weui-media-box__title" style="color:white;background-color:green" wx:if="{{item.state == 1}}">已关闭</view>
-                  <view class="weui-media-box__title" wx:if="{{item.state == 0}}">待评估</view>
-                  <!-- <view wx:if="{{item.todouser__name != null}}">
-                    <view class="weui-media-box__desc">{{item.todouser__name}}</view>
-                  </view> -->
-                </view>
-              </navigator>
-            </block>
-          </view>
-        </view>
+            </view>
+          </navigator>
+        </block>
       </view>
     </view>
   </view>
+</view>
+<view style="position:fixed;bottom:0;left:0;width:100%;" hidden="{{activeIndex != 0}}">
+  <button class="weui-btn" type="primary" bindtap="open">发布培训</button>
+</view>
+<view style="position:fixed;bottom:0;left:0;width:100%;" hidden="{{activeIndex != 1}}">
+  <button class="weui-btn" type="primary" bindtap="check">扫码签到</button>
 </view>

@@ -1,0 +1,161 @@
+<view class="page">
+  <view class="page__bd">
+    <view class="weui-tab">
+      <view class="weui-navbar">
+        <block wx:for="{{tabs}}" wx:key="*this">
+          <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+            <view class="weui-navbar__title">{{item}}</view>
+          </view>
+        </block>
+        <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+      </view>
+      <view class="weui-tab__panel">
+        <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
+          <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_access">
+              <view class="weui-cell__bd weui-cell_primary">
+                <view>当前状态</view>
+              </view>
+              <view class="weui-cell__ft" style="color:green" wx:if="{{state==1}}">已关闭</view>
+              <view class="weui-cell__ft" style="color:green" wx:if="{{state==0}}">待评估</view>
+            </view>
+            <view class="weui-cell weui-cell_access">
+              <view class="weui-cell__bd weui-cell_primary">
+                <view>培训时间</view>
+              </view>
+              <view class="weui-cell__ft">
+                {{starttime}}
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_access">
+              <view class="weui-cell__bd weui-cell_primary">
+                <view>培训地点</view>
+              </view>
+              <view class="weui-cell__ft">
+                {{trainplace}}
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_access">
+              <view class="weui-cell__bd weui-cell_primary">
+                <view>培训名称</view>
+              </view>
+              <view class="weui-cell__ft">
+                {{trainname}}
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_access">
+              <view class="weui-cell__bd weui-cell_primary">
+                <view>培训类型</view>
+              </view>
+              <view class="weui-cell__ft">
+                {{traintype__dickeyname}}
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_access">
+              <view class="weui-cell__bd weui-cell_primary">
+                <view>人员类型</view>
+              </view>
+              <view class="weui-cell__ft">
+                {{manlevel__dickeyname}}
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_access">
+              <view class="weui-cell__bd weui-cell_primary">
+                <view>培训级别</view>
+              </view>
+              <view class="weui-cell__ft">
+                {{trainlevel__dicname}}
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_access">
+              <view class="weui-cell__bd weui-cell_primary">
+                <view>培训内容</view>
+              </view>
+              <view class="weui-cell__ft">
+                {{traincontent__dickeyname}}
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_access">
+              <view class="weui-cell__bd weui-cell_primary">
+                <view>具体内容</view>
+                <view class="weui-cell__ft">
+                  {{detailcontent}}
+                </view>
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_access">
+              <view class="weui-cell__bd weui-cell_primary">
+                <view>培训部门</view>
+              </view>
+              <view class="weui-cell__ft">
+                {{trainpart}}
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_access">
+              <view class="weui-cell__bd weui-cell_primary">
+                <view>授课人</view>
+              </view>
+              <view class="weui-cell__ft" wx:if="{{lecturer__name != ''}}">
+                {{lecturer__name}}
+              </view>
+              <view class="weui-cell__ft" wx:if="{{teacher != ''}}">
+                {{teacher}}
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_access">
+              <view class="weui-cell__bd weui-cell_primary">
+                <view>培训时长</view>
+              </view>
+              <view class="weui-cell__ft">
+                {{duration}}小时
+              </view>
+            </view>
+          </view>
+          <view class="weui-cells__title">评估详情</view>
+          <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_access">
+              <view class="weui-cell__bd weui-cell_primary">
+                <view>参加人数</view>
+              </view>
+              <view class="weui-cell__ft" >{{participantnum}}</view>
+            </view>
+            <view class="weui-cell weui-cell_access">
+              <view class="weui-cell__bd weui-cell_primary">
+                <view>掌握人数</view>
+              </view>
+              <view class="weui-cell__ft">
+                {{knownum}}
+              </view>
+            </view>
+          </view>
+          <view class="weui-cells__title">附件列表</view>
+            <block wx:for="{{material}}" wx:key="unique" wx:if = "{{matershow != ''}}">
+    <view class="weui-media-box" style="color:blue" data-id="{{item.value}}" bindtap='openfj'>
+      {{index+1}}——{{item.name}}
+    </view>
+  </block>
+        </view>
+        <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
+          <view class="weui-cells weui-cells_after-title">
+            <block wx:for="{{cjrydetail}}" wx:key="unique" wx:for-item="item">
+              <view class="weui-cell weui-cell_access">
+                <view class="weui-cell__bd weui-cell_primary">
+                  <view>{{item.participant__name}}</view>
+                  <view class="weui-media-box__desc">{{item.participant__ubelongpart__partname}}</view>
+                </view>
+                <view class="weui-cell__ft" wx:if="{{item.checked == 0}}" style="color:red">
+                  <view>未签到</view>
+                  
+                </view>
+                <view class="weui-cell__ft" wx:if="{{item.checked == 1}}" style="color:green">
+                  <view>已签到</view>
+                  <view wx:if="{{item.qdsj != null}}">{{item.qdsj}}</view>
+                </view>
+              </view>
+            </block>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

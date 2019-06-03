@@ -1,0 +1,47 @@
+<view class="page">
+  <view class="page__hd">
+    <view class="page__title">培训签到</view>
+  </view>
+  <view class="page__bd">
+    <view class="weui-cells__title">培训详情</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_access">
+        <view class="weui-cell__bd weui-cell_primary">
+          <view>名称</view>
+        </view>
+        <view class="weui-cell__ft">
+          {{trainname}}
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_access">
+        <view class="weui-cell__bd weui-cell_primary">
+          <view>时间</view>
+        </view>
+        <view class="weui-cell__ft">
+          {{starttime}}
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_access">
+        <view class="weui-cell__bd weui-cell_primary">
+          <view>地点</view>
+        </view>
+        <view class="weui-cell__ft">
+          {{trainplace}}
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_access">
+        <view class="weui-cell__bd weui-cell_primary">
+          <view>授课人</view>
+        </view>
+        <view class="weui-cell__ft" wx:if="{{lecturer__name != ''}}">
+          {{lecturer__name}}
+        </view>
+        <view class="weui-cell__ft" wx:if="{{teacher != ''}}">
+          {{teacher}}
+        </view>
+      </view>
+    </view>
+  </view>
+  <view  style="text-align:center;color:red" wx:if="{{state==1}}">该培训已关闭,不能签到</view>
+  <button class="weui-btn" type="primary" bindtap="checkconfirm"  disabled="{{disabled}}" >确认签到</button>
+  </view>

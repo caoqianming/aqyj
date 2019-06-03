@@ -17,5 +17,6 @@
     </scroll-view>
   </view>
   <view class='footer'>
-    <footer list='{{selectList}}' binddelete='footerDelete' bindsubmit="submitData" /> </view>
+    <footer list='{{selectList}}' binddelete='footerDelete' bindsubmit="submitData" /> 
+  </view>
 </view>

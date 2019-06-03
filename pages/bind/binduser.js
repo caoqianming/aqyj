@@ -26,7 +26,7 @@ Page({
         if (res.statusCode === 200) {
           if (res.data.code == 1) {
             wx.showToast({})
-            getApp().onLaunch()
+            getApp().mplogin()
             wx.switchTab({
               url: '/pages/main/main',
             })

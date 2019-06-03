@@ -1,0 +1,52 @@
+<!--pages/examtest/main.wxml-->
+<view class="head">
+
+<view style="float:left">答题耗时{{took}}分钟</view>
+</view>
+<view >
+</view>
+<view class="weui-article">
+  <view class="weui-article__h2">{{tmIndex+1}}.
+    <span wx:if="{{currentTm.question__type==1}}" class="txlabel">单选题</span>
+    <span wx:if="{{currentTm.question__type==2}}" class="txlabel">多选题</span>
+    <span wx:if="{{currentTm.question__type==3}}" class="txlabel">判断题</span>
+    <span> ({{currentTm.score}}分)</span>
+  </view>
+  <view class="weui-article__title">{{currentTm.question__title}}</view>
+</view>
+  <radio-group  wx:if="{{(currentTm.question__type==1 ||currentTm.question__type==3)}}">
+    <label class="weui-cell weui-check__label" wx:for="{{answerChecked}}" wx:key="value">
+      <view class="weui-cell__bd" wx:if="{{item.right}}" style="color:green;font-weight:bold">{{item.name}}</view>
+      <view class="weui-cell__bd" wx:else>{{item.name}}</view>
+      <view class="weui-cell__ft weui-cell__ft_in-radio" >
+        <icon class="weui-icon-cancel" type="cancel" size="23" wx:if="{{item.checked && !item.right}}"></icon>
+        <icon class="weui-icon-success" type="success" size="23" wx:if="{{item.checked && item.right}}"></icon>
+      </view>
+    </label>
+  </radio-group>
+  <checkbox-group  wx:if="{{currentTm.question__type==2}}">
+    <label class="weui-cell weui-check__label" wx:for="{{answerChecked}}" wx:key="value">
+      <view class="weui-cell__bd" wx:if="{{item.right}}" style="color:green;font-weight:bold">{{item.name}}</view>
+      <view class="weui-cell__bd" wx:else>{{item.name}}</view>
+      <view class="weui-cell__hd weui-check__hd_in-checkbox">
+        <icon class="weui-icon-checkbox_success" type="success" size="23" wx:if="{{item.checked && item.right}}"></icon>
+        <icon class="weui-icon-checkbox_cancel" type="cancel" size="23" wx:if="{{item.checked && !item.right}}"></icon>
+      </view>
+    </label>
+  </checkbox-group>
+  <view class="weui-article">
+  <view class="weui-article__h2">正确答案是{{currentTm.question__right}},你的答案是{{currentTm.userchecked}}</view>
+  <view class="weui-article__h2"  style="color:green" wx:if="{{currentTm.iscore == currentTm.score}}">回答正确</view>
+  <view class="weui-article__h2"  style="color:red" wx:else>回答有误</view>
+  <view class="weui-article__title" wx:if="{{currentTm.question__resoluation != null}}"><span style="color:blue">解析:  </span>{{currentTm.question__resoluation}}</view>
+  <view class="weui-article__title" wx:else><span style="color:blue">解析:  </span>无</view>
+  </view>
+<view style="position:fixed;bottom:0;left:0;width:100%;">
+
+  <view style="width:50%;float:left">
+    <button class="weui-btn" type="primary" bindtap="previous" disabled="{{tmIndex==0}}">上一题</button>
+  </view>
+  <view style="width:50%;float:right">
+    <button class="weui-btn" type="primary" bindtap="next" disabled="{{tmIndex==tmtotal-1}}">下一题</button>
+  </view>
+</view>

@@ -1,0 +1,21 @@
+/* pages/examtest/sheet.wxss */
+.ok{
+  display: flex;
+  color:#fff;
+  background-color: green;
+  border:4rpx solid green;
+  height:100rpx;
+  width:100rpx;
+  margin:20rpx;
+  justify-content: center;
+  align-items: center;
+}
+.no{
+  display: flex;
+  border:4rpx solid red;
+  height:100rpx;
+  width:100rpx;
+  margin:20rpx;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,0 +1,8 @@
+.weui-btn{
+  width:auto;
+  margin: 5px;
+}
+.b{
+  color:red;
+  font-weight: bold
+}

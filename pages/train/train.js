@@ -1,11 +1,12 @@
 //var base64 = require("../images/base64");
 var sliderWidth = 96;
+var util = require('../../utils/util.js')
 Page({
   data: {
     page: 1,
     serverUrl: getApp().globalData.serverUrl,
     allpxlist: [],
-    tabs: ["我发起的", "我参加的", "全部"],
+    tabs: ["我发布的", "我参加的", "全部"],
     activeIndex: 1,
     sliderOffset: 0,
     sliderLeft: 0
@@ -237,5 +238,17 @@ Page({
               url: 'add',
             })
 
-  }
+  },
+  check:function(){
+    wx.scanCode({
+      onlyFromCamera: true,
+      success(res) {
+        console.log(res)
+        let pxid = util.getQueryString(res.result, 'trainid')
+        wx.navigateTo({
+          url: 'check?pxid='+pxid,
+        })
+      }
+    })
+  },
 });

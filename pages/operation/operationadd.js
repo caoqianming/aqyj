@@ -320,7 +320,9 @@ Page({
       success: res => {
         if (res.statusCode === 200) {
           wx.hideLoading();
-          wx.navigateBack()
+          wx.navigateBack({
+            delta: 2
+          })
         }
       }
     });

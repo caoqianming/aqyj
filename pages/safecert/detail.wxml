@@ -1,0 +1,72 @@
+<view class="weui-cells__title">
+  证书详情</view>
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell weui-cell_access">
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>姓名</view>
+    </view>
+    <view class="weui-cell__ft">
+      {{realname}}
+    </view>
+  </view>
+  <view class="weui-cell weui-cell_access">
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>性别</view>
+    </view>
+    <view class="weui-cell__ft">
+      {{gender}}
+    </view>
+  </view>
+  <view class="weui-cell weui-cell_access">
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>资格类型</view>
+    </view>
+    <view class="weui-cell__ft">
+      {{zglx}}
+    </view>
+  </view>
+  <view class="weui-cell weui-cell_access">
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>单位类型</view>
+    </view>
+    <view class="weui-cell__ft">
+      {{dwlx}}
+    </view>
+  </view>
+  <view class="weui-cell weui-cell_access">
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>发证机关</view>
+    </view>
+    <view class="weui-cell__ft">
+      {{fzjg}}
+    </view>
+  </view>
+  <view class="weui-cell weui-cell_access">
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>应复审日期</view>
+    </view>
+    <view class="weui-cell__ft">
+      {{yfsrq}}
+    </view>
+  </view>
+  <view class="weui-cell weui-cell_access">
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>有效期开始时间</view>
+    </view>
+    <view class="weui-cell__ft">
+      {{yxqkssj}}
+    </view>
+  </view>
+  <view class="weui-cell weui-cell_access">
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>有效期结束时间</view>
+    </view>
+    <view class="weui-cell__ft">
+      {{yxqjssj}}
+    </view>
+  </view>
+</view>
+
+
+
+

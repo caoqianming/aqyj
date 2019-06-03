@@ -19,7 +19,6 @@ Page({
     if (that.data.activeIndex == 0) {
       that.getmyZylist(1)
       that.data.mypage = 1
-      that.getzylxlist()
     }
     else if (that.data.activeIndex == 1) {
       that.gettodoZylist(1)
@@ -135,20 +134,20 @@ Page({
         success: res => {
           if (res.statusCode === 200) {
             if (res.data.rows.length == 0) {
-              if(page==1){
+              if (page == 1) {
                 this.setData({
                   todototal: 0,
                   todozylist: []
                 })
               }
-              else{
+              else {
                 wx.showModal({
                   content: "已经到底啦!",
                   showCancel: false,
                   confirmText: "确定",
                 })
               }
-              
+
 
             } else {
               let list
@@ -187,7 +186,6 @@ Page({
     if (that.data.activeIndex == 0) {
       that.getmyZylist(1)
       that.data.mypage = 1
-      that.getzylxlist()
     }
     else if (that.data.activeIndex == 1) {
       that.gettodoZylist(1)
@@ -233,47 +231,12 @@ Page({
       this.getallZylist();
     }
   },
-  getzylxlist: function () {
-    wx.request({
-      url: getApp().globalData.serverUrl + 'getdickey?dicclass=33&a=combobox',
-      header: {
-        'content-type': 'application/json', // 
-        'Cookie': wx.getStorageSync("sessionid"),
-      },
-      method: 'GET',
-      success: res => {
-        if (res.statusCode === 200) {
-          let zylxlist=res.data
-          let zylxtext = []
-          for (var i = 0; i < zylxlist.length; i++) {
-            zylxtext.push(zylxlist[i]['text'])
-          }
-          this.setData({
-            zylxlist: zylxlist,
-            zylxtext: zylxtext
-          })
-        }
-      }
-    })
-  },
-  open: function(){
-    var that = this
-    console.log(that.data.zylxlist)
-    wx.showActionSheet({
-      itemList: that.data.zylxtext,
-      success: function (res) {
-        if (!res.cancel) {
-          console.log(res.tapIndex)
-          if(false){
 
-          }else{
-            wx.navigateTo({
-              url: 'operationadd?zylx=' + that.data.zylxlist[res.tapIndex]['value'],
-            })
-          }
-          
-        }
-      }
-    });
-  }
+  open: function () {
+
+    wx.navigateTo({
+      url: 'list',
+    })
+
+  },
 });

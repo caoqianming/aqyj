@@ -1,0 +1,22 @@
+<view class='container'>
+  <view class='btn-wrapper'>
+    <button bindtap='goBack'>返回上一层</button>
+  </view>
+  <view class='people-wrapper'>
+    <scroll-view scroll-y class='scrollview'>
+      <checkbox-group bindchange="checkChange">
+        <view class='item' wx:for='{{currentList}}' wx:key='{{item.id}}'>
+          <checkbox checked='{{item.checked}}' value='{{item.id + "," + item.name}}' wx:if='{{item.children.length==0}}'> </checkbox>
+          <view id='{{index}}' class='item-content' bindtap='clickItem'>
+            <image class='img' wx:if='{{item.children.length!=0}}' src='../images/part.png'></image>
+            <image class='img' wx:else src='../images/file.png'></image>
+            <text class='itemtext'>{{item.name}}</text> </view>
+        </view>
+      </checkbox-group>
+      <view class='no-data' wx:if='{{currentList.length===0}}'>暂无数据</view>
+    </scroll-view>
+  </view>
+  <view class='footer'>
+    <footer list='{{selectList}}' binddelete='footerDelete' bindsubmit="submitData" /> 
+  </view>
+</view>

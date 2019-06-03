@@ -1,0 +1,50 @@
+<!--pages/examtest/main.wxml-->
+<view class="head">
+
+<view style="float:left">倒计时 {{countdown}}</view>
+<navigator url="sheet" >
+<view class="sheet">答题卡: {{ydtm}}/{{tmtotal}}</view>
+</navigator>
+</view>
+<view >
+</view>
+<view class="weui-article">
+  <view class="weui-article__h2">{{tmIndex+1}}.
+    <span wx:if="{{currentTm.question__type==1}}" class="txlabel">单选题</span>
+    <span wx:if="{{currentTm.question__type==2}}" class="txlabel">多选题</span>
+    <span wx:if="{{currentTm.question__type==3}}" class="txlabel">判断题</span>
+    <span> ({{currentTm.score}}分)</span>
+  </view>
+  <view class="weui-article__title">{{currentTm.question__title}}</view>
+</view>
+  <radio-group bindchange="radioChange" wx:if="{{(currentTm.question__type==1 ||currentTm.question__type==3)}}">
+    <label class="weui-cell weui-check__label" wx:for="{{answerChoices}}" wx:key="value">
+      <radio class="weui-check" value="{{item.value}}" checked="{{item.checked}}" />
+
+      <view class="weui-cell__bd">{{item.name}}: {{currentTm.question__answer[item.value]}}</view>
+      <view class="weui-cell__ft weui-cell__ft_in-radio" wx:if="{{item.checked}}">
+        <icon class="weui-icon-radio" type="success_no_circle" size="16"></icon>
+      </view>
+    </label>
+  </radio-group>
+  <checkbox-group bindchange="checkboxChange" wx:if="{{currentTm.question__type==2}}">
+    <label class="weui-cell weui-check__label" wx:for="{{answerChoices}}" wx:key="value">
+      <checkbox class="weui-check" value="{{item.value}}" checked="{{item.checked}}" />
+      <view class="weui-cell__bd">{{item.name}}: {{currentTm.question__answer[item.value]}}</view>
+      <view class="weui-cell__hd weui-check__hd_in-checkbox">
+        <icon class="weui-icon-checkbox_circle" type="circle" size="23" wx:if="{{!item.checked}}"></icon>
+        <icon class="weui-icon-checkbox_success" type="success" size="23" wx:if="{{item.checked}}"></icon>
+      </view>
+    </label>
+  </checkbox-group>
+<view style="position:fixed;bottom:0;left:0;width:100%;">
+  <view style="width:30%;float:left">
+    <button class="weui-btn" type="primary" bindtap="previous" disabled="{{tmIndex==0}}">上一题</button>
+  </view>
+  <view style="width:30%;float:left">
+    <button class="weui-btn" type="primary" bindtap="next" disabled="{{tmIndex==tmtotal-1}}">下一题</button>
+  </view>
+  <view style="width:30%;float:right">
+    <button class="weui-btn" type="primary" bindtap="hand" >交卷</button>
+  </view>
+</view>
