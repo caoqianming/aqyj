@@ -42,15 +42,15 @@
         <view class="weui-grid__label">线下培训</view>
         <view class="weui-badge" style="position: absolute;top: 1em;right: 1em;" wx:if="{{dqdnum!=0}}">{{dqdnum}}</view>
       </navigator>
-      <navigator url="/pages/examtest/index" class="weui-grid" hover-class="weui-grid_active" wx:if="{{kaoshi}}">
+      <view  class="weui-grid" hover-class="weui-grid_active" bindtap='taptest'>
         <image class="weui-grid__icon" src="../images/examtest.png" />
         <view class="weui-grid__label">在线考试</view>
         <view class="weui-badge" style="position: absolute;top: 1em;right: 1em;" wx:if="{{dknum!=0}}">{{dknum}}</view>
-      </navigator>
-      <navigator url="/pages/exercise/index" class="weui-grid" hover-class="weui-grid_active" wx:if="{{kaoshi}}">
+      </view>
+      <view  class="weui-grid" hover-class="weui-grid_active" bindtap='tapexercise'>
         <image class="weui-grid__icon" src="../images/exercise.png" />
         <view class="weui-grid__label">模拟练习</view>
-      </navigator>
+      </view>
     </view>
   </view>
 </view>

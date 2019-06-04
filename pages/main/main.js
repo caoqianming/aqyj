@@ -9,8 +9,7 @@ Page({
       zytodonum:0,
       noread:0,
       dqdnum:0,
-      dknum:0,
-      kaoshi:false
+      dknum:0
   },
 
   /**
@@ -23,7 +22,6 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
   },
 
   /**
@@ -33,7 +31,6 @@ Page({
     var that = this
     //获取待阅读通知数目
     if(wx.getStorageSync("sessionid")){
-      this.getrights()
       this.getnoread()
       this.getyhtodonum()
       this.getzytodonum()
@@ -41,7 +38,6 @@ Page({
       this.getdknum() //待考
     }else{
       getApp().callback = () => {
-        this.getrights()
       this.getnoread()
       this.getyhtodonum()
       this.getzytodonum()
@@ -184,26 +180,29 @@ Page({
       }
     });
   },
-getrights:function(){
-  wx.request({
-    url: getApp().globalData.serverUrl + 'api/rights?a=have',
-    header: {
-      'content-type': 'application/json', // 默认值
-      'Cookie': wx.getStorageSync("sessionid"),
-    },
-    data: {},
-    success: res => {
-      if (res.statusCode === 200) {
-        //console.log(res.data.rights.indexOf('25'))
-        if (res.data.rights.indexOf('25') != -1) {//考试功能
-          this.setData({
-            kaoshi: true
-          })
-        }
-      }
-      console.log(this.data.kaoshi)
+  taptest:function(){
+    if (getApp().globalData.rights.indexOf('25') != -1) {//考试功能
+      wx.navigateTo({
+        url: '/pages/examtest/index',
+      })
+    }else{
+      wx.showModal({
+        content: '该功能为增值服务,如需开通,请查看相关公告!',
+        showCancel: false
+      })
     }
-  }); 
-}
+  },
+  tapexercise: function () {
+    if (getApp().globalData.rights.indexOf('25') != -1) {//考试功能
+      wx.navigateTo({
+        url: '/pages/exercise/index',
+      })
+    } else {
+      wx.showModal({
+        content: '该功能为增值服务,如需开通,请查看相关公告!',
+        showCancel:false
+      })
+    }
+  },
   
 })
