@@ -11,7 +11,7 @@
               <view class="weui-uploader__files">
                 <block wx:for="{{lookimg}}" wx:for-item="image" wx:key="unique">
                   <view class="weui-uploader__file">
-                    <image class="weui-uploader__img" src="{{image}}" data-src="{{image}}" bindtap="previewImage" bindlongpress="deleteImage" data-index="{{index}}"></image>
+                    <image class="weui-uploader__img" src="{{image}}" data-src="{{image}}" data-index="{{index}}" bindtap="previewImage" bindlongpress="deleteImage" data-index="{{index}}"></image>
                   </view>
                 </block>
               </view>
@@ -27,7 +27,7 @@
     <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell weui-cell_input">
         <view class="weui-cell__hd">
-          <view class="weui-label">被观察对象</view>
+          <view class="weui-label">被观察人员</view>
         </view>
         <view class="weui-cell__bd">
           <input class="weui-input" placeholder="请输入" bindinput="bindlookederInput" />
@@ -35,12 +35,24 @@
       </view>
       <view class="weui-cell weui-cell_select">
         <view class="weui-cell__hd weui-cell__hd_in-select-after">
-          <view class="weui-label">观察时间</view>
+          <view class="weui-label">开始时间</view>
         </view>
         <view class="weui-cell__bd">
           <picker mode="multiSelector" value="{{dateTime1}}" bindchange="changeDateTime1" bindcolumnchange="changeDateTimeColumn1" range="{{dateTimeArray1}}">
             <view class="weui-select">
               {{dateTimeArray1[0][dateTime1[0]]}}-{{dateTimeArray1[1][dateTime1[1]]}}-{{dateTimeArray1[2][dateTime1[2]]}} {{dateTimeArray1[3][dateTime1[3]]}}:{{dateTimeArray1[4][dateTime1[4]]}}
+            </view>
+          </picker>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">结束时间</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker mode="multiSelector" value="{{dateTime2}}" bindchange="changeDateTime2" bindcolumnchange="changeDateTimeColumn2" range="{{dateTimeArray1}}">
+            <view class="weui-select">
+              {{dateTimeArray1[0][dateTime2[0]]}}-{{dateTimeArray1[1][dateTime2[1]]}}-{{dateTimeArray1[2][dateTime2[2]]}} {{dateTimeArray1[3][dateTime2[3]]}}:{{dateTimeArray1[4][dateTime2[4]]}}
             </view>
           </picker>
         </view>
@@ -61,10 +73,29 @@
           <input class="weui-input" placeholder="请输入作业名称" bindinput="bindactnameInput" />
         </view>
       </view>
+
+    </view>
+    <view class="weui-cells__title">过程及交流记录</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell">
+        <view class="weui-cell__bd">
+          <textarea class="weui-textarea" placeholder="请输入描述" style="height: 3.3em" bindinput="bindotherunsafeInput" />
+          <view class="weui-textarea-counter">0/200</view>
+        </view>
+      </view>
+    </view>
+    <view class="weui-cells__title">共识或改进要求</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell">
+        <view class="weui-cell__bd">
+          <textarea class="weui-textarea" placeholder="请输入描述" style="height: 3.3em" bindinput="bindsafecontentInput" />
+          <view class="weui-textarea-counter">0/200</view>
+        </view>
+      </view>
     </view>
 
     <view class="weui-cells__title">不安全行为记录卡</view>
-    <view class="weui-cells__title" >{{unsafe24.text}}</view>
+    <view class="weui-cells__title">{{unsafe24.text}}</view>
     <view class="weui-cells weui-cells_after-title">
       <checkbox-group bindchange="checkboxChange24">
         <label class="weui-cell weui-check__label" wx:for="{{unsafe24.child}}" wx:key="value">
@@ -77,7 +108,7 @@
         </label>
       </checkbox-group>
     </view>
-        <view class="weui-cells__title" >{{unsafe25.text}}</view>
+    <view class="weui-cells__title">{{unsafe25.text}}</view>
     <view class="weui-cells weui-cells_after-title">
       <checkbox-group bindchange="checkboxChange25">
         <label class="weui-cell weui-check__label" wx:for="{{unsafe25.child}}" wx:key="value">
@@ -90,7 +121,7 @@
         </label>
       </checkbox-group>
     </view>
-        <view class="weui-cells__title" >{{unsafe26.text}}</view>
+    <view class="weui-cells__title">{{unsafe26.text}}</view>
     <view class="weui-cells weui-cells_after-title">
       <checkbox-group bindchange="checkboxChange26">
         <label class="weui-cell weui-check__label" wx:for="{{unsafe26.child}}" wx:key="value">
@@ -103,7 +134,7 @@
         </label>
       </checkbox-group>
     </view>
-        <view class="weui-cells__title" >{{unsafe27.text}}</view>
+    <view class="weui-cells__title">{{unsafe27.text}}</view>
     <view class="weui-cells weui-cells_after-title">
       <checkbox-group bindchange="checkboxChange27">
         <label class="weui-cell weui-check__label" wx:for="{{unsafe27.child}}" wx:key="value">
@@ -116,7 +147,7 @@
         </label>
       </checkbox-group>
     </view>
-        <view class="weui-cells__title" >{{unsafe28.text}}</view>
+    <view class="weui-cells__title">{{unsafe28.text}}</view>
     <view class="weui-cells weui-cells_after-title">
       <checkbox-group bindchange="checkboxChange28">
         <label class="weui-cell weui-check__label" wx:for="{{unsafe28.child}}" wx:key="value">
@@ -129,7 +160,7 @@
         </label>
       </checkbox-group>
     </view>
-        <view class="weui-cells__title" >{{unsafe29.text}}</view>
+    <view class="weui-cells__title">{{unsafe29.text}}</view>
     <view class="weui-cells weui-cells_after-title">
       <checkbox-group bindchange="checkboxChange29">
         <label class="weui-cell weui-check__label" wx:for="{{unsafe29.child}}" wx:key="value">
@@ -142,7 +173,7 @@
         </label>
       </checkbox-group>
     </view>
-        <view class="weui-cells__title" >{{unsafe30.text}}</view>
+    <view class="weui-cells__title">{{unsafe30.text}}</view>
     <view class="weui-cells weui-cells_after-title">
       <checkbox-group bindchange="checkboxChange30">
         <label class="weui-cell weui-check__label" wx:for="{{unsafe30.child}}" wx:key="value">
@@ -154,24 +185,6 @@
           <view class="weui-cell__bd">{{item.text}}</view>
         </label>
       </checkbox-group>
-    </view>
-        <view class="weui-cells__title">其他不安全行为</view>
-    <view class="weui-cells weui-cells_after-title">
-      <view class="weui-cell">
-        <view class="weui-cell__bd">
-          <textarea  class="weui-textarea" placeholder="请输入描述" style="height: 3.3em" bindinput="bindotherunsafeInput"/>
-          <view class="weui-textarea-counter">0/200</view>
-        </view>
-      </view>
-    </view>
-        <view class="weui-cells__title">安全或提倡的行为</view>
-    <view class="weui-cells weui-cells_after-title">
-      <view class="weui-cell">
-        <view class="weui-cell__bd">
-          <textarea  class="weui-textarea" placeholder="请输入描述" style="height: 3.3em" bindinput="bindsafecontentInput"/>
-          <view class="weui-textarea-counter">0/200</view>
-        </view>
-      </view>
     </view>
     <view class="btn-area">
       <button class="weui-btn" type="primary" bindtap="submit">提交</button>

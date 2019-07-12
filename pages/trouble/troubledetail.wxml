@@ -70,6 +70,14 @@
       {{fxr__name}}
     </view>
   </view>
+  <view class="weui-cell weui-cell_access" wx:if="{{yhqy__name}}">
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>所在区域</view>
+    </view>
+    <view class="weui-cell__ft">
+      {{yhqy__name}}
+    </view>
+  </view>
   <view class="weui-cell weui-cell_access">
     <view class="weui-cell__bd weui-cell_primary">
       <view>隐患地点</view>

@@ -7,6 +7,7 @@ Page({
    */
   data: {
     misstime: '',
+    missqy:'',
     missplace: '',
     missimg: [],
   },
@@ -74,6 +75,7 @@ Page({
   addobserve: function () {
     var wsdata = {
       misstime: this.data.misstime,
+      missqy:this.data.missqy,
       missplace: this.data.missplace,
       description: this.data.description,
       missimg: this.data.missimg,
@@ -111,6 +113,16 @@ Page({
       dateTime1: obj1.dateTime,
     });
     this.data.misstime = time
+    //拉取地图权限
+    if (getApp().globalData.rights.indexOf('30') != -1) {
+      this.setData({
+        mapright: true
+      })
+    } else {
+      this.setData({
+        mapright: false
+      })
+    }
   },
 
   /**

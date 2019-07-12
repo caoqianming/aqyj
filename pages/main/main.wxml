@@ -10,19 +10,26 @@
       <navigator url="/pages/observe/observe" class="weui-grid" hover-class="weui-grid_active">
         <image class="weui-grid__icon" src="../images/watch.png" />
         <view class="weui-grid__label">行为观察</view>
+        <view class="weui-badge" style="position: absolute;top: 1em;right: 1em;" wx:if="{{gcnoread!=0}}">{{gcnoread}}</view>
       </navigator>
       <navigator url="/pages/miss/miss" class="weui-grid" hover-class="weui-grid_active">
         <image class="weui-grid__icon" src="../images/miss.png" />
         <view class="weui-grid__label">未遂事件</view>
+        <view class="weui-badge" style="position: absolute;top: 1em;right: 1em;" wx:if="{{wsnoread!=0}}">{{wsnoread}}</view>
       </navigator>
       <navigator url="/pages/suggest/suggest" class="weui-grid" hover-class="weui-grid_active">
         <image class="weui-grid__icon" src="../images/suggest.png" />
+        <view class="weui-badge" style="position: absolute;top: 1em;right: 1em;" wx:if="{{jytodonum!=0}}">{{jytodonum}}</view>
         <view class="weui-grid__label">合理化建议</view>
       </navigator>
       <navigator url="/pages/operation/operation" class="weui-grid" hover-class="weui-grid_active">
         <image class="weui-grid__icon" src="../images/operation.png" />
         <view class="weui-grid__label">作业许可</view>
         <view class="weui-badge" style="position: absolute;top: 1em;right: 1em;" wx:if="{{zytodonum!=0}}">{{zytodonum}}</view>
+      </navigator>
+      <navigator url="/pages/inspect/index" class="weui-grid" hover-class="weui-grid_active">
+        <image class="weui-grid__icon" src="../images/inspect.png" />
+        <view class="weui-grid__label">设备巡检</view>
       </navigator>
     </view>
     <view class="weui-cells__title">学习园地</view>

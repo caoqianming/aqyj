@@ -18,8 +18,8 @@
         </view>
         <view class="weui-msg__opr-area">
             <view class="weui-btn-area">
-                <button class="weui-btn" type="primary" bindtap='detail'>考卷详情</button>
-                <button class="weui-btn" type="default" bindtap='back'>返回主页</button>
+                <!-- <button class="weui-btn" type="primary" bindtap='detail'>考卷详情</button> -->
+                <button class="weui-btn" type="primary" bindtap='back'>返回主页</button>
             </view>
         </view>
     </view>

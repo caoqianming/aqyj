@@ -10,36 +10,54 @@
         <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
           <view class="weui-media-box__title">平台账号: {{username}}
           </view>
-          <view class="weui-media-box__desc">昵称: <open-data type="userNickName"></open-data> (点击进入个人信息管理)</view>
+          <view class="weui-media-box__desc">昵称:
+            <open-data type="userNickName"></open-data> (点击进入个人信息管理)</view>
         </view>
       </navigator>
     </view>
   </view>
-          <view class="weui-panel">
-            <view class="weui-panel__hd">资料管理</view>
-            <view class="weui-panel__bd">
-                <view class="weui-media-box weui-media-box_small-appmsg">
-                    <view class="weui-cells weui-cells_in-small-appmsg">
-                        <navigator url="../socert/socert" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-                            <view class="weui-cell__hd"><image src="../images/socert.png" style="width: 20px;height: 20px;margin-right: 5px" /></view>
-                            <view class="weui-cell__bd weui-cell_primary">
-                                <view>我的特种作业证书</view>
-                            </view>
-                            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-                        </navigator>
-                    </view>
-                </view>
-                            <view class="weui-media-box weui-media-box_small-appmsg">
-                    <view class="weui-cells weui-cells_in-small-appmsg">
-                        <navigator url="../safecert/index" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-                            <view class="weui-cell__hd"><image src="../images/safecert.png" style="width: 20px;height: 20px;margin-right: 5px" /></view>
-                            <view class="weui-cell__bd weui-cell_primary">
-                                <view>我的安全资格证书</view>
-                            </view>
-                            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-                        </navigator>
-                    </view>
-                </view>
+  <view class="weui-panel">
+    <view class="weui-panel__hd">资料管理</view>
+    <view class="weui-panel__bd">
+      <view class="weui-media-box weui-media-box_small-appmsg">
+        <view class="weui-cells weui-cells_in-small-appmsg">
+          <navigator url="../socert/socert" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+            <view class="weui-cell__hd">
+              <image src="../images/socert.png" style="width: 20px;height: 20px;margin-right: 5px" />
             </view>
+            <view class="weui-cell__bd weui-cell_primary">
+              <view>我的特种作业证书</view>
+            </view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+          </navigator>
         </view>
+      </view>
+      <view class="weui-media-box weui-media-box_small-appmsg">
+        <view class="weui-cells weui-cells_in-small-appmsg">
+          <navigator url="../safecert/index" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+            <view class="weui-cell__hd">
+              <image src="../images/safecert.png" style="width: 20px;height: 20px;margin-right: 5px" />
+            </view>
+            <view class="weui-cell__bd weui-cell_primary">
+              <view>我的安全资格证书</view>
+            </view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+          </navigator>
+        </view>
+      </view>
+      <view class="weui-media-box weui-media-box_small-appmsg">
+        <view class="weui-cells weui-cells_in-small-appmsg">
+          <navigator url="../risk/myindex" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+            <view class="weui-cell__hd">
+              <image src="../images/riskrole.png" style="width: 20px;height: 20px;margin-right: 5px" />
+            </view>
+            <view class="weui-cell__bd weui-cell_primary">
+              <view>我的岗位风险</view>
+            </view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+          </navigator>
+        </view>
+      </view>
+    </view>
+  </view>
 </view>

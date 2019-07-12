@@ -72,7 +72,7 @@
       <view class="weui-uploader__files">
         <block wx:for="{{zyimg}}" wx:for-item="image" wx:key="unique">
           <view class="weui-uploader__file">
-            <image class="weui-uploader__img" src="{{image}}" data-src="{{image}}" bindtap="zyimgPreview" bindlongpress="deleteyhImage"></image>
+            <image class="weui-uploader__img" src="{{image}}" data-src="{{image}}" data-index="{{index}}" bindtap="zyimgPreview"></image>
           </view>
         </block>
         <!-- <view class="weui-uploader__input-box" wx:if="{{zyzt ==0}}">
@@ -103,7 +103,7 @@
               <view class="weui-uploader__files">
                 <block wx:for="{{zyimg2}}" wx:for-item="image" wx:key="unique">
                   <view class="weui-uploader__file">
-                    <image class="weui-uploader__img" src="{{image}}" data-src="{{image}}" bindtap="previewImage2" bindlongpress="deleteImage2" data-index="{{index}}"></image>
+                    <image class="weui-uploader__img" src="{{image}}" data-src="{{image}}" data-index="{{index}}" bindtap="previewImage2" bindlongpress="deleteImage2" data-index="{{index}}"></image>
                   </view>
                 </block>
               </view>

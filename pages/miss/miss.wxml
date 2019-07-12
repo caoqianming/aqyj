@@ -9,6 +9,11 @@
           <view class="weui-media-box__desc">{{item.missnum}} {{item.misser__name}}填报</view>
           <view class="weui-media-box__desc">{{item.misstime}}</view>
         </view>
+        <view class="weui-panel__ft weui-cell__ft_in-access">
+        <view class="weui-media-box__title" wx:if="{{item.read == 0}}" style="background-color:yellow">未读</view>
+        <view class="weui-media-box__title" wx:else style="background-color:green">已读</view>
+        <view class="weui-media-box__desc" wx:if="{{item.read == 1}}">{{item.readtime}}</view>
+        </view>
       </navigator>
     </block>
   </view>

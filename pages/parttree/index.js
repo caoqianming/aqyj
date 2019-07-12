@@ -94,10 +94,10 @@ Page({
       success: res => {
         if (res.statusCode === 200) {
           //console.log(res.data)
-          var data = this.convert(res.data)
-          console.log(data)
+          var rows = res.data
+          console.log(rows)
           this.setData({
-            value: data
+            value: this.convert(rows)
           })
         }
       }

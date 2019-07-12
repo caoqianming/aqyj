@@ -39,6 +39,7 @@ Page({
         },
         success: res => {
           if (res.statusCode === 200) {
+            console.log(res.data.rows)
             if (res.data.rows.length == 0) {
               if (page == 1) {
                 this.setData({
@@ -169,4 +170,24 @@ Page({
       this.getyklist();
     }
   },
+  testDetail:function(e){
+    let data = e.currentTarget.dataset
+    let examtest__state = data.examtest__state
+    console.log(examtest__state)
+    let id = data.id
+    if (examtest__state==0){
+      let url = "detail?detailid="+id.toString()
+      wx.navigateTo({
+        url: url,
+      })
+    }else{
+      wx.showModal({
+        title: "系统提示",
+        content: '考试还未关闭,请稍候查看',
+        showCancel: false,
+        confirmText: "确定"
+      })
+    }
+    
+  }
 });

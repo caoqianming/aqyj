@@ -102,13 +102,6 @@ Page({
                   'Cookie': wx.getStorageSync("sessionid"),
                 },
                 success: res => {
-                  if (res.statusCode === 200) {
-                    //console.log(res.data)
-                    this.setData({
-                      total: res.data.total,
-                      socertlist: res.data.rows
-                    })
-                  }
                   if (res.data.total == 0) {
                     wx.request({
                       url: getApp().globalData.serverUrl + 'api/socert?a=addspiderself',
@@ -157,6 +150,10 @@ Page({
                     });
 
                   }else{
+                    this.setData({
+                      total: res.data.total,
+                      socertlist: res.data.rows
+                    })
                     wx.hideLoading();
                   }
                 }

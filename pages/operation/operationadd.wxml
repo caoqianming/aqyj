@@ -33,6 +33,19 @@
           </picker>
         </view>
       </view>
+      <view class="weui-cell weui-cell_select" wx:if='{{mapright}}'>
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">所在区域</view>
+        </view>
+
+        <view class="weui-cell__bd">
+          <navigator url="/pages/area/tree">
+            <view class="weui-select">
+              {{zyqy__name}}
+            </view>
+          </navigator>
+        </view>
+      </view>
       <view class="weui-cell weui-cell_select">
         <view class="weui-cell__hd weui-cell__hd_in-select-after">
           <view class="weui-label">作业地点</view>
@@ -86,7 +99,7 @@
               <view class="weui-uploader__files">
                 <block wx:for="{{zyimg}}" wx:for-item="image" wx:key="unique">
                   <view class="weui-uploader__file">
-                    <image class="weui-uploader__img" src="{{image}}" data-src="{{image}}" bindtap="previewImage" bindlongpress="deleteImage" data-index="{{index}}"></image>
+                    <image class="weui-uploader__img" src="{{image}}" data-src="{{image}}" data-index="{{index}}" bindtap="previewImage" bindlongpress="deleteImage" data-index="{{index}}"></image>
                   </view>
                 </block>
               </view>

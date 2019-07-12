@@ -53,12 +53,20 @@
     "pages/safecert/detail",
     "pages/exercise/index",
     "pages/questioncat/index",
-    "pages/exercise/main"
+    "pages/exercise/main",
+    "pages/area/tree",
+    "pages/suggest/update",
+    "pages/inspect/index",
+    "pages/inspect/add",
+    "pages/inspect/detail",
+    "pages/equipment/detail",
+    "pages/risk/myindex",
+    "pages/risk/detail"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "安全预警lite",
+    "navigationBarTitleText": "安全生产管理工具",
     "navigationBarTextStyle": "black"
   },
   "tabBar": {

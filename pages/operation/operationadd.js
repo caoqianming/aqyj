@@ -6,7 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    zyimg:[]
+    zyimg:[],
+    zyqy:''
   },
   checkboxChangefxcs: function (e) {
     var x = this.data.fxcslist;
@@ -79,6 +80,16 @@ Page({
       dateTime2: obj2.dateTime,
       dateshow2: 0
     });
+    //拉取地图权限
+    if (getApp().globalData.rights.indexOf('30') != -1) {
+      this.setData({
+        mapright: true
+      })
+    } else {
+      this.setData({
+        mapright: false
+      })
+    }
   },
 
   /**
@@ -301,6 +312,7 @@ Page({
       zylx:this.data.zylx,
       kssj: this.data.kssj,
       jssj: this.data.jssj,
+      zyqy:this.data.zyqy,
       zydd: this.data.zydd,
       zynr: this.data.zynr,
       zyry: this.data.zyry,

@@ -1,4 +1,9 @@
-.weui-btn{
+.btn-area{
   width:auto;
   margin: 5px;
+}
+.head{
+  color:#fff;
+  background-color: red;
+  text-align: center;
 }

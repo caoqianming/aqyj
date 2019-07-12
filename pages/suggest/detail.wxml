@@ -33,6 +33,22 @@
       {{jyr__name}}
     </view>
   </view>
+  <view class="weui-cell weui-cell_access" wx:if="{{jyqy__name}}">
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>所在区域</view>
+    </view>
+    <view class="weui-cell__ft">
+      {{jyqy__name}}
+    </view>
+  </view>
+  <view class="weui-cell weui-cell_access">
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>建议地点</view>
+    </view>
+    <view class="weui-cell__ft">
+      {{jydd}}
+    </view>
+  </view>
   <view class="weui-cell weui-cell_access">
     <view class="weui-cell__bd weui-cell_primary">
       <view>现场图片</view>
@@ -74,5 +90,81 @@
     </view>
   </view>
 </view>
+<view class="weui-cells__title">反馈</view>
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell weui-cell_access">
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>反馈人</view>
+    </view>
+    <view class="weui-cell__ft">
+      {{pgr__name}}
+    </view>
+  </view>
+  <view class="weui-cell weui-cell_access">
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>建议反馈</view>
+      <view class="weui-cell__ft" >
+        {{jyfk}}
+      </view>
+    </view>
+  </view>
+</view>
 
-
+<view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_access" >
+      <view class="weui-cell__bd weui-cell_primary">
+        <view>处理人</view>
+      </view>
+      <view class="weui-cell__ft">
+        {{clr__name}}
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_access">
+      <view class="weui-cell__bd weui-cell_primary">
+        <view>处理措施</view>
+        <view class="weui-cell__ft">
+          {{clcs}}
+        </view>
+      </view>
+    </view>
+</view>
+<view class="weui-cells__title">处理结果</view>
+<view class="weui-cells weui-cells_after-title" >
+  <view class="weui-cell weui-cell_access">
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>处理描述</view>
+      <view class="weui-cell__ft" >
+        {{clms}}
+      </view>
+    </view>
+  </view>
+  <view class="weui-cell weui-cell_access">
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>处理图片</view>
+      <view class="weui-uploader__files">
+        <block wx:for="{{jyimg2}}" wx:for-item="image" wx:key="unique">
+          <view class="weui-uploader__file">
+            <image class="weui-uploader__img" src="{{image}}" data-src="{{image}}" data-index="{{index}}" bindtap="jyimg2Preview" bindlongpress="deleteImage"></image>
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>
+    <view class="weui-cell weui-cell_access">
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>上传时间</view>
+    </view>
+    <view class="weui-cell__ft">
+      {{sjwcsj}}
+    </view>
+  </view>
+</view>
+<view class="weui-cells__title">流程详情</view>
+<view class="weui-cells weui-cells_after-title">
+  <block wx:for="{{flow}}" wx:key="unique">
+    <view class="weui-media-box">
+      <view class="weui-media-box__desc">{{item.name}}</view>
+      <view class="weui-media-box__desc">{{item.submittime}} {{item.action}}</view>
+    </view>
+  </block>
+</view>

@@ -51,7 +51,7 @@
   <view style="width:30%;float:left">
     <button class="weui-btn" type="primary" bindtap="next" disabled="{{tmIndex==tmtotal-1}}">下一题</button>
   </view>
-  <view style="width:30%;float:right">
+  <view style="width:40%;float:right">
     <button class="weui-btn" type="primary" bindtap="showanswer">查看答案</button>
   </view>
 </view>

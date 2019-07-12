@@ -1,0 +1,6 @@
+/* pages/risk/myindex.wxss */
+.head{
+  color:#fff;
+  background-color: cornflowerblue;
+  text-align: center;
+}

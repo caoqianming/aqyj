@@ -5,8 +5,10 @@ Page({
    * 页面的初始数据
    */
   data: {
+    yhtype:null,
     date: '2018-10-01',
     time: '12:00',
+    mapright:false,
     dateTimeArray1: null,
     dateTime1: null,
     startYear: 2000,
@@ -20,6 +22,7 @@ Page({
     yhdj: '',
     jclx: '',
     fxsj: '',
+    yhqy:'',
     yhdd: '',
     yhms: '',
     yhpg: '',
@@ -132,6 +135,7 @@ Page({
       'yhdj':this.data.yhdj,
       'jclx':this.data.jclx,
       'fxsj':this.data.fxsj,
+      'yhqy':this.data.yhqy,
       'yhdd':this.data.yhdd,
       'yhms':this.data.yhms,
       'yhtp':this.data.yhtp,
@@ -232,8 +236,33 @@ Page({
       data: this.yhdata,
       success: res => {
         if (res.statusCode === 200) {
-          wx.hideLoading();
-          wx.navigateBack()
+          if(this.data.yhtype=='inspect'){
+            let inspectdata = this.data.inspectdata
+            inspectdata.equipment = inspectdata.equipment.id
+            inspectdata.trouble = res.data.trouble
+            wx.request({
+              url: this.data.serverUrl + 'api/inspect?a=add',
+              header: {
+                'content-type': 'application/json', // 
+                'Cookie': wx.getStorageSync("sessionid"),
+              },
+              method: 'POST',
+              data: inspectdata,
+              success: res => {
+                if (res.statusCode === 200) {
+                  wx.hideLoading();
+                  wx.navigateBack({
+                    delta: 2
+                  })
+
+                }
+              }
+            });
+          }else{
+            wx.hideLoading();
+            wx.navigateBack()
+          }
+          
         }
       }
     });
@@ -290,6 +319,31 @@ Page({
         }
       }
     });
+    //拉取权限
+    if (getApp().globalData.rights.indexOf('30') != -1) {
+      this.setData({
+        mapright: true
+      })
+    } else {
+      this.setData({
+        mapright: false
+      })
+    }
+    console.log(options.type)
+    if(options.type=='inspect'){
+      var pages = getCurrentPages();
+      var prevPage = pages[pages.length - 2];
+      var inspectdata = prevPage.data
+      console.log(inspectdata)
+      this.data.inspectdata = inspectdata
+      this.setData({
+        yhtype:'inspect',
+        yhqy:inspectdata.equipment.area__id,
+        yhqy__name:inspectdata.equipment.area__name,
+        yhdd: inspectdata.equipment.place,
+        equipmentname: inspectdata.equipment.name,
+      })
+    }
   },
 
   /**
@@ -303,7 +357,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
   },
 
   /**

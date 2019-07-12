@@ -1,0 +1,21 @@
+<view class="weui-cells weui-cells_after-title">
+  <block wx:for="{{fxlist}}" wx:key="unique">
+    <navigator url="detail?id={{item.id}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+      <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+        <view class="weui-media-box__title">
+        <span style="background-color:red;color:gray" wx:if="{{item.level == '重大风险'}}">重大风险</span>
+        <span style="background-color:orange;color:gray" wx:if="{{item.level == '较大风险'}}">较大风险</span>
+        <span style="background-color:yellow;color:gray" wx:if="{{item.level == '一般风险'}}">一般风险</span>
+        <span style="background-color:blue;color:gray" wx:if="{{item.level == '低风险'}}">低风险</span>
+        <span>--</span>
+        {{item.step}}
+        </view>
+        <view class="weui-media-box__desc">
+        <span style="color:green">{{item.riskact__area__name}}  </span>
+        
+        <span style="color:red">{{item.riskact__name}}</span>
+        </view>
+      </view>
+    </navigator>
+  </block>
+</view>

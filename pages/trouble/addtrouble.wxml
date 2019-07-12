@@ -1,7 +1,7 @@
-<view class="page" >
+<view class="page">
   <view class="page__bd">
     <view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">错误提示</view>
-
+    <view class="head" wx:if="{{yhtype=='inspect'}}">{{equipmentname}} 设备异常</view>
     <view class="weui-cells__title">隐患图片</view>
     <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell">
@@ -11,7 +11,7 @@
               <view class="weui-uploader__files">
                 <block wx:for="{{yhtp}}" wx:for-item="image" wx:key="unique">
                   <view class="weui-uploader__file">
-                    <image class="weui-uploader__img" src="{{image}}" data-src="{{image}}" bindtap="previewImage" bindlongpress="deleteImage" data-index="{{index}}"></image>
+                    <image class="weui-uploader__img" src="{{image}}" data-src="{{image}}" data-index="{{index}}" bindtap="previewImage" bindlongpress="deleteImage" data-index="{{index}}"></image>
                   </view>
                 </block>
               </view>
@@ -57,12 +57,25 @@
           </picker>
         </view>
       </view>
+      <view class="weui-cell weui-cell_select" wx:if='{{mapright}}'>
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">所在区域</view>
+        </view>
+
+        <view class="weui-cell__bd">
+          <navigator url="/pages/area/tree">
+            <view class="weui-select">
+              {{yhqy__name}}
+            </view>
+          </navigator>
+        </view>
+      </view>
       <view class="weui-cell weui-cell_select">
         <view class="weui-cell__hd weui-cell__hd_in-select-after">
           <view class="weui-label">隐患地点</view>
         </view>
         <view class="weui-cell__bd">
-          <input  class="weui-input" placeholder="请输入发现地点" bindinput="bindyhddInput"/>
+          <input class="weui-input" placeholder="请输入发现地点" bindinput="bindyhddInput" value="{{yhdd}}"/>
         </view>
       </view>
     </view>
@@ -70,13 +83,13 @@
     <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell">
         <view class="weui-cell__bd">
-          <textarea  class="weui-textarea" placeholder="请输入描述" style="height: 3.3em" bindinput="bindyhmsInput"/>
+          <textarea class="weui-textarea" placeholder="请输入描述" style="height: 3.3em" bindinput="bindyhmsInput" />
           <view class="weui-textarea-counter">0/200</view>
         </view>
       </view>
     </view>
 
-    <view class="btn-area" style="position:fixed; bottom:0;width:100%;">
+    <view class="btn-area">
       <button class="weui-btn" type="primary" bindtap="open">继续</button>
     </view>
   </view>

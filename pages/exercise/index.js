@@ -6,6 +6,7 @@ Page({
    */
   data: {
   catsname:'',
+  cats:'',
   start1:true,
   start2:false
   },
@@ -48,6 +49,7 @@ wx.getStorage({
    */
   onShow: function () {
     var that=this
+    let oldcats = this.data.cats
     let lst = getApp().globalData.selectList
     let nst = []
     let nst1 = []
@@ -61,15 +63,24 @@ wx.getStorage({
         cats: nst1.join(','),
       })
     }
-    wx.getStorage({
-      key: 'ydtms',
-      success: function (res) {
-        that.setData({
-          start1: false,
-          start2: true
-        })
-      },
-    })
+    if (oldcats == '' || oldcats == this.data.cats){
+      wx.getStorage({
+        key: 'ydtms',
+        success: function (res) {
+          that.setData({
+            start1: false,
+            start2: true
+          })
+        },
+      })
+    }
+    else{
+      that.setData({
+        start1: true,
+        start2: false
+      })
+    }
+    
   },
 
   /**

@@ -1,0 +1,45 @@
+<view class="weui-cells__title">当前设备</view>
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell">
+    <view class="weui-cell__bd">设备编号</view>
+    <view class="weui-cell__ft">{{equipment.num}}</view>
+  </view>
+  <navigator url="/pages/equipment/detail?id={{id}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+    <view class="weui-cell__bd">设备名称</view>
+    <view class="weui-cell__ft weui-cell__ft_in-access" style="color:green">{{equipment.name}}</view>
+  </navigator>
+  <view class="weui-cell ">
+    <view class="weui-cell__bd">区域</view>
+    <view class="weui-cell__ft">{{equipment.area__name}}</view>
+  </view>
+</view>
+<view class="weui-cells__title">检查项目</view>
+<view class="weui-cells weui-cells_after-title">
+  <block wx:for="{{steps}}" wx:key="unique">
+  <view class="weui-cell">
+        <view class="weui-media-box__title">{{item.step}}-</view>
+        <view class="weui-media-box__desc" style="color:red">{{item.result}}-</view>
+        <view class="weui-media-box__desc" style="color:green">{{item.hazard}}</view>
+  </view>
+  </block>
+</view>
+<view class="weui-cells__title">巡检记录</view>
+
+<radio-group name="radio-group" class="weui-cell" bindchange="radioChange">
+  <label>
+    <radio color="#1860F6" value="1" checked="{{state==1}}" />设备正常</label>
+  <label>
+    <radio color="#FF0000" value="0" checked="{{state==0}}" />设备异常</label>
+</radio-group>
+
+<view class="weui-cells weui-cells_after-title" wx:if="{{state==1}}">
+  <view class="weui-cell">
+    <view class="weui-cell__bd">
+      <textarea class="weui-textarea" placeholder="请输入巡检结论" style="height: 5.3em" bindinput="bindcontentInput" />
+    </view>
+  </view>
+</view>
+<view class="btn-area">
+  <button class="weui-btn" type="primary" bindtap="submit" wx:if="{{state==1}}">提交</button>
+  <button class="weui-btn" type="primary" bindtap="submit2" wx:else>继续补充隐患</button>
+</view>

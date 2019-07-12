@@ -6,6 +6,8 @@ Page({
    */
   data: {
     jyimg: [],
+    jyqy:'',
+    jydd:'',
     dqxz:'',
     jynr:'',
     qwxg:'',
@@ -37,6 +39,9 @@ Page({
   },
   bindqwxgInput: function (e) {
     this.data.qwxg = e.detail.value
+  },
+  bindjyddInput: function (e) {
+    this.data.jydd = e.detail.value
   },
   submit: function () {
     var that = this
@@ -101,7 +106,9 @@ Page({
       jynr: this.data.jynr,
       qwxg: this.data.qwxg,
       jyimg: this.data.jyimg,
-      jylb:this.data.jylb
+      jylb:this.data.jylb,
+      jyqy:this.data.jyqy,
+      jydd:this.data.jydd,
     }
     //console.log(wsdata.unsafe)
     wx.request({
@@ -124,6 +131,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    //拉取地图权限
+    if (getApp().globalData.rights.indexOf('30') != -1) {
+      this.setData({
+        mapright: true
+      })
+    } else {
+      this.setData({
+        mapright: false
+      })
+    }
     //获取建议类别
     wx.request({
       url: this.data.serverUrl + 'getdickey?dicclass=32&a=combobox',

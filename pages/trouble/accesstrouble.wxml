@@ -346,7 +346,7 @@
           <view class="weui-uploader__files">
             <block wx:for="{{zghtp}}" wx:for-item="image" wx:key="unique">
               <view class="weui-uploader__file">
-                <image class="weui-uploader__img" src="{{image}}" data-src="{{image}}" bindtap="zghtpPreview" bindlongpress="deleteImage"></image>
+                <image class="weui-uploader__img" src="{{image}}" data-src="{{image}}" data-index="{{index}}" bindtap="zghtpPreview" bindlongpress="deleteImage"></image>
               </view>
             </block>
           </view>

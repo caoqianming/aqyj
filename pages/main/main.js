@@ -9,7 +9,10 @@ Page({
       zytodonum:0,
       noread:0,
       dqdnum:0,
-      dknum:0
+      dknum:0,
+      gcnoread:0,
+      wsnoread:0,
+      jytodonum:0
   },
 
   /**
@@ -36,6 +39,9 @@ Page({
       this.getzytodonum()
       this.getpxqdnum()
       this.getdknum() //待考
+      this.getgcnoreadnum()
+      this.getwsnoreadnum()//未遂未读
+      this.getjytodonum()
     }else{
       getApp().callback = () => {
       this.getnoread()
@@ -43,6 +49,8 @@ Page({
       this.getzytodonum()
       this.getpxqdnum()
       this.getdknum()
+      this.getgcnoreadnum()
+      this.getjytodonum()
       };
     }
 
@@ -175,6 +183,66 @@ Page({
           //console.log(res.data)
           this.setData({
             dknum: res.data.dknum,
+          })
+        }
+      }
+    });
+  },
+  getgcnoreadnum: function () {
+    var that = this
+    //获取待考
+    wx.request({
+      url: getApp().globalData.serverUrl + 'gchandle?a=noreadnum',
+      header: {
+        'content-type': 'application/json', // 默认值
+        'Cookie': wx.getStorageSync("sessionid"),
+      },
+      data: {},
+      success: res => {
+        if (res.statusCode === 200) {
+          //console.log(res.data)
+          this.setData({
+            gcnoread: res.data.noread,
+          })
+        }
+      }
+    });
+  },
+  getwsnoreadnum: function () {
+    var that = this
+    //获取待考
+    wx.request({
+      url: getApp().globalData.serverUrl + 'api/miss?a=noreadnum',
+      header: {
+        'content-type': 'application/json', // 默认值
+        'Cookie': wx.getStorageSync("sessionid"),
+      },
+      data: {},
+      success: res => {
+        if (res.statusCode === 200) {
+          //console.log(res.data)
+          this.setData({
+            wsnoread: res.data.noread,
+          })
+        }
+      }
+    });
+  },
+  getjytodonum: function () {
+    var that = this
+    //获取待考
+    wx.request({
+      url: getApp().globalData.serverUrl + 'api/suggest?a=todonum',
+      header: {
+        'content-type': 'application/json', // 默认值
+        'Cookie': wx.getStorageSync("sessionid"),
+      },
+      data: {},
+      success: res => {
+        if (res.statusCode === 200) {
+          //console.log(res.data)
+          this.setData({
+            jytodonum: res.data.todonum,
           })
         }
       }

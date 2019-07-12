@@ -162,6 +162,7 @@ Page({
       'yhdj': this.data.yhdj,
       'jclx': this.data.jclx,
       'fxsj': this.data.fxsj,
+      'yhqy': this.data.yhqy,
       'yhdd': this.data.yhdd,
       'yhms': this.data.yhms,
       'yhtp': this.data.yhtp,
@@ -186,10 +187,35 @@ Page({
       data: this.yhdata,
       success: res => {
         if (res.statusCode === 200) {
-          wx.hideLoading();
-          wx.navigateBack({
-            delta: 2
-          })
+          if (this.data.yhtype == 'inspect') {
+            let inspectdata = this.data.inspectdata
+            inspectdata.equipment = inspectdata.equipment.id
+            inspectdata.trouble = res.data.trouble
+            wx.request({
+              url: this.data.serverUrl + 'api/inspect?a=add',
+              header: {
+                'content-type': 'application/json', // 
+                'Cookie': wx.getStorageSync("sessionid"),
+              },
+              method: 'POST',
+              data: inspectdata,
+              success: res => {
+                if (res.statusCode === 200) {
+                  wx.hideLoading();
+                  wx.navigateBack({
+                    delta: 3
+                  })
+
+                }
+              }
+            });
+          }else{
+            wx.hideLoading();
+            wx.navigateBack({
+              delta: 2
+            })
+          }
+          
         }
       }
     });
@@ -223,7 +249,8 @@ Page({
   onLoad: function(options) {
     var that = this
     var pages = getCurrentPages();
-    this.data = pages[pages.length - 2].data;//获取前一个界面数据
+    //this.data = pages[pages.length - 2].data;//获取前一个界面数据
+    this.setData(pages[pages.length - 2].data)
     //console.log(that.data)
     //获取隐患评估
     wx.request({

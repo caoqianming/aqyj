@@ -167,6 +167,12 @@ Page({
       dateTime1: obj1.dateTime,
     });
     this.data.looktime = time
+    // 获取完整的年月日 时分秒，以及默认显示的数组
+    var dateTime2 = obj1.dateTime
+    this.setData({
+      dateTime2: obj1.dateTime,
+    });
+    this.data.looktime2 = time
     //获取观察字典
     wx.request({
       url: getApp().globalData.serverUrl + 'gchandle?a=getdics',
@@ -246,6 +252,7 @@ Page({
     var gcdata = {
       lookeder: this.data.lookeder,
       looktime: this.data.looktime,
+      looktime2:this.data.looktime2,
       lookplace: this.data.lookplace,
       actname: this.data.actname,
       lookimg: this.data.lookimg,
@@ -353,6 +360,29 @@ Page({
     this.setData({
       dateTimeArray1: dateArr,
       dateTime1: arr
+    });
+  },
+  changeDateTime2(e) {
+    var dateTimeArray1 = this.data.dateTimeArray1
+    var dateTime2 = this.data.dateTime2
+    var time = dateTimeArray1[0][dateTime2[0]] + '-' + dateTimeArray1[1][dateTime2[1]] + '-' + dateTimeArray1[2][dateTime2[2]] + ' ' + dateTimeArray1[3][dateTime2[3]] + ':' + dateTimeArray1[4][dateTime2[4]]
+    //console.log(time)
+    this.data.looktime2 = time
+    this.setData({
+      dateTime2: e.detail.value,
+    });
+
+  },
+  changeDateTimeColumn2(e) {
+    var arr = this.data.dateTime2,
+      dateArr = this.data.dateTimeArray1;
+
+    arr[e.detail.column] = e.detail.value;
+    dateArr[2] = dateTimePicker.getMonthDay(dateArr[0][arr[0]], dateArr[1][arr[1]]);
+
+    this.setData({
+      dateTimeArray1: dateArr,
+      dateTime2: arr
     });
   },
   chooseImage: function () {

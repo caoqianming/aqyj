@@ -73,8 +73,8 @@ App({
   },
   globalData: {
     userInfo: null,
-    serverUrl: 'https://safeyun.ctcshe.com/',
-    //serverUrl: 'http://127.0.0.1:8000/',
+    //serverUrl: 'https://safeyun.ctcshe.com/',
+    serverUrl: 'http://127.0.0.1:8000/',
     //serverUrl: 'http://192.168.0.102:8000/',
     //serverUrl:'http://10.7.100.250:8000/',
     isaqy: 0

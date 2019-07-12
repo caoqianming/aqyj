@@ -77,6 +77,22 @@
       </view>
     </view>
   </view>
+  <view class="weui-cell weui-cell_access">
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>过程及交流记录</view>
+      <view class="weui-cell__ft">
+        {{otherunsafe}}
+      </view>
+    </view>
+  </view>
+  <view class="weui-cell weui-cell_access">
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>共识或改进要求</view>
+      <view class="weui-cell__ft">
+        {{safecontent}}
+      </view>
+    </view>
+  </view>
 </view>
 
 <view class="weui-cells__title">不安全行为记录</view>
@@ -87,23 +103,4 @@
       <view class="weui-media-box__desc">{{item.unsafedickey__dickeyname}}</view>
     </view>
   </block>
-</view>
-<view class="weui-cells__title">其他</view>
-<view class="weui-cells weui-cells_after-title">
-  <view class="weui-cell weui-cell_access">
-    <view class="weui-cell__bd weui-cell_primary">
-      <view>其他不安全行为</view>
-      <view class="weui-cell__ft">
-        {{otherunsafe}}
-      </view>
-    </view>
-  </view>
-  <view class="weui-cell weui-cell_access">
-    <view class="weui-cell__bd weui-cell_primary">
-      <view>安全或提倡的行为</view>
-      <view class="weui-cell__ft">
-        {{safecontent}}
-      </view>
-    </view>
-  </view>
 </view>

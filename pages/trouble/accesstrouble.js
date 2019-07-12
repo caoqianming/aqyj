@@ -539,6 +539,7 @@ Page({
     var that = this;
     var zghtp = that.data.zghtp;
     var index = e.currentTarget.dataset.index; //获取当前长按图片下标
+    console.log(e.index)
     wx.showModal({
       title: '系统提醒',
       content: '确定要删除此图片吗？',

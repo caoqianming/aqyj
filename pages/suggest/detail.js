@@ -64,6 +64,14 @@ Page({
   onShareAppMessage: function () {
 
   },
+  jyimg2Preview: function (e) {
+    var current = e.target.dataset.src
+
+    wx.previewImage({
+      current: current,
+      urls: this.data.jyimg2
+    })
+  },
   jyimgPreview: function (e) {
     var current = e.target.dataset.src
 
@@ -92,6 +100,9 @@ Page({
             //格式化观察信息
             for (var i = 0; i < jydata.jyimg.length; i++) {
               jydata.jyimg[i] = this.data.serverUrl + jydata.jyimg[i];
+            }
+            for (var i = 0; i < jydata.jyimg2.length; i++) {
+              jydata.jyimg2[i] = this.data.serverUrl + jydata.jyimg2[i];
             }
             if (jydata.submittime != '') { jydata.submittime = util.formatTime(new Date(jydata.submittime)) }
             this.setData(jydata)

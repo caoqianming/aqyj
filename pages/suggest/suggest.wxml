@@ -1,19 +1,81 @@
-<view class="page__bd">
-
-  <view class="head">共{{total}}条合理化建议</view>
-  <view class="weui-cells weui-cells_after-title" >
-    <block wx:for="{{jylist}}" wx:key="unique">
-      <navigator url="detail?jyid={{item.jyid}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
-        <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-          <view class="weui-media-box__title">{{item.jynr}}</view>
-          <view class="weui-media-box__desc">{{item.jynum}} {{item.jyr__name}}填报</view>
-          <view class="weui-media-box__desc">{{item.submittime}}</view>
-        </view>
-      </navigator>
+<view class="weui-tab">
+  <view class="weui-navbar">
+    <block wx:for="{{tabs}}" wx:key="*this">
+      <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+        <view class="weui-navbar__title">{{item}}</view>
+      </view>
     </block>
+    <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+  </view>
+  <view class="weui-tab__panel">
+    <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
+      <view class="head">共{{mytotal}}条合理化建议</view>
+      <view class="weui-cells weui-cells_after-title">
+        <block wx:for="{{myjylist}}" wx:key="unique">
+          <navigator url="detail?jyid={{item.jyid}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+            <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+              <view class="weui-media-box__title">{{item.jynr}}</view>
+              <view class="weui-media-box__desc">{{item.jynum}} {{item.jyr__name}}填报</view>
+              <view class="weui-media-box__desc">{{item.submittime}}</view>
+            </view>
+                        <view class="weui-panel__ft weui-cell__ft_in-access">
+              <view class="weui-media-box__title" wx:if="{{item.jyzt == 1}}" style="background-color:yellow">待评估</view>
+              <view class="weui-media-box__title" wx:if="{{item.jyzt == 2}}" style="background-color:yellow">处理中</view>
+              <view class="weui-media-box__title" wx:if="{{item.jyzt == 3}}" style="background-color:yellow">待确认</view>
+              <view class="weui-media-box__title" wx:if="{{item.jyzt == 4}}" style="background-color:green">已归档</view>
+              <view class="weui-media-box__desc" wx:if="{{item.todouser__name}}">{{item.todouser__name}}</view>
+            </view>
+          </navigator>
+        </block>
+      </view>
+    </view>
+    <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
+      <view class="head">共{{todototal}}条合理化建议</view>
+      <view class="weui-cells weui-cells_after-title">
+        <block wx:for="{{todojylist}}" wx:key="unique">
+          <navigator url="update?jyid={{item.jyid}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+            <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+              <view class="weui-media-box__title">{{item.jynr}}</view>
+              <view class="weui-media-box__desc">{{item.jynum}} {{item.jyr__name}}填报</view>
+              <view class="weui-media-box__desc">{{item.submittime}}</view>
+            </view>
+            <view class="weui-panel__ft weui-cell__ft_in-access">
+              <view class="weui-media-box__title" wx:if="{{item.jyzt == 1}}" style="background-color:yellow">待评估</view>
+              <view class="weui-media-box__title" wx:if="{{item.jyzt == 2}}" style="background-color:yellow">处理中</view>
+              <view class="weui-media-box__title" wx:if="{{item.jyzt == 3}}" style="background-color:yellow">待确认</view>
+              <view class="weui-media-box__title" wx:if="{{item.jyzt == 4}}" style="background-color:green">已归档</view>
+              <view class="weui-media-box__desc" wx:if="{{item.todouser__name}}">{{item.todouser__name}}</view>
+            </view>
+          </navigator>
+        </block>
+      </view>
+    </view>
+    <view class="weui-tab__content" hidden="{{activeIndex != 2}}">
+      <view class="head">共{{total}}条合理化建议</view>
+      <view class="weui-cells weui-cells_after-title">
+        <block wx:for="{{jylist}}" wx:key="unique">
+          <navigator url="detail?jyid={{item.jyid}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+            <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+              <view class="weui-media-box__title">{{item.jynr}}</view>
+              <view class="weui-media-box__desc">{{item.jynum}} {{item.jyr__name}}填报</view>
+              <view class="weui-media-box__desc">{{item.submittime}}</view>
+            </view>
+              <view class="weui-panel__ft weui-cell__ft_in-access">
+              <view class="weui-media-box__title" wx:if="{{item.jyzt == 1}}" style="background-color:yellow">待评估</view>
+              <view class="weui-media-box__title" wx:if="{{item.jyzt == 2}}" style="background-color:yellow">处理中</view>
+              <view class="weui-media-box__title" wx:if="{{item.jyzt == 3}}" style="background-color:yellow">待确认</view>
+              <view class="weui-media-box__title" wx:if="{{item.jyzt == 4}}" style="background-color:green">已归档</view>
+              <view class="weui-media-box__desc" wx:if="{{item.todouser__name}}">{{item.todouser__name}}</view>
+            </view>
+          </navigator>
+        </block>
+      </view>
+    </view>
   </view>
 </view>
-<view style="position:fixed; bottom:0;width:100%;">
+
+
+<view style="position:fixed;bottom:0;left:0;width:100%;" hidden="{{activeIndex != 0}}">
   <navigator url="/pages/suggest/add" hover-class="navigator-hover">
     <button class="weui-btn" type="primary" style="width:auto;margin:5px">新增</button>
   </navigator>
