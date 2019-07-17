@@ -87,7 +87,6 @@ Page({
                     })
                   }else{
                     wx.navigateBack({
-                      
                     })
                   }
                 }
@@ -138,6 +137,9 @@ Page({
                                     if (res.confirm) {
                                       wx.navigateTo({
                                         url: '../user/userdetail',
+                                      })
+                                    } else {
+                                      wx.navigateBack({
                                       })
                                     }
                                   }

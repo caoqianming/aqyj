@@ -255,7 +255,7 @@ Page({
       })
     }else{
       wx.showModal({
-        content: '该功能为增值服务,如需开通,请查看相关公告!',
+        content: '该功能如需开通,请查看公告或联系管理员!',
         showCancel: false
       })
     }
@@ -267,8 +267,20 @@ Page({
       })
     } else {
       wx.showModal({
-        content: '该功能为增值服务,如需开通,请查看相关公告!',
+        content: '该功能如需开通,请查看公告或联系管理员!',
         showCancel:false
+      })
+    }
+  },
+  tapinspect: function () {
+    if (getApp().globalData.rights.indexOf('35') != -1) {//设备巡检
+      wx.navigateTo({
+        url: '/pages/inspect/index',
+      })
+    } else {
+      wx.showModal({
+        content: '该功能如需开通,请查看公告或联系管理员!',
+        showCancel: false
       })
     }
   },

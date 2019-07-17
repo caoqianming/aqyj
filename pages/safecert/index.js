@@ -139,6 +139,9 @@ Page({
                                         wx.navigateTo({
                                           url: '../user/userdetail',
                                         })
+                                      } else {
+                                        wx.navigateBack({
+                                        })
                                       }
                                     }
                                   })

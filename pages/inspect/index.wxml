@@ -9,6 +9,16 @@
           <view class="weui-media-box__desc">
           <span wx:if="{{item.state==1}}" style="background-color:green;color:white;padding:4px 4px">正常</span>
           <span wx:if="{{item.state==0}}" style="background-color:red;color:white;padding:4px 4px">异常</span>
+          <span wx:if="{{item.state==0}}">
+              <span wx:if="{{item.trouble__yhzt == 7}}" style="color:orange">措施/方案待提交</span>
+              <span wx:elif="{{item.trouble__yhzt == 5}}" style="color:orange">待复查</span>
+              <span wx:elif="{{item.trouble__yhzt == 1}}" style="color:orange">待评估</span>
+              <span wx:elif="{{item.trouble__yhzt == 3}}" style="color:orange">待整改</span>
+              <span wx:elif="{{item.trouble__yhzt == 6}}" style="color:orange">已归档</span>
+              <span wx:elif="{{item.trouble__yhzt == 2}}" style="color:orange">措施/方案待确认</span>
+              <span wx:elif="{{item.trouble__yhzt == 4}}" style="color:orange">待审核</span>
+              <span wx:elif="{{item.trouble__yhzt == 0}}" style="color:orange">待新增</span>
+          </span>
           {{item.creattime}}</view>
         </view>
       </navigator>

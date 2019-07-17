@@ -1,2 +1,36 @@
-<!--pages/inspect/detail.wxml-->
-<text>pages/inspect/detail.wxml</text>
+<view class="weui-cells__title">巡检内容</view>
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell">
+    <view class="weui-cell__bd">巡检人</view>
+    <view class="weui-cell__ft">{{user__name}}</view>
+  </view>
+    <view class="weui-cell">
+    <view class="weui-cell__bd">提交时间</view>
+    <view class="weui-cell__ft">{{creattime}}</view>
+  </view>
+  <view class="weui-cell">
+    <view class="weui-cell__bd">设备编号</view>
+    <view class="weui-cell__ft">{{equipment__num}}</view>
+  </view>
+  <navigator url="/pages/equipment/detail?id={{equipment__id}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+    <view class="weui-cell__bd">设备名称</view>
+    <view class="weui-cell__ft weui-cell__ft_in-access" style="color:green">{{equipment__name}}</view>
+  </navigator>
+  <view class="weui-cell ">
+    <view class="weui-cell__bd">区域</view>
+    <view class="weui-cell__ft">{{equipment__area__name}}</view>
+  </view>
+  <view class="weui-cell ">
+    <view class="weui-cell__bd">设备状态</view>
+    <view class="weui-cell__ft" wx:if="{{state==1}}" style="color:green">正常</view>
+    <view class="weui-cell__ft" wx:if="{{state==0}}" style="color:red">异常</view>
+  </view>
+  <view class="weui-cell " wx:if="{{state==1&&content!=null}}">
+    <view class="weui-cell__bd">巡检记录</view>
+    <view class="weui-cell__ft">{{content}}</view>
+  </view>
+  <navigator url="/pages/trouble/troubledetail?troubleid={{trouble__troubleid}}" class="weui-cell weui-cell_access" wx:if="{{state==0}}" hover-class="weui-cell_active">
+    <view class="weui-cell__bd">关联隐患</view>
+    <view class="weui-cell__ft weui-cell__ft_in-access" style="color:red">{{trouble__yhnum}}</view>
+  </navigator>
+</view>

@@ -1,2 +1,67 @@
-<!--pages/equipment/detail.wxml-->
-<text>pages/equipment/detail.wxml</text>
+<view class="weui-cells__title">基本信息</view>
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell">
+    <view class="weui-cell__bd">设备编号</view>
+    <view class="weui-cell__ft">{{num}}</view>
+  </view>
+  <view class="weui-cell ">
+    <view class="weui-cell__bd">设备名称</view>
+    <view class="weui-cell__ft" style="color:green">{{name}}</view>
+  </view>
+  <view class="weui-cell ">
+    <view class="weui-cell__bd">区域</view>
+    <view class="weui-cell__ft">{{area__name}}</view>
+  </view>
+  <view class="weui-cell ">
+    <view class="weui-cell__bd">具体位置</view>
+    <view class="weui-cell__ft">{{place}}</view>
+  </view>
+  <view class="weui-cell ">
+    <view class="weui-cell__bd">当前状态</view>
+    <view class="weui-cell__ft" wx:if="{{state==1}}" style="color:green">正常</view>
+    <view class="weui-cell__ft" wx:if="{{state==0}}" style="color:red">异常</view>
+  </view>
+</view>
+<view class="weui-cells__title">详细信息</view>
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell">
+    <view class="weui-cell__bd">设备类别</view>
+    <view class="weui-cell__ft">{{cate__dickeyname}}</view>
+  </view>
+  <view class="weui-cell ">
+    <view class="weui-cell__bd">型号</view>
+    <view class="weui-cell__ft">{{type}}</view>
+  </view>
+  <view class="weui-cell ">
+    <view class="weui-cell__bd">生产厂家</view>
+    <view class="weui-cell__ft">{{oem}}</view>
+  </view>
+  <view class="weui-cell " wx:if='{{fnum!=null}}'>
+    <view class="weui-cell__bd" >出厂编号</view>
+    <view class="weui-cell__ft">{{fnum}}</view>
+  </view>
+  <view class="weui-cell ">
+    <view class="weui-cell__bd">出厂日期</view>
+    <view class="weui-cell__ft">{{fdate}}</view>
+  </view>
+  <view class="weui-cell ">
+    <view class="weui-cell__bd">投用日期</view>
+    <view class="weui-cell__ft">{{udate}}</view>
+  </view>
+  <view class="weui-cell ">
+    <view class="weui-cell__bd">责任部门</view>
+    <view class="weui-cell__ft">{{zrbm__partname}}</view>
+  </view>
+  <view class="weui-cell ">
+    <view class="weui-cell__bd">责任人</view>
+    <view class="weui-cell__ft">{{zrr__name}}</view>
+  </view>
+  <view class="weui-cell weui-cell_access">
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>主要技术参数</view>
+      <view class="weui-cell__ft">
+        {{parameter}}
+      </view>
+    </view>
+  </view>
+</view>

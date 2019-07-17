@@ -168,7 +168,7 @@ Page({
       return
     };
 
-    setTimeout(
+    getApp().globalData.timepass=setTimeout(
       () => {
         mil -= 1000;
         this.begin(mil);
@@ -284,7 +284,7 @@ Page({
           wx.redirectTo({
             url: 'result?' + parseParams(res.data.data),
           })
-          
+          clearTimeout(getApp().globalData.timepass)
         }
       }
     });

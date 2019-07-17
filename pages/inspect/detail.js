@@ -12,7 +12,19 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    wx.request({
+      url: getApp().globalData.serverUrl + 'api/inspect?a=detail&id='+options.id,
+      header: {
+        'content-type': 'application/json', // 
+        'Cookie': wx.getStorageSync("sessionid"),
+      },
+      method: 'GET',
+      success: res => {
+        if (res.statusCode === 200) {
+          this.setData(res.data)
+        }
+      }
+    })
   },
 
   /**

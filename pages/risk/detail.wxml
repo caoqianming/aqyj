@@ -1,2 +1,93 @@
-<!--pages/risk/detail.wxml-->
-<text>pages/risk/detail.wxml</text>
+<view class="weui-cells__title">
+  风险信息</view>
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell weui-cell_access">
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>风险类型</view>
+    </view>
+    <view class="weui-cell__ft">
+      {{riskact__type__dickeyname}}
+    </view>
+  </view>
+  <view class="weui-cell weui-cell_access">
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>名称</view>
+    </view>
+    <view class="weui-cell__ft">
+      {{riskact__name}}
+    </view>
+  </view>
+  <view class="weui-cell weui-cell_access">
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>所属区域</view>
+    </view>
+    <view class="weui-cell__ft">
+      {{riskact__area__name}}
+    </view>
+  </view>
+    <view class="weui-cell weui-cell_access">
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>项目/步骤</view>
+    </view>
+    <view class="weui-cell__ft">
+      {{step}}
+    </view>
+  </view>
+  <view class="weui-cell weui-cell_access">
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>危害因素</view>
+    </view>
+    <view class="weui-cell__ft">
+      {{hazard}}
+    </view>
+  </view>
+  <view class="weui-cell weui-cell_access">
+    <view class="weui-cell__bd weui-cell_primary">
+      <view>可能后果</view>
+    </view>
+    <view class="weui-cell__ft">
+      {{result}}
+    </view>
+  </view>
+</view>
+
+<view class="weui-cells__title">风险等级和管控措施</view>
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-media-box">
+    <view class="weui-media-box__title">
+        <span style="background-color:red;color:white" wx:if="{{level == '重大风险'}}">重大风险</span>
+        <span style="background-color:orange;color:white" wx:if="{{level == '较大风险'}}">较大风险</span>
+        <span style="background-color:yellow;color:gray" wx:if="{{level == '一般风险'}}">一般风险</span>
+        <span style="background-color:blue;color:white" wx:if="{{level == '低风险'}}">低风险</span>
+    </view>
+    <view class="weui-media-box__desc">
+    LECD分析法:  L:<span style="color:red">{{riskl}}</span>
+    E:<span style="color:red">{{riske}}</span>
+    C:<span style="color:red">{{riskc}}</span>
+    D:<span style="color:red">{{riskd}}</span>
+    </view>
+  </view>
+  <view class="weui-media-box">
+    
+    <view class="weui-media-box__desc">工程技术措施</view>
+    <view style="color:green">{{measure1}}</view>
+  </view>
+    <view class="weui-media-box">
+    
+    <view class="weui-media-box__desc">管理措施措施</view>
+    <view style="color:green">{{measure2}}</view>
+  </view>
+    <view class="weui-media-box">
+    
+    <view class="weui-media-box__desc">培训教育措施</view>
+    <view style="color:green">{{measure3}}</view>
+  </view>
+    <view class="weui-media-box">
+    <view class="weui-media-box__desc">个体防护措施</view>
+    <view style="color:green">{{measure4}}</view>
+  </view>
+    <view class="weui-media-box">
+    <view class="weui-media-box__desc">应急防护措施</view>
+    <view style="color:green">{{measure5}}</view>
+  </view>
+</view>

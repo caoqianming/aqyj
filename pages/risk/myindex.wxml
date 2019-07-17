@@ -3,10 +3,10 @@
     <navigator url="detail?id={{item.id}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
       <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
         <view class="weui-media-box__title">
-        <span style="background-color:red;color:gray" wx:if="{{item.level == '重大风险'}}">重大风险</span>
-        <span style="background-color:orange;color:gray" wx:if="{{item.level == '较大风险'}}">较大风险</span>
+        <span style="background-color:red;color:white" wx:if="{{item.level == '重大风险'}}">重大风险</span>
+        <span style="background-color:orange;color:white" wx:if="{{item.level == '较大风险'}}">较大风险</span>
         <span style="background-color:yellow;color:gray" wx:if="{{item.level == '一般风险'}}">一般风险</span>
-        <span style="background-color:blue;color:gray" wx:if="{{item.level == '低风险'}}">低风险</span>
+        <span style="background-color:blue;color:white" wx:if="{{item.level == '低风险'}}">低风险</span>
         <span>--</span>
         {{item.step}}
         </view>

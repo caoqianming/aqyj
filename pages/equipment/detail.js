@@ -1,4 +1,5 @@
 // pages/equipment/detail.js
+var util = require('../../utils/util.js')
 Page({
 
   /**
@@ -12,7 +13,31 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var equipmentid
+    if(options.id){
+      equipmentid = options.id
+    }else{
+      let q = decodeURIComponent(options.q)
+      if (q) {
+        // console.log("index 生命周期 onload url=" + q) 
+        // console.log("index 生命周期 onload 参数 trainid=" + util.getQueryString(q, 'trainid')) 
+        equipmentid = util.getQueryString(q, 'id')
+      }
+    }
+    wx.request({
+      url: getApp().globalData.serverUrl + 'api/equipment?a=detail&id=' + equipmentid,
+      header: {
+        'content-type': 'application/json', // 默认值
+        'Cookie': wx.getStorageSync("sessionid"),
+      },
+      data: {},
+      success: res => {
+        if (res.statusCode === 200) {
+          //console.log(res.data)
+          this.setData(res.data)
+        }
+      }
+    });
   },
 
   /**
