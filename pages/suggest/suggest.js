@@ -21,15 +21,15 @@ Page({
       activeIndex: e.currentTarget.id
     });
     if (that.data.activeIndex == 0) {
-      that.getmyJylist(1)
+      that.getmylist(1)
       that.data.mypage = 1
     }
     else if (that.data.activeIndex == 1) {
-      that.gettodoJylist(1)
+      that.gettodolist(1)
       that.data.todopage = 1
     }
     else if (that.data.activeIndex == 2) {
-      that.getJylist(1)
+      that.getalllist(1)
       that.data.page = 1
     }
   },
@@ -62,15 +62,15 @@ Page({
     var that = this;
     console.log(that.data.activeIndex)
     if (that.data.activeIndex == 0) {
-      that.getmyJylist(1)
+      that.getmylist(1)
       that.data.mypage = 1
     }
     else if (that.data.activeIndex == 1) {
-      that.gettodoJylist(1)
+      that.gettodolist(1)
       that.data.todopage = 1
     }
     else if (that.data.activeIndex == 2) {
-      that.getJylist(1)
+      that.getalllist(1)
       this.data.page = 1;
     }
 
@@ -96,17 +96,17 @@ Page({
   onPullDownRefresh: function () {
     var that = this;
     if (that.data.activeIndex == 0) {
-      that.getmyJylist(1)
+      that.getmylist(1)
       wx.stopPullDownRefresh();
       that.data.mypage = 1
     }
     else if (that.data.activeIndex == 1) {
-      that.gettodoJylist(1)
+      that.gettodolist(1)
       wx.stopPullDownRefresh();
       that.data.todopage = 1
     }
     else if (that.data.activeIndex == 2) {
-      that.getallJylist(1)
+      that.getalllist(1)
       wx.stopPullDownRefresh();
       that.data.page = 1
     }
@@ -120,15 +120,15 @@ Page({
     var that = this;
     if (that.data.activeIndex == 0) {
       this.data.mypage = this.data.mypage + 1;
-      this.getmyJylist();
+      this.getmylist();
     }
     else if (that.data.activeIndex == 1) {
       this.data.todopage = this.data.todopage + 1;
-      this.gettodoJylist();
+      this.gettodolist();
     }
     else if (that.data.activeIndex == 2) {
       this.data.page = this.data.page + 1;
-      this.getallJylist();
+      this.getalllist();
     }
   },
 
@@ -138,7 +138,7 @@ Page({
   onShareAppMessage: function () {
 
   },
-  getJylist: function (page) {
+  getalllist: function (page) {
     var that = this;
     if (page != 1) { page = that.data.page }
     wx.showLoading({
@@ -183,7 +183,7 @@ Page({
         }
       });
   },
-  getmyJylist: function (page) {
+  getmylist: function (page) {
     var that = this;
     if (page != 1) { page = that.data.mypage }
     wx.showLoading({
@@ -228,7 +228,7 @@ Page({
         }
       });
   },
-  gettodoJylist: function (page) {
+  gettodolist: function (page) {
     var that = this;
     if (page != 1) { page = that.data.todopage }
     wx.showLoading({
