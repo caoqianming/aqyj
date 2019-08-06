@@ -249,18 +249,26 @@ Page({
     });
   },
   taptest:function(){
-    if (getApp().globalData.rights.indexOf('25') != -1) {//考试功能
-      wx.navigateTo({
-        url: '/pages/examtest/index',
-      })
+    if(getApp().globalData.rights != undefined){
+      if (getApp().globalData.rights.indexOf('25') != -1) {//考试功能
+        wx.navigateTo({
+          url: '/pages/examtest/index',
+        })
+      } else {
+        wx.showModal({
+          content: '该功能如需开通,请查看公告或联系管理员!',
+          showCancel: false
+        })
+      }
     }else{
       wx.showModal({
-        content: '该功能如需开通,请查看公告或联系管理员!',
+        content: '加载中,请稍后。。',
         showCancel: false
       })
     }
   },
   tapexercise: function () {
+    if (getApp().globalData.rights != undefined) {
     if (getApp().globalData.rights.indexOf('25') != -1) {//考试功能
       wx.navigateTo({
         url: '/pages/exercise/index',
@@ -270,9 +278,16 @@ Page({
         content: '该功能如需开通,请查看公告或联系管理员!',
         showCancel:false
       })
+    }}
+    else{
+      wx.showModal({
+        content: '加载中,请稍后。。',
+        showCancel: false
+      })
     }
   },
   tapinspect: function () {
+    if (getApp().globalData.rights != undefined) {
     if (getApp().globalData.rights.indexOf('35') != -1) {//设备巡检
       wx.navigateTo({
         url: '/pages/inspect/index',
@@ -280,6 +295,12 @@ Page({
     } else {
       wx.showModal({
         content: '该功能如需开通,请查看公告或联系管理员!',
+        showCancel: false
+      })
+    }}
+    else{
+      wx.showModal({
+        content: '加载中,请稍后。。',
         showCancel: false
       })
     }

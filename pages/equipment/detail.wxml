@@ -65,3 +65,4 @@
     </view>
   </view>
 </view>
+<button class="weui-btn" type="primary" bindtap='back' wx:if="{{fromWx}}">返回主页</button>

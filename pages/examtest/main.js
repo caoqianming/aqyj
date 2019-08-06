@@ -197,7 +197,7 @@ Page({
     var tm = this.tmdata.tms[index]
     let choices = this.data.answerChoices
     if(tm.userchecked){
-      if (tm.question__type = 2) {
+      if (tm.question__type == 2) {
         for (var i = 0, len = choices.length; i < len; i++) {
           if (tm.userchecked.indexOf(choices[i].value) != -1) {
             choices[i].checked = true

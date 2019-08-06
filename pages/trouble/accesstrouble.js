@@ -159,7 +159,6 @@ Page({
                   data: {},
                   success: res => {
                     if (res.statusCode === 200) {
-                      //console.log(res.data)
                       this.data.yhpgArray = res.data;
                       this.setData({
                         yhpgArray: res.data,
@@ -177,7 +176,6 @@ Page({
                   data: {},
                   success: res => {
                     if (res.statusCode === 200) {
-                      //console.log(res.data)
                       this.data.yhlxArray = res.data;
                       this.setData({
                         yhlxArray: res.data,
@@ -195,7 +193,6 @@ Page({
                   data: {},
                   success: res => {
                     if (res.statusCode === 200) {
-                      //console.log(res.data)
                       this.yhlbArray.data1 = res.data;
                     }
                   }
@@ -210,7 +207,6 @@ Page({
                   data: {},
                   success: res => {
                     if (res.statusCode === 200) {
-                      //console.log(res.data)
                       this.yhlbArray.data2 = res.data;
                     }
                   }
@@ -221,7 +217,6 @@ Page({
               case 7:
                 break;
             }
-            //console.log(this.data.yhzt)
           }
         }
       });
@@ -317,6 +312,7 @@ Page({
   },
   //上传整改图片
   upimg2: function (x, y) {
+    console.log(x,y)
     var that = this
     if (x < y) {
       wx.showLoading({
@@ -346,7 +342,12 @@ Page({
         that.data.zghtp[x].replace(that.data.serverUrl, "")
         var bl = that.data.zghtp[x].replace(that.data.serverUrl, "")
         that.data.zghtp[x] = bl
-        that.accesstrouble()
+        x = x + 1
+        if (x < y) {
+          that.upimg2(x, y)
+        } else {
+          that.accesstrouble()
+        }
       }
     } else {
       that.accesstrouble()
@@ -383,7 +384,12 @@ Page({
       } else {
         var bl=that.data.yhtp[x].replace(that.data.serverUrl, "")
         that.data.yhtp[x] = bl
-        that.addtrouble()
+        x = x + 1
+        if (x < y) {
+          that.upimg(x, y)
+        } else {
+          that.addtrouble()
+        }
       }
     } else {
       that.addtrouble()
@@ -411,7 +417,6 @@ Page({
   },
   accesstrouble: function(){
     var that=this
-    //console.log(that.data.zghtp)
     wx.request({
       url: that.data.serverUrl + 'accessyh',
       header: {
@@ -434,7 +439,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    //console.log(options)
     this.getYh(options.troubleid);
     var obj1 = dateTimePicker.dateTimePicker(this.data.startYear, this.data.endYear);
     var dateTimeArray1 = obj1.dateTimeArray
@@ -539,7 +543,6 @@ Page({
     var that = this;
     var zghtp = that.data.zghtp;
     var index = e.currentTarget.dataset.index; //获取当前长按图片下标
-    console.log(e.index)
     wx.showModal({
       title: '系统提醒',
       content: '确定要删除此图片吗？',
@@ -581,7 +584,6 @@ Page({
       sizeType: ['original', 'compressed'],
       sourceType: ['album', 'camera'],
       success: function (res) {
-        //console.log(that.data.zghtp == '')
         if(that.data.zghtp==''){
           that.data.zghtp=[]
         }
@@ -598,7 +600,6 @@ Page({
       sizeType: ['original', 'compressed'],
       sourceType: ['album', 'camera'],
       success: function (res) {
-        //console.log(that.data.zghtp == '')
         if (that.data.yhtp == '') {
           that.data.yhtp = []
         }

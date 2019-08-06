@@ -1,1 +1,4 @@
-/* pages/equipment/detail.wxss */
+.weui-btn{
+  width:auto;
+  margin: 5px;
+}

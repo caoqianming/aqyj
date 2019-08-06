@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    fromWx:false
   },
 
   /**
@@ -22,6 +22,9 @@ Page({
         // console.log("index 生命周期 onload url=" + q) 
         // console.log("index 生命周期 onload 参数 trainid=" + util.getQueryString(q, 'trainid')) 
         equipmentid = util.getQueryString(q, 'id')
+        this.setData({
+          fromWx:true
+        })
       }
     }
     wx.request({
@@ -87,5 +90,10 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  back: function () {
+    wx.switchTab({
+      url: '/pages/main/main'
+    })
   }
 })
