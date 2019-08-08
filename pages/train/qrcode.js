@@ -1,6 +1,6 @@
 // pages/bind/binduser.js
 var util = require('../../utils/util.js')
-import drawQrcode from '../../utils/weapp.qrcode.esm.js'
+//import drawQrcode from '../../utils/weapp.qrcode.esm.js'
 Page({
 
   /**
@@ -20,23 +20,23 @@ Page({
       pxid: pxid
     })
     this.getPx(pxid)
-    let text = 'https://safeyun.ctcshe.com/miniprogram/checktrain?trainid=' + pxid
-    console.log(text)
-    drawQrcode({
-      width: 200,
-      height: 200,
-      canvasId: 'qdQrcode',
-      // ctx: wx.createCanvasContext('myQrcode'),
-      text: text,
-      // v1.0.0+版本支持在二维码上绘制图片
-      // image: {
-      //   imageResource: '../../images/icon.png',
-      //   dx: 70,
-      //   dy: 70,
-      //   dWidth: 60,
-      //   dHeight: 60
-      // }
-    })
+    //let text = 'https://safeyun.ctcshe.com/miniprogram/checktrain?trainid=' + pxid
+    //console.log(text)
+    // drawQrcode({
+    //   width: 200,
+    //   height: 200,
+    //   canvasId: 'qdQrcode',
+    //   // ctx: wx.createCanvasContext('myQrcode'),
+    //   text: text,
+    //   // v1.0.0+版本支持在二维码上绘制图片
+    //   // image: {
+    //   //   imageResource: '../../images/icon.png',
+    //   //   dx: 70,
+    //   //   dy: 70,
+    //   //   dWidth: 60,
+    //   //   dHeight: 60
+    //   // }
+    // })
   },
   getPx: function (id) {
     wx.showLoading({
@@ -53,6 +53,10 @@ Page({
           wx.hideLoading();
           if (res.statusCode === 200) {
             var pxdata = res.data
+            if(pxdata.checkqr!=''||pxdata.qrcode!=null){
+              pxdata.checkqr = getApp().globalData.serverUrl+pxdata.checkqr
+              console.log(pxdata.checkqr)
+            }
             if (pxdata.starttime != '') { pxdata.starttime = util.formatTime(new Date(pxdata.starttime)) }
             this.setData(pxdata)
 

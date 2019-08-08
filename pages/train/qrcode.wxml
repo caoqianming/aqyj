@@ -3,9 +3,9 @@
     <view class="page__title">签到二维码</view>
     <view class="page__desc">请在培训开始前展示给参加人员扫码</view>
   </view>
-  <view class="qrcode">
-    <canvas canvas-id="qdQrcode" style="width:200px;height:200px"></canvas>
-    </view>
+  <view style="text-align:center">
+    <image src="{{checkqr}}" style="width:200px;height:200px;"></image>
+  </view>
   <view class="page__bd" style="margin:5px">
     <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell weui-cell_access">
