@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    testdisable:false
   },
 
   /**
@@ -22,8 +22,24 @@ Page({
       success: res => {
         if (res.statusCode === 200) {
           let ksdata = res.data
-          if (ksdata.starttime != '') { ksdata.starttime = util.formatTime2(new Date(ksdata.starttime)) }
-          if (ksdata.endtime != '') { ksdata.endtime = util.formatTime2(new Date(ksdata.endtime)) }
+          if (ksdata.starttime != null) { 
+            let st = new Date(ksdata.starttime)
+            ksdata.starttime = util.formatTime2(st)
+            if(new Date()<st){
+              this.setData({
+                testdisable:true
+              })
+            }
+            }
+          if (ksdata.endtime != null) { 
+            let et = new Date(ksdata.endtime)
+            ksdata.endtime = util.formatTime2(et)
+            if (new Date() > et) {
+              this.setData({
+                testdisable: true
+              })
+            }
+            }
           this.setData(res.data)
         }
       }
@@ -43,7 +59,6 @@ Page({
   onShow: function () {
 
   },
-
   /**
    * 生命周期函数--监听页面隐藏
    */
