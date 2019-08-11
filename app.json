@@ -61,7 +61,9 @@
     "pages/inspect/detail",
     "pages/equipment/detail",
     "pages/risk/myindex",
-    "pages/risk/detail"
+    "pages/risk/detail",
+    "pages/risktask/index",
+    "pages/risktask/check"
   ],
   "window": {
     "backgroundTextStyle": "light",

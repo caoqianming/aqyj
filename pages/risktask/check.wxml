@@ -1,0 +1,47 @@
+      <view class="head">共{{total}}条风险</view>
+      <view class="weui-cells weui-cells_after-title">
+        <block wx:for="{{alllist}}" wx:key="unique">
+          <view class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+            <view class="weui-media-box__bd weui-media-box__bd_in-appmsg" >
+              <view class="weui-media-box__title">
+              <span wx:if="{{item.risk__level == '低风险'}}" style="background-color:blue;color:white">低风险</span>
+              <span wx:if="{{item.risk__level == '一般风险'}}" style="background-color:yellow">一般风险</span>
+              <span wx:if="{{item.risk__level == '较大风险'}}" style="background-color:orange">较大风险</span>
+              <span wx:if="{{item.risk__level == '重大风险'}}" style="background-color:red;color:white">重大风险</span>
+              {{item.risk__step}}
+              </view>
+              <view class="weui-media-box__desc">
+              <span style="background-color:orange;color:white">标准/危害因素</span>
+              {{item.risk__hazard}}
+              </view>
+              <view class="weui-media-box__desc">
+              <span style="background-color:green;color:white">工程技术</span>
+               <span wx:if="{{item.risk__measure1!=null}}">{{item.risk__measure1}}</span>
+               <span wx:else>无</span>
+              </view>
+              <view class="weui-media-box__desc">
+              <span style="background-color:green;color:white">管理措施</span>
+              <span wx:if="{{item.risk__measure2!=null}}">{{item.risk__measure2}}</span>
+               <span wx:else>无</span>
+              </view>
+              <view class="weui-media-box__desc">
+              <span style="background-color:green;color:white">培训教育</span>
+              <span wx:if="{{item.risk__measure3!=null}}">{{item.risk__measure3}}</span>
+               <span wx:else>无</span>
+              </view>
+              <view class="weui-media-box__desc">
+              <span style="background-color:green;color:white">个体防护</span>
+              <span wx:if="{{item.risk__measure4!=null}}">{{item.risk__measure4}}</span>
+               <span wx:else>无</span>
+              </view>
+              <view class="weui-media-box__desc">
+              <span style="background-color:green;color:white">应急处理</span>
+              <span wx:if="{{item.risk__measure5!=null}}">{{item.risk__measure5}}</span>
+               <span wx:else>无</span>
+              </view>
+              <checkbox checked="{{item.checked}}"/>确认已排查
+              <button class="weui-btn mini-btn" type="warn" size="mini" >发现隐患</button>
+            </view>
+          </view>
+        </block>
+      </view>
