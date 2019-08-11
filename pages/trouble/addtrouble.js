@@ -258,8 +258,9 @@ Page({
                 }
               }
             });
-          }else if (this.data.yhtype == 'risktask') {
-            let data = {}
+          }
+          else if (this.data.yhtype == 'risktask') {
+            let data = {'risktask':null,'trouble':null}
             data.risktask = this.data.risktaskdata.id
             data.trouble = res.data.trouble
             wx.request({
@@ -280,8 +281,8 @@ Page({
                 }
               }
             });
-          }else{
-            console.log(x)
+          }
+          else{
             wx.hideLoading();
             wx.navigateBack()
           }
