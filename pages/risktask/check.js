@@ -17,10 +17,12 @@ Page({
     console.log(options)
     this.data.riskact = options.riskact
     this.data.group = options.group
-    this.getlist()
   },
   getlist:function(){
     var page = this.data.page
+    wx.showLoading({
+      title: '加载中',
+    })
     wx.request({
       url: getApp().globalData.serverUrl + 'api/risktask?a=listtask&rows=10&page=' + page + '&group=' + this.data.group + '&riskact=' + this.data.riskact,
       header: {
@@ -29,6 +31,7 @@ Page({
       },
       success: res => {
         if (res.statusCode === 200) {
+          wx.hideLoading()
           console.log(res.data)
           if (res.data.rows.length == 0) {
             if (page == 1) {
@@ -72,7 +75,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getlist()
   },
 
   /**
@@ -108,5 +111,11 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+  open: function (e) {
+    console.log(e)
+    wx.navigateTo({
+      url: '/pages/trouble/addtrouble?type=risktask&index=' + e.currentTarget.dataset.index,
+    })
+  },
 })

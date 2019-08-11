@@ -9,7 +9,7 @@
   </view>
   <view class="weui-tab__panel">
     <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
-      <view class="head">共{{donetotal}}条合理化建议</view>
+      <view class="head">共{{donetotal}}条已查</view>
       <view class="weui-cells weui-cells_after-title">
         <block wx:for="{{donelist}}" wx:key="unique">
           <navigator url="detail?jyid={{item.jyid}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">

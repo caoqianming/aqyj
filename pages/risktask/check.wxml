@@ -39,9 +39,11 @@
               <span wx:if="{{item.risk__measure5!=null}}">{{item.risk__measure5}}</span>
                <span wx:else>无</span>
               </view>
-              <checkbox checked="{{item.checked}}"/>确认已排查
-              <button class="weui-btn mini-btn" type="warn" size="mini" >发现隐患</button>
+              <button class="weui-btn mini-btn" type="warn" size="mini" disabled="{{item.trouble__yhnum != null}}" data-index="{{index}}" bindtap="open">发现隐患</button>
             </view>
           </view>
         </block>
       </view>
+    <view class="btn-area">
+      <button class="weui-btn" type="primary" bindtap="submit" >排查完毕,提交!</button>
+    </view>

@@ -258,7 +258,30 @@ Page({
                 }
               }
             });
+          }else if (this.data.yhtype == 'risktask') {
+            let data = {}
+            data.risktask = this.data.risktaskdata.id
+            data.trouble = res.data.trouble
+            wx.request({
+              url: this.data.serverUrl + 'api/risktask?a=checktrouble',
+              header: {
+                'content-type': 'application/json', // 
+                'Cookie': wx.getStorageSync("sessionid"),
+              },
+              method: 'POST',
+              data: data,
+              success: res => {
+                if (res.statusCode === 200) {
+                  wx.hideLoading();
+                  wx.navigateBack({
+                    delta: 2
+                  })
+
+                }
+              }
+            });
           }else{
+            console.log(x)
             wx.hideLoading();
             wx.navigateBack()
           }
@@ -329,7 +352,6 @@ Page({
         mapright: false
       })
     }
-    console.log(options.type)
     if(options.type=='inspect'){
       var pages = getCurrentPages();
       var prevPage = pages[pages.length - 2];
@@ -342,6 +364,20 @@ Page({
         yhqy__name:inspectdata.equipment.area__name,
         yhdd: inspectdata.equipment.place,
         equipmentname: inspectdata.equipment.name,
+      })
+    }
+    else if (options.type == 'risktask'){
+      var pages = getCurrentPages();
+      var prevPage = pages[pages.length - 2];
+      var risktaskdata = prevPage.data.alllist[options.index]
+      console.log(risktaskdata)
+      this.data.risktaskdata = risktaskdata
+      this.setData({
+        yhtype: 'risktask',
+        yhqy: risktaskdata.risk__riskact__area__id,
+        yhqy__name: risktaskdata.risk__riskact__area__name,
+        yhdd: risktaskdata.risk__riskact__place,
+        riskstep: risktaskdata.risk__step,
       })
     }
   },

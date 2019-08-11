@@ -63,7 +63,8 @@
     "pages/risk/myindex",
     "pages/risk/detail",
     "pages/risktask/index",
-    "pages/risktask/check"
+    "pages/risktask/check",
+    "pages/risktask/main"
   ],
   "window": {
     "backgroundTextStyle": "light",

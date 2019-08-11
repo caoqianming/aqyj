@@ -2,6 +2,7 @@
   <view class="page__bd">
     <view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">错误提示</view>
     <view class="head" wx:if="{{yhtype=='inspect'}}">{{equipmentname}} 设备异常</view>
+    <view class="head" wx:if="{{yhtype=='risktask'}}">风险 {{riskstep}}</view>
     <view class="weui-cells__title">隐患图片</view>
     <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell">
