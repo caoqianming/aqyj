@@ -9,7 +9,7 @@ Page({
     page: 1,
     serverUrl: getApp().globalData.serverUrl,
     alllist: [],
-    tabs: ["我的已查", "我的待查", "全厂待办"],
+    tabs: ["历史任务", "我的任务", "全厂待办"],
     activeIndex: 1,
     sliderOffset: 0,
     sliderLeft: 0
@@ -190,7 +190,7 @@ Page({
       title: '加载中',
     }),
       wx.request({
-        url: this.data.serverUrl + 'api/suggest?a=listself&rows=10&page=' + page,
+        url: this.data.serverUrl + 'api/listtask?a=list2done&rows=10&page=' + page,
         header: {
           'content-type': 'application/json', // 默认值
           'Cookie': wx.getStorageSync("sessionid"),
@@ -227,6 +227,18 @@ Page({
           wx.hideLoading();
         }
       });
+  },
+  scan: function () {
+    wx.scanCode({
+      onlyFromCamera: true,
+      success(res) {
+        console.log(res)
+        let id = res.result.split('=')[1]
+        wx.navigateTo({
+          url: 'check?riskact=' + id,
+        })
+      }
+    })
   },
   gettodolist: function (page) {
     var that = this;

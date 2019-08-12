@@ -16,7 +16,13 @@ Page({
   onLoad: function (options) {
     console.log(options)
     this.data.riskact = options.riskact
-    this.data.group = options.group
+    if(options.group==undefined){
+      this.data.group = 'all'
+    }else{
+      this.data.group = options.group
+    }
+    
+
   },
   getlist:function(){
     var page = this.data.page
@@ -117,5 +123,31 @@ Page({
     wx.navigateTo({
       url: '/pages/trouble/addtrouble?type=risktask&index=' + e.currentTarget.dataset.index,
     })
+  },
+  submit: function () {
+    console.log(this.data.alllist)
+    let data={'tasks':[]}
+    for (var i = 0; i < this.data.alllist.length; i++) {
+      data.tasks.push(this.data.alllist[i].id)
+    }
+    wx.showLoading({
+      title: '提交中',
+    })
+    wx.request({
+      url: getApp().globalData.serverUrl + 'api/risktask?a=update',
+      header: {
+        'content-type': 'application/json', // 默认值
+        'Cookie': wx.getStorageSync("sessionid"),
+      },
+      method: 'POST',
+      data:data,
+      success: res => {
+        if (res.statusCode === 200) {
+          wx.navigateBack({
+          })
+        }
+        wx.hideLoading();
+      }
+    });
   },
 })

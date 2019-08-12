@@ -40,10 +40,13 @@
                <span wx:else>无</span>
               </view>
               <button class="weui-btn mini-btn" type="warn" size="mini" disabled="{{item.trouble__yhnum != null}}" data-index="{{index}}" bindtap="open">发现隐患</button>
+              <view class="weui-media-box__desc" style="color:red" wx:if="{{item.trouble__yhnum != null}}">{{item.trouble__yhnum}}</view>
             </view>
           </view>
         </block>
       </view>
     <view class="btn-area">
-      <button class="weui-btn" type="primary" bindtap="submit" >排查完毕,提交!</button>
+      <button class="weui-btn" type="primary" bindtap="submit" 
+      disabled="{{alllist[0].user__userid!=null}}"
+      >排查完毕,提交!</button>
     </view>

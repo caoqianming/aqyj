@@ -275,7 +275,7 @@ Page({
                 if (res.statusCode === 200) {
                   wx.hideLoading();
                   wx.navigateBack({
-                    delta: 2
+                    delta: 1
                   })
 
                 }

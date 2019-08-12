@@ -169,7 +169,31 @@ Page({
                 }
               }
             });
-          }else{
+          }
+          else if (this.data.yhtype == 'risktask') {
+            let data = { 'risktask': null, 'trouble': null }
+            data.risktask = this.data.risktaskdata.id
+            data.trouble = res.data.trouble
+            wx.request({
+              url: this.data.serverUrl + 'api/risktask?a=checktrouble',
+              header: {
+                'content-type': 'application/json', // 
+                'Cookie': wx.getStorageSync("sessionid"),
+              },
+              method: 'POST',
+              data: data,
+              success: res => {
+                if (res.statusCode === 200) {
+                  wx.hideLoading();
+                  wx.navigateBack({
+                    delta: 2
+                  })
+
+                }
+              }
+            });
+          }
+          else{
             wx.hideLoading();
             wx.navigateBack({
               delta: 2
