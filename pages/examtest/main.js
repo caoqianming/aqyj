@@ -76,7 +76,7 @@ Page({
         },
         success: res => {
           if (res.statusCode === 200) {
-            wx.hideLoading()
+            
             console.log(res.data)
             let tms = res.data
             this.tmdata = tms
@@ -88,6 +88,7 @@ Page({
             this.setData({ 
               tmtotal: tms.tms.length,
               starttime: util.formatTime(new Date()) })
+            wx.hideLoading()
           }
 
         }

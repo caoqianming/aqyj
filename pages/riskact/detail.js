@@ -1,37 +1,55 @@
-// pages/risk/detail.js
+// pages/inspect/detail.js
+var util = require('../../utils/util.js')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    fromWx:false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var riskactid
+    if (options.id) {
+      riskactid = options.id
+    } else {
+      let q = decodeURIComponent(options.q)
+      if (q) {
+        // console.log("index 生命周期 onload url=" + q) 
+        // console.log("index 生命周期 onload 参数 trainid=" + util.getQueryString(q, 'trainid')) 
+        riskactid = util.getQueryString(q, 'id')
+        this.setData({
+          fromWx: true
+        })
+      }
+    }
     wx.showLoading({
       title: '',
     })
     wx.request({
-      url: getApp().globalData.serverUrl + 'api/risk?a=detail&id=' + options.id,
+      url: getApp().globalData.serverUrl + 'api/riskact?a=detail&id=' + riskactid,
       header: {
-        'content-type': 'application/json', // 默认值
+        'content-type': 'application/json', // 
         'Cookie': wx.getStorageSync("sessionid"),
       },
-      data: {},
+      method: 'GET',
       success: res => {
         if (res.statusCode === 200) {
-          //console.log(res.data)
-          this.setData(res.data)
           wx.hideLoading()
+          this.setData(res.data.data)
         }
       }
     })
   },
-
+check:function(){
+wx.redirectTo({
+  url: 'check?riskact='+this.data.id,
+})
+},
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

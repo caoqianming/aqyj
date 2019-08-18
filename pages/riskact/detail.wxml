@@ -1,0 +1,33 @@
+<view class="weui-cells__title">风险点信息</view>
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell">
+    <view class="weui-cell__bd">名称</view>
+    <view class="weui-cell__ft">{{name}}</view>
+  </view>
+    <view class="weui-cell">
+    <view class="weui-cell__bd">类别</view>
+    <view class="weui-cell__ft">{{type__dickeyname}}</view>
+  </view>
+  <view class="weui-cell">
+    <view class="weui-cell__bd">所属区域</view>
+    <view class="weui-cell__ft">{{area__name}}</view>
+  </view>
+  <view class="weui-cell">
+    <view class="weui-cell__bd">位置</view>
+    <view class="weui-cell__ft" wx:if="{{place!=null}}">{{place}}</view>
+  </view>
+  <navigator url="/pages/risk/myindex?a=listall&riskact={{id}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+    <view class="weui-cell__bd">风险数量</view>
+    <view class="weui-cell__ft weui-cell__ft_in-access" style="color:green">{{num}}</view>
+  </navigator>
+  <view class="weui-cell">
+    <view class="weui-cell__bd">风险等级</view>
+    <view class="weui-cell__ft" wx:if="{{level == '低风险'}}" style="background-color:blue;color:white">低风险</view>
+    <view class="weui-cell__ft" wx:if="{{level == '一般风险'}}" style="background-color:yellow;color:black">一般风险</view>
+    <view class="weui-cell__ft" wx:if="{{level == '较大风险'}}" style="background-color:orange;color:black">较大风险</view>
+    <view class="weui-cell__ft" wx:if="{{level == '重大风险'}}" style="background-color:red;color:white">重大风险</view>
+  </view>
+  </view>
+<view style="position:fixed;bottom:0;left:0;width:100%;">
+    <button class="weui-btn" type="primary" style="width:auto;margin:5px" bindtap="check">开始排查</button>
+</view>

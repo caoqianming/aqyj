@@ -193,6 +193,19 @@ Page({
               }
             });
           }
+          else if (this.data.yhtype == 'riskcheck') {
+            var pages = getCurrentPages();
+            var prevPage = pages[pages.length - 3];
+            var alllist = prevPage.data.alllist
+            alllist[this.data.riskcheckindex].trouble = res.data.trouble
+            alllist[this.data.riskcheckindex].yhnum = res.data.yhnum
+            prevPage.setData(
+              { alllist: alllist }
+            )
+            wx.navigateBack({
+              delta: 2
+            })
+          }
           else{
             wx.hideLoading();
             wx.navigateBack({

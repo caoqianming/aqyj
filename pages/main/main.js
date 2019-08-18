@@ -12,7 +12,8 @@ Page({
       dknum:0,
       gcnoread:0,
       wsnoread:0,
-      jytodonum:0
+      jytodonum:0,
+      tasknum:0,
   },
 
   /**
@@ -42,6 +43,7 @@ Page({
       this.getgcnoreadnum()
       this.getwsnoreadnum()//未遂未读
       this.getjytodonum()
+      this.gettasknum()
     }else{
       getApp().callback = () => {
       this.getnoread()
@@ -51,6 +53,7 @@ Page({
       this.getdknum()
       this.getgcnoreadnum()
       this.getjytodonum()
+      this.gettasknum()
       };
     }
 
@@ -243,6 +246,26 @@ Page({
           //console.log(res.data)
           this.setData({
             jytodonum: res.data.todonum,
+          })
+        }
+      }
+    });
+  },
+  gettasknum: function () {
+    var that = this
+    //获取待考
+    wx.request({
+      url: getApp().globalData.serverUrl + 'api/risktask?a=todonum',
+      header: {
+        'content-type': 'application/json', // 默认值
+        'Cookie': wx.getStorageSync("sessionid"),
+      },
+      data: {},
+      success: res => {
+        if (res.statusCode === 200) {
+          //console.log(res.data)
+          this.setData({
+            tasknum: res.data.todonum,
           })
         }
       }

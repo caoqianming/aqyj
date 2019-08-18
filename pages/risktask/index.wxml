@@ -9,7 +9,7 @@
   </view>
   <view class="weui-tab__panel">
     <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
-      <view class="head">共{{donetotal}}条已查</view>
+      <view class="head">共{{donetotal}}条</view>
       <view class="weui-cells weui-cells_after-title">
         <block wx:for="{{donelist}}" wx:key="unique">
           <navigator url="check?riskact={{item.risk__riskact__id}}&group={{item.risk__group__groupid}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
@@ -20,7 +20,7 @@
               </view>
               <view class="weui-media-box__desc">
                 <span style="background-color:orange;color:white">排查岗位</span>
-                {{item.risk__gkcj}} {{item.risk__group__groupname}}
+                {{item.risk__group__groupname}}
               </view>
               <view class="weui-media-box__desc">任务生成时间:{{item.taskadd}}</view>
               <view class="weui-media-box__desc">任务过期时间:{{item.taskexpire}}</view>
@@ -31,6 +31,7 @@
               <view class="weui-media-box__title" wx:if="{{item.risk__riskact__level == '较大风险'}}" style="background-color:orange">较大风险</view>
               <view class="weui-media-box__title" wx:if="{{item.risk__riskact__level == '重大风险'}}" style="background-color:red;color:white">重大风险</view>
               <view wx:if="{{item.user__userid!=null}}" class="weui-media-box__title" style="background-color:green;color:white">已完成</view>
+              <view wx:if="{{item.usable==2}}" class="weui-media-box__title" style="background-color:green;color:white">作废</view>
             </view>
           </navigator>
         </block>
@@ -48,7 +49,7 @@
               </view>
               <view class="weui-media-box__desc">
                 <span style="background-color:orange;color:white">排查岗位</span>
-                {{item.risk__gkcj}} {{item.risk__group__groupname}}
+                {{item.risk__group__groupname}}
               </view>
               <view class="weui-media-box__desc">任务生成时间:{{item.taskadd}}</view>
               <view class="weui-media-box__desc">任务过期时间:{{item.taskexpire}}</view>
@@ -59,6 +60,10 @@
               <view class="weui-media-box__title" wx:if="{{item.risk__riskact__level == '较大风险'}}" style="background-color:orange">较大风险</view>
               <view class="weui-media-box__title" wx:if="{{item.risk__riskact__level == '重大风险'}}" style="background-color:red;color:white">重大风险</view>
               <view wx:if="{{item.user__userid!=null}}" class="weui-media-box__title" style="background-color:green;color:white">已完成</view>
+              <view class="weui-media-box__desc">
+              风险数量
+              <span style="color:red">{{item.num}}</span>
+              </view>
             </view>
           </navigator>
         </block>
@@ -76,7 +81,7 @@
               </view>
               <view class="weui-media-box__desc">
                 <span style="background-color:orange;color:white">排查岗位</span>
-                {{item.risk__gkcj}} {{item.risk__group__groupname}}
+                {{item.risk__group__groupname}}
               </view>
               <view class="weui-media-box__desc">任务生成时间:{{item.taskadd}}</view>
               <view class="weui-media-box__desc">任务过期时间:{{item.taskexpire}}</view>
@@ -96,6 +101,6 @@
 </view>
 
 
-<view style="position:fixed;bottom:0;left:0;width:100%;" hidden="{{activeIndex != 1}}">
+<!-- <view style="position:fixed;bottom:0;left:0;width:100%;" hidden="{{activeIndex != 1}}">
     <button class="weui-btn" type="primary" style="width:auto;margin:5px" bindtap="scan">扫一扫风险点</button>
-</view>
+</view> -->

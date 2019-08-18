@@ -34,9 +34,7 @@
     </view>
   </view>
   <view class="weui-cell weui-cell_access">
-    <view class="weui-cell__bd weui-cell_primary">
-      <view>危害因素</view>
-    </view>
+      <view>危害因素/标准</view>
     <view class="weui-cell__ft">
       {{hazard}}
     </view>
@@ -70,24 +68,29 @@
   <view class="weui-media-box">
     
     <view class="weui-media-box__desc">工程技术措施</view>
-    <view style="color:green">{{measure1}}</view>
+    <view style="color:green" wx:if="{{measure1!=null}}">{{measure1}}</view>
+    <view style="color:green" wx:else>无</view>
   </view>
     <view class="weui-media-box">
     
     <view class="weui-media-box__desc">管理措施措施</view>
-    <view style="color:green">{{measure2}}</view>
+    <view style="color:green" wx:if="{{measure2!=null}}">{{measure2}}</view>
+    <view style="color:green" wx:else>无</view>
   </view>
     <view class="weui-media-box">
     
     <view class="weui-media-box__desc">培训教育措施</view>
-    <view style="color:green">{{measure3}}</view>
+    <view style="color:green" wx:if="{{measure3!=null}}">{{measure3}}</view>
+    <view style="color:green" wx:else>无</view>
   </view>
     <view class="weui-media-box">
     <view class="weui-media-box__desc">个体防护措施</view>
-    <view style="color:green">{{measure4}}</view>
+    <view style="color:green" wx:if="{{measure4!=null}}">{{measure4}}</view>
+    <view style="color:green" wx:else>无</view>
   </view>
     <view class="weui-media-box">
     <view class="weui-media-box__desc">应急防护措施</view>
-    <view style="color:green">{{measure5}}</view>
+    <view style="color:green" wx:if="{{measure5!=null}}">{{measure5}}</view>
+    <view style="color:green" wx:else>无</view>
   </view>
 </view>

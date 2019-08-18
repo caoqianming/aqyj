@@ -12,8 +12,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var url = getApp().globalData.serverUrl + 'api/risk?a=listself'
+    if(options.a=='listall'){
+      url = getApp().globalData.serverUrl + 'api/risk?a=listall&riskact='+options.riskact
+    }
+    wx.showLoading({
+      title: '',
+    })
     wx.request({
-      url: getApp().globalData.serverUrl + 'api/risk?a=listself',
+      url: url,
       header: {
         'content-type': 'application/json', // 
         'Cookie': wx.getStorageSync("sessionid"),
@@ -24,6 +31,7 @@ Page({
           this.setData({
             fxlist:res.data.rows
           })
+          wx.hideLoading()
         }
       }
     })

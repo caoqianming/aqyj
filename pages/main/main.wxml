@@ -5,7 +5,7 @@
       <navigator url="/pages/risktask/index" class="weui-grid" hover-class="weui-grid_active">
         <image class="weui-grid__icon" src="../images/task.png" />
         <view class="weui-grid__label">排查任务</view>
-        <!-- <view class="weui-badge" style="position: absolute;top: 1em;right: 1em;" wx:if="{{yhtodonum!=0}}">{{yhtodonum}}</view> -->
+        <view class="weui-badge" style="position: absolute;top: 1em;right: 1em;" wx:if="{{tasknum!=0}}">{{tasknum}}</view>
       </navigator>
       <navigator url="/pages/trouble/trouble" class="weui-grid" hover-class="weui-grid_active">
         <image class="weui-grid__icon" src="../images/trouble.png" />
@@ -31,6 +31,10 @@
         <image class="weui-grid__icon" src="../images/operation.png" />
         <view class="weui-grid__label">作业许可</view>
         <view class="weui-badge" style="position: absolute;top: 1em;right: 1em;" wx:if="{{zytodonum!=0}}">{{zytodonum}}</view>
+      </navigator>
+      <navigator url="/pages/riskact/index" class="weui-grid" hover-class="weui-grid_active">
+        <image class="weui-grid__icon" src="../images/risk.png" />
+        <view class="weui-grid__label">风险管控</view>
       </navigator>
       <view url="/pages/inspect/index" class="weui-grid" hover-class="weui-grid_active" bindtap='tapinspect'>
         <image class="weui-grid__icon" src="../images/inspect.png" />
