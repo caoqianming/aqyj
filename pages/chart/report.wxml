@@ -1,0 +1,3 @@
+<!--pages/chart/report.wxml-->
+<web-view src="https://safeyun.ctcshe.com/reporthtml"> </web-view>
+

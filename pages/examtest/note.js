@@ -24,7 +24,6 @@ Page({
           let ksdata = res.data
           if (ksdata.starttime != null) { 
             let st = new Date(ksdata.starttime)
-            ksdata.starttime = util.formatTime2(st)
             if(new Date()<st){
               this.setData({
                 testdisable:true
@@ -33,7 +32,6 @@ Page({
             }
           if (ksdata.endtime != null) { 
             let et = new Date(ksdata.endtime)
-            ksdata.endtime = util.formatTime2(et)
             if (new Date() > et) {
               this.setData({
                 testdisable: true

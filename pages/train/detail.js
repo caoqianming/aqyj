@@ -121,7 +121,6 @@ Page({
           wx.hideLoading();
           if (res.statusCode === 200) {
             var pxdata = res.data
-            if (pxdata.starttime != '') { pxdata.starttime = util.formatTime(new Date(pxdata.starttime)) }
             for (var i = 0; i < pxdata.cjrydetail.length; i++) {
               let qdsj = pxdata.cjrydetail[i].qdsj
               if (qdsj != null)

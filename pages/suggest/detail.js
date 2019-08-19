@@ -104,7 +104,6 @@ Page({
             for (var i = 0; i < jydata.jyimg2.length; i++) {
               jydata.jyimg2[i] = this.data.serverUrl + jydata.jyimg2[i];
             }
-            if (jydata.submittime != '') { jydata.submittime = util.formatTime(new Date(jydata.submittime)) }
             this.setData(jydata)
           }
         }

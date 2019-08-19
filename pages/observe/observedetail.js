@@ -93,8 +93,6 @@ Page({
             for (var i = 0; i < gcdata.lookimg.length; i++) {
               gcdata.lookimg[i] = this.data.serverUrl + gcdata.lookimg[i];
             }
-            if (gcdata.looktime != '') { gcdata.looktime = util.formatTime(new Date(gcdata.looktime)) }
-            if (gcdata.submittime != '') { gcdata.submittime = util.formatTime(new Date(gcdata.submittime)) }
             this.setData(gcdata)
           }
         }

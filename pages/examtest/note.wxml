@@ -7,10 +7,10 @@
       <view>答卷时长:<span style="color:red">{{duration}}分钟</span></view>
       <view>满分{{totalscore}};{{passscore}}以上通过</view>
       <view>{{exampaper__total.dx.num}}道单选题,{{exampaper__total.duox.num}}道多选题,{{exampaper__total.pd.num}}道判断题</view>
-      <view>考试开启时间:
+      <view>最早参加时间:
       <span wx:if="{{starttime!=null}}">{{starttime}}</span>
       <span wx:else>无</span>
-      </view>考试关闭时间:
+      </view>最迟参加时间:
       <span wx:if="{{endtime!=null}}">{{endtime}}</span>
       <span wx:else>无</span>
     </view>

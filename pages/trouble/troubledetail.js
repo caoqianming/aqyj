@@ -32,12 +32,12 @@ Page({
             for (var i = 0; i < yhdata.zghtp.length; i++) {
               yhdata.zghtp[i] = this.data.serverUrl + yhdata.zghtp[i];
             }
-            if (yhdata.fxsj != '') { yhdata.fxsj = util.formatTime(new Date(yhdata.fxsj)) }
-            if (yhdata.zgqx != '') { yhdata.zgqx = util.formatTime(new Date(yhdata.zgqx)) }
+            // if (yhdata.fxsj != '') { yhdata.fxsj = util.formatTime(new Date(yhdata.fxsj)) }
+            // if (yhdata.zgqx != '') { yhdata.zgqx = util.formatTime(new Date(yhdata.zgqx)) }
             
-            for (var i = 0; i < yhdata.lcxq.length; i++) {
-              yhdata.lcxq[i]['accesssj'] = util.formatTime(new Date(res.data.lcxq[i]['accesssj']));
-            }
+            // for (var i = 0; i < yhdata.lcxq.length; i++) {
+            //   yhdata.lcxq[i]['accesssj'] = util.formatTime(new Date(res.data.lcxq[i]['accesssj']));
+            // }
             this.setData(yhdata)
           }
         }

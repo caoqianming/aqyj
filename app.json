@@ -67,7 +67,8 @@
     "pages/risktask/main",
     "pages/riskact/index",
     "pages/riskact/detail",
-    "pages/riskact/check"
+    "pages/riskact/check",
+    "pages/chart/report"
   ],
   "window": {
     "backgroundTextStyle": "light",

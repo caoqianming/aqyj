@@ -30,11 +30,6 @@ Page({
             for (var i = 0; i < zydata.zyimg2.length; i++) {
               zydata.zyimg2[i] = this.data.serverUrl + zydata.zyimg2[i];
             }
-            for (var i = 0; i < zydata.spxq.length; i++) {
-              zydata.spxq[i].submittime = util.formatTime(new Date(zydata.spxq[i].submittime));
-            }
-            if (zydata.kssj != '') { zydata.kssj = util.formatTime(new Date(zydata.kssj)) }
-            if (zydata.jssj != '') { zydata.jssj = util.formatTime(new Date(zydata.jssj)) }
             this.setData(zydata)
             switch (zydata.zyzt) {
             }

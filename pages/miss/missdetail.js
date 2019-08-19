@@ -93,8 +93,8 @@ Page({
             for (var i = 0; i < wsdata.missimg.length; i++) {
               wsdata.missimg[i] = this.data.serverUrl + wsdata.missimg[i];
             }
-            if (wsdata.misstime != '') { wsdata.misstime = util.formatTime(new Date(wsdata.misstime)) }
-            if (wsdata.submittime != '') { wsdata.submittime = util.formatTime(new Date(wsdata.submittime)) }
+            // if (wsdata.misstime != '') { wsdata.misstime = util.formatTime(new Date(wsdata.misstime)) }
+            // if (wsdata.submittime != '') { wsdata.submittime = util.formatTime(new Date(wsdata.submittime)) }
             this.setData(wsdata)
           }
         }

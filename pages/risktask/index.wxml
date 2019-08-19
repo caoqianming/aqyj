@@ -30,8 +30,9 @@
               <view class="weui-media-box__title" wx:if="{{item.risk__riskact__level == '一般风险'}}" style="background-color:yellow">一般风险</view>
               <view class="weui-media-box__title" wx:if="{{item.risk__riskact__level == '较大风险'}}" style="background-color:orange">较大风险</view>
               <view class="weui-media-box__title" wx:if="{{item.risk__riskact__level == '重大风险'}}" style="background-color:red;color:white">重大风险</view>
-              <view wx:if="{{item.user__userid!=null}}" class="weui-media-box__title" style="background-color:green;color:white">已完成</view>
+              <view wx:if="{{item.user__userid!=null}}" class="weui-media-box__title" style="background-color:green;color:white">已执行</view>
               <view wx:if="{{item.usable==2}}" class="weui-media-box__title" style="background-color:green;color:white">作废</view>
+              <view wx:if="{{item.user__userid==null}}" class="weui-media-box__title" style="background-color:red;color:white">未执行</view>
             </view>
           </navigator>
         </block>

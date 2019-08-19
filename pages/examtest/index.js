@@ -183,7 +183,7 @@ Page({
     }else{
       wx.showModal({
         title: "系统提示",
-        content: '考试还未关闭,请稍候查看',
+        content: '发布人未关闭考试,暂不能查看',
         showCancel: false,
         confirmText: "确定"
       })
