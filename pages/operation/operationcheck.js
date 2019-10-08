@@ -7,7 +7,8 @@ Page({
    */
   data: {
     serverUrl: getApp().globalData.serverUrl,
-    zyimg2: []
+    zyimg2: [],
+    zjsp:false
   },
   getZy: function (zyid) {
     wx.showLoading({
@@ -59,7 +60,19 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    let lst = getApp().globalData.selectPeopleList
+    let nst = []
+    let nst1 = []
+    if (lst) {
+      for (var i = 0; i < lst.length; i++) {
+        nst.push(lst[i]['name'])
+        nst1.push(lst[i]['id'])
+      }
+      this.setData({
+        zyspryname: nst.join(','),
+        spry: nst1,
+      })
+    }
   },
 
   /**
@@ -239,4 +252,41 @@ Page({
       }
     });
   },
+  openaction: function () {
+    var that = this
+    wx.showActionSheet({
+      itemList: ['确认无误,审批通过', '转交他人审批', '终止审批开始作业'],
+      success: function (res) {
+        if (!res.cancel) {
+          if (res.tapIndex == 0) {
+            that.submit2()
+          }
+          else if (res.tapIndex == 1) {
+            that.setData({
+              'zjsp': true,
+              'action':'转交他人审批'
+            })
+          } else if (res.tapIndex == 2) {
+            wx.request({
+              url: that.data.serverUrl + 'api/operation?a=spzy',
+              header: {
+                'content-type': 'application/x-www-form-urlencoded', // 
+                'Cookie': wx.getStorageSync("sessionid"),
+              },
+              method: 'POST',
+              data: { 'zyid': that.data.zyid ,'zzsp':true},
+              success: res => {
+                if (res.statusCode === 200) {
+                  wx.hideLoading();
+                  wx.navigateBack({
+                    delta: 1
+                  })
+                }
+              }
+            });
+          } 
+        }
+      }
+    });
+  }
 })

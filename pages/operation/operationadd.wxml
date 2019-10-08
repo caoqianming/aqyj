@@ -141,10 +141,8 @@
       </view>
       <view class="weui-cell weui-cell_access" style="height: 4.3em">
         {{spryname}}
-      </view> -->
-    <view class="btn-area">
-      <button class="weui-btn" type="primary" bindtap="submit">提交审批</button>
-    </view>
+    </view> -->
+      <button class="weui-btn" type="primary" bindtap="submit">分析完毕,发起作业</button>
   </view>
 </view>
 
