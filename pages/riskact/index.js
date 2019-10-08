@@ -21,7 +21,7 @@ Page({
       activeIndex: e.currentTarget.id
     });
     if (that.data.activeIndex == 0) {
-      that.getmyriskchecklist(1)
+      that.getmyriskactchecklist(1)
       that.data.mypage = 1
     }
     else if (that.data.activeIndex == 1) {
@@ -79,7 +79,7 @@ Page({
   onPullDownRefresh: function () {
     var that = this;
     if (that.data.activeIndex == 0) {
-      that.getmyriskchecklist(1)
+      that.getmyriskactchecklist(1)
       that.data.mypage = 1
     } else if (that.data.activeIndex == 1){
       that.getriskactlist(1);
@@ -94,9 +94,10 @@ Page({
    */
   onReachBottom: function () {
     //上拉分页,将页码加1，然后调用分页函数
+    var that =this
     if (that.data.activeIndex == 0) {
       this.data.mypage = this.data.mypage + 1;
-      this.getmyriskchecklist();
+      this.getmyriskactchecklist();
     } else if (that.data.activeIndex == 1){
       this.data.page = this.data.page + 1;
       this.getriskactlist();
@@ -115,10 +116,42 @@ Page({
       onlyFromCamera: true,
       success(res) {
         console.log(res)
-        let id = res.result.split('=')[1]
-        wx.navigateTo({
-          url: 'detail?id='+id,
-        })
+        if (res.result.indexOf("riskact") != -1){
+          let id = res.result.split('=')[1]
+          wx.navigateTo({
+            url: 'detail?id=' + id,
+          })
+        }else{
+          wx.showModal({
+            title: "系统提示",
+            content: '请扫风险点二维码!',
+            showCancel: false,
+            confirmText: "确定"
+          })
+        }
+        
+      }
+    })
+  },
+  scanArea: function () {
+    wx.scanCode({
+      onlyFromCamera: true,
+      success(res) {
+        console.log(res)
+        if (res.result.indexOf("area") != -1) {
+          let id = res.result.split('=')[1]
+          wx.navigateTo({
+            url: '/pages/area/detail?id=' + id,
+          })
+        } else {
+          wx.showModal({
+            title: "系统提示",
+            content: '请扫区域二维码!',
+            showCancel: false,
+            confirmText: "确定"
+          })
+        }
+
       }
     })
   },
@@ -167,14 +200,14 @@ Page({
         }
       });
   },
-  getmyriskchecklist: function (page) {
+  getmyriskactchecklist: function (page) {
     var that = this;
     if (page != 1) { page = that.data.mapage }
     wx.showLoading({
       title: '加载中',
     }),
       wx.request({
-        url: this.data.serverUrl + 'api/riskcheck?a=listself&rows=10&page=' + page,
+        url: this.data.serverUrl + 'api/riskacttask?a=listself&rows=10&page=' + page,
         header: {
           'content-type': 'application/json', // 默认值
           'Cookie': wx.getStorageSync("sessionid"),
@@ -185,7 +218,7 @@ Page({
               if (page == 1) {
                 this.setData({
                   mytotal: 0,
-                  riskchecklist: []
+                  riskactchecklist: []
                 })
               }
               else {
@@ -200,11 +233,11 @@ Page({
               if (page == 1) {
                 list = res.data.rows
               } else {
-                list = this.data.riskchecklist.concat(res.data.rows)
+                list = this.data.riskactchecklist.concat(res.data.rows)
               }
               this.setData({
                 mytotal: res.data.total,
-                riskchecklist: list
+                riskactchecklist: list
               })
             }
           }

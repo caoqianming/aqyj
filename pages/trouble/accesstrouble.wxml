@@ -97,19 +97,8 @@
     </view>
   </view>
 </view>
-
-<view class="weui-cell weui-cell_switch" wx:if="{{yhzt ==1}}">
-  <view class="weui-cell__bd">转交他人</view>
-  <view class="weui-cell__ft">
-    <switch bindchange="zppg" checked='{{zppg_c}}' disabled='{{zppg_d}}' />
-  </view>
-</view>
-<view class="weui-cell weui-cell_switch" wx:if="{{yhzt ==1}}">
-  <view class="weui-cell__bd">退回重填</view>
-  <view class="weui-cell__ft">
-    <switch bindchange="bhct" checked='{{bhct_c}}' disabled='{{bhct_d}}' />
-  </view>
-</view>
+<button type="primary" bindtap="openaction" class="weui-btn" wx:if="{{yhzt ==1}}">选择操作</button>
+<view wx:if="{{yhzt ==1}}"><span>当前操作：</span><span style="color:blue">{{action}}</span></view>
 <view wx:if='{{yhzt!=0}}'>
   <view wx:if="{{zppg=='yes' && shresult !='reject' }}">
     <view class="weui-cells__title">新评估人</view>

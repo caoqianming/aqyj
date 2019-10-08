@@ -11,40 +11,8 @@ Page({
     shresult:'',
     apcl:true,
     zjtr:false,
-  },
-  shChange: function (e) {
-    if (e.detail.value == false) { this.setData({
-      shresult:'reject'
-    }) }
-    else { this.setData({
-      shresult:''
-    }) }
-  },
-  apcl: function (e) {
-    if (e.detail.value == false) {
-      this.setData({
-        apcl: false,
-      })
-    }
-    else {
-      this.setData({
-        apcl: true
-      })
-    }
-    console.log(this.data.apcl)
-  },
-  zjtr: function (e) {
-    if (e.detail.value == false) {
-      this.setData({
-        zjtr:false
-      })
-    }
-    else {
-      this.setData({
-        apcl: false,
-        zjtr:true,
-      })
-    }
+    accept: 'yes',
+    action: '安排处理'
   },
   bindjyfkInput: function (e) {
     this.data.jyfk = e.detail.value
@@ -314,4 +282,44 @@ Page({
       urls: this.data.jyimg2
     })
   },
+  openaction: function () {
+    var that = this
+    wx.showActionSheet({
+      itemList: ['安排处理', '转交他人', '不采纳','采纳并归档'],
+      success: function (res) {
+        if (!res.cancel) {
+          if (res.tapIndex == 0) {
+            that.setData({
+              'apcl': true,
+              'zjtr': false,
+              'accept': 'yes',
+              'action': '安排处理'
+            })
+          }
+          else if (res.tapIndex == 1) {
+            that.setData({
+              'apcl': false,
+              'zjtr': true,
+              'accept': 'yes',
+              'action': '转交他人'
+            })
+          } else if (res.tapIndex == 2) {
+            that.setData({
+              'apcl': false,
+              'zjtr': false,
+              'accept': 'no',
+              'action': '不采纳'
+            })
+          } else if (res.tapIndex == 3) {
+            that.setData({
+              'apcl': false,
+              'zjtr': false,
+              'accept': 'yes',
+              'action': '采纳并归档'
+            })
+          }
+        }
+      }
+    });
+  }
 })

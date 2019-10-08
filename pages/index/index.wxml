@@ -47,7 +47,7 @@
       </view>
       <view class="weui-media-box weui-media-box_small-appmsg">
         <view class="weui-cells weui-cells_in-small-appmsg">
-          <navigator url="../risk/myindex" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+          <navigator url="../riskact/index2" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
             <view class="weui-cell__hd">
               <image src="../images/riskrole.png" style="width: 20px;height: 20px;margin-right: 5px" />
             </view>

@@ -145,7 +145,7 @@ Page({
       title: '加载中',
     }),
       wx.request({
-      url: this.data.serverUrl + 'api/risktask?a=listalltodo&rows=10&page=' + page,
+      url: this.data.serverUrl + 'api/riskacttask?a=listalltodo&rows=10&page=' + page,
         header: {
           'content-type': 'application/json', // 默认值
           'Cookie': wx.getStorageSync("sessionid"),
@@ -190,7 +190,7 @@ Page({
       title: '加载中',
     }),
       wx.request({
-        url: this.data.serverUrl + 'api/risktask?a=list2done&rows=10&page=' + page,
+        url: this.data.serverUrl + 'api/riskacttask?a=listself&rows=10&page=' + page,
         header: {
           'content-type': 'application/json', // 默认值
           'Cookie': wx.getStorageSync("sessionid"),
@@ -247,7 +247,7 @@ Page({
       title: '加载中',
     }),
       wx.request({
-        url: this.data.serverUrl + 'api/risktask?a=list2todo&rows=10&page=' + page,
+        url: this.data.serverUrl + 'api/riskacttask?a=listmytodo&rows=10&page=' + page,
         header: {
           'content-type': 'application/json', // 默认值
           'Cookie': wx.getStorageSync("sessionid"),

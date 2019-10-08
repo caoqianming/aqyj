@@ -1,0 +1,5 @@
+{
+  "navigationBarTitleText": "风险点",
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 50
+}

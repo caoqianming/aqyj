@@ -244,10 +244,20 @@ Page({
       onlyFromCamera: true,
       success(res) {
         console.log(res)
-        let pxid = util.getQueryString(res.result, 'trainid')
-        wx.navigateTo({
-          url: 'check?pxid='+pxid,
-        })
+        if (res.result.indexOf("trainid") != -1) {
+          let pxid = util.getQueryString(res.result, 'trainid')
+          wx.navigateTo({
+            url: 'check?pxid=' + pxid,
+          })
+        } else {
+          wx.showModal({
+            title: "系统提示",
+            content: '请扫培训二维码!',
+            showCancel: false,
+            confirmText: "确定"
+          })
+        }
+        
       }
     })
   },

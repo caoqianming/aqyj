@@ -183,15 +183,19 @@ Page({
       data: {},
       success: res => {
         if (res.statusCode === 200) {
-          //console.log(res.data.data)
+          console.log(res.data.data)
+          let recdata = res.data.data
+          for (var j = 0, lenJ = recdata.length; j < lenJ; ++j) {
+            recdata[j].child.push({'text':'全部安全','value':0})
+          }
           this.setData({
-            unsafe24: res.data.data[0],
-            unsafe25: res.data.data[1],
-            unsafe26: res.data.data[2],
-            unsafe27: res.data.data[3],
-            unsafe28: res.data.data[4],
-            unsafe29: res.data.data[5],
-            unsafe30: res.data.data[6],
+            unsafe24: recdata[0],
+            unsafe25: recdata[1],
+            unsafe26: recdata[2],
+            unsafe27: recdata[3],
+            unsafe28: recdata[4],
+            unsafe29: recdata[5],
+            unsafe30: recdata[6],
           })
         }
       }
@@ -302,7 +306,20 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    let lst = getApp().globalData.selectPeopleList
+    let nst = []
+    let nst1 = []
+    if (lst) {
+      for (var i = 0; i < lst.length; i++) {
+        nst.push(lst[i]['name'])
+        nst1.push(lst[i]['id'])
+      }
+      this.setData({
+        gcryname: nst.join(','),
+        lookers: nst1.join(','),
+        lookersnum: nst1.length
+      })
+    }
   },
 
   /**

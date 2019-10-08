@@ -255,7 +255,7 @@ Page({
     var that = this
     //获取待考
     wx.request({
-      url: getApp().globalData.serverUrl + 'api/risktask?a=todonum',
+      url: getApp().globalData.serverUrl + 'api/riskacttask?a=todonum',
       header: {
         'content-type': 'application/json', // 默认值
         'Cookie': wx.getStorageSync("sessionid"),

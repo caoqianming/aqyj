@@ -47,5 +47,5 @@
       </view>
     <view class="btn-area">
       <button class="weui-btn" type="primary" bindtap="submit"
-      >排查完毕,提交!</button>
+      disabled="{{alllist[0].user__userid!=null}}">排查完毕,提交!</button>
     </view>

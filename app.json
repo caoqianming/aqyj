@@ -63,12 +63,13 @@
     "pages/risk/myindex",
     "pages/risk/detail",
     "pages/risktask/index",
-    "pages/risktask/check",
-    "pages/risktask/main",
     "pages/riskact/index",
     "pages/riskact/detail",
     "pages/riskact/check",
-    "pages/chart/report"
+    "pages/chart/report",
+    "pages/risktask/detail",
+    "pages/riskact/index2",
+    "pages/area/detail"
   ],
   "window": {
     "backgroundTextStyle": "light",

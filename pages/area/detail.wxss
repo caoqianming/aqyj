@@ -1,0 +1,10 @@
+/* pages/area/detail.wxss */
+.container {
+  background-color: #fff;  
+  color: #939393; 
+}
+.head{
+  color:#fff;
+  background-color: cornflowerblue;
+  text-align: center;
+}

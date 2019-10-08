@@ -27,7 +27,8 @@ Page({
     yhtp: [],
     zghtp: [],
     zppg: 'no',
-    newr:''
+    newr:'',
+    action:'正常处理'
   },
   yhlbArray:{},
   bindfcyjInput: function (e) {
@@ -44,37 +45,6 @@ Page({
   },
   bindyhddInput: function (e) {
     this.data.yhdd = e.detail.value
-  },
-  shChange: function(e){
-    if (e.detail.value == false) { this.data.shresult='reject'}
-    else { this.data.shresult = ''}
-  },
-  zppg: function (e) {
-    if (e.detail.value == true) {
-      this.setData({
-        zppg: 'yes',
-      }) }
-    else { 
-      this.setData({
-        zppg:'no',
-      })
-      }
-  },
-  bhct: function (e) {
-    if (e.detail.value == false) {
-      this.setData({
-        shresult:'pass',
-        zppg: 'no',
-        zppg_d: false,
-      })
-    }
-    else {
-      this.setData({
-        shresult: 'reject',
-        zppg_c: false,
-        zppg_d:true
-      })
-    }
   },
   bindyhpgChange: function (e) {
     this.setData({
@@ -608,5 +578,45 @@ Page({
         })
       }
     })
+  },
+  openaction: function () {
+    var that=this
+    wx.showActionSheet({
+      itemList: ['正常处理', '转交他人', '驳回重填', '不采纳'],
+      success: function (res) {
+        if (!res.cancel) {
+          if(res.tapIndex==0){
+            that.setData({
+              'zppg': 'no',
+              'shresult': 'pass',
+              'accept': 'yes',
+              'action':'正常处理'
+            })
+          }
+          else if(res.tapIndex==1){
+            that.setData({
+              'zppg':'yes',
+              'shresult':'pass',
+              'accept': 'yes',
+              'action': '转交他人'
+            })
+          }else if(res.tapIndex==2){
+            that.setData({
+              'shresult':'reject',
+              'zppg':'no',
+              'accept': 'yes',
+              'action': '驳回重填'
+            })
+          }else if(res.tapIndex==3){
+            that.setData({
+              'shresult': 'reject',
+              'zppg': 'no',
+              'accept': 'no',
+              'action': '不采纳'
+            })
+          }
+        }
+      }
+    });
   }
 })

@@ -116,5 +116,7 @@
       </view>
     </view>
 <button class="weui-btn" type="primary" bindtap="submit" wx:if="{{zyzt.zyzt == '确认中'}}">安全措施就绪,确认参与作业</button>
-<button class="weui-btn" type="primary" bindtap="submit2" wx:if="{{zyzt.zyzt == '审批中'}}">安全措施就绪,可以开始作业</button>
+<!-- <button class="weui-btn" type="primary" bindtap="submit2" >安全措施就绪,可以开始作业</button> -->
 <button class="weui-btn" type="primary" bindtap="submit3" wx:if="{{zyzt.zyzt == '待关闭'}}">现场清理完毕,关闭作业</button>
+<button type="primary" bindtap="openaction" class="weui-btn" wx:if="{{zyzt.zyzt == '审批中'}}">选择操作</button>
+<view wx:if="{{zyzt.zyzt == '审批中'}}"><span>当前操作：</span><span style="color:blue">{{action}}</span></view>

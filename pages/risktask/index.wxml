@@ -12,24 +12,24 @@
       <view class="head">共{{donetotal}}条</view>
       <view class="weui-cells weui-cells_after-title">
         <block wx:for="{{donelist}}" wx:key="unique">
-          <navigator url="check?riskact={{item.risk__riskact__id}}&group={{item.risk__group__groupid}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+          <navigator url="detail?id={{item.id}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
             <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
               <view class="weui-media-box__title">
                 <span style="background-color:green;color:white">风险点</span>
-                {{item.risk__riskact__area__name}} {{item.risk__riskact__name}}
+                {{item.riskact__area__name}} {{item.riskact__name}}
               </view>
               <view class="weui-media-box__desc">
                 <span style="background-color:orange;color:white">排查岗位</span>
-                {{item.risk__group__groupname}}
+                {{item.riskact__group__groupname}}
               </view>
               <view class="weui-media-box__desc">任务生成时间:{{item.taskadd}}</view>
               <view class="weui-media-box__desc">任务过期时间:{{item.taskexpire}}</view>
             </view>
             <view class="weui-panel__ft weui-cell__ft_in-access">
-              <view class="weui-media-box__title" wx:if="{{item.risk__riskact__level == '低风险'}}" style="background-color:blue;color:white">低风险</view>
-              <view class="weui-media-box__title" wx:if="{{item.risk__riskact__level == '一般风险'}}" style="background-color:yellow">一般风险</view>
-              <view class="weui-media-box__title" wx:if="{{item.risk__riskact__level == '较大风险'}}" style="background-color:orange">较大风险</view>
-              <view class="weui-media-box__title" wx:if="{{item.risk__riskact__level == '重大风险'}}" style="background-color:red;color:white">重大风险</view>
+              <view class="weui-media-box__title" wx:if="{{item.riskact__level == '低风险'}}" style="background-color:blue;color:white">低风险</view>
+              <view class="weui-media-box__title" wx:if="{{item.riskact__level == '一般风险'}}" style="background-color:yellow">一般风险</view>
+              <view class="weui-media-box__title" wx:if="{{item.riskact__level == '较大风险'}}" style="background-color:orange">较大风险</view>
+              <view class="weui-media-box__title" wx:if="{{item.riskact__level == '重大风险'}}" style="background-color:red;color:white">重大风险</view>
               <view wx:if="{{item.user__userid!=null}}" class="weui-media-box__title" style="background-color:green;color:white">已执行</view>
               <view wx:if="{{item.usable==2}}" class="weui-media-box__title" style="background-color:green;color:white">作废</view>
               <view wx:if="{{item.user__userid==null}}" class="weui-media-box__title" style="background-color:red;color:white">未执行</view>
@@ -42,29 +42,25 @@
       <view class="head">共{{todototal}}条任务</view>
       <view class="weui-cells weui-cells_after-title">
         <block wx:for="{{todolist}}" wx:key="unique">
-          <navigator url="check?riskact={{item.risk__riskact__id}}&group={{item.risk__group__groupid}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+          <navigator url="../riskact/check?riskact={{item.riskact__id}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
             <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
               <view class="weui-media-box__title">
                 <span style="background-color:green;color:white">风险点</span>
-                {{item.risk__riskact__area__name}} {{item.risk__riskact__name}}
+                {{item.riskact__area__name}} {{item.riskact__name}}
               </view>
               <view class="weui-media-box__desc">
                 <span style="background-color:orange;color:white">排查岗位</span>
-                {{item.risk__group__groupname}}
+                {{item.riskact__group__groupname}}
               </view>
               <view class="weui-media-box__desc">任务生成时间:{{item.taskadd}}</view>
               <view class="weui-media-box__desc">任务过期时间:{{item.taskexpire}}</view>
             </view>
             <view class="weui-panel__ft weui-cell__ft_in-access">
-              <view class="weui-media-box__title" wx:if="{{item.risk__riskact__level == '低风险'}}" style="background-color:blue;color:white">低风险</view>
-              <view class="weui-media-box__title" wx:if="{{item.risk__riskact__level == '一般风险'}}" style="background-color:yellow">一般风险</view>
-              <view class="weui-media-box__title" wx:if="{{item.risk__riskact__level == '较大风险'}}" style="background-color:orange">较大风险</view>
-              <view class="weui-media-box__title" wx:if="{{item.risk__riskact__level == '重大风险'}}" style="background-color:red;color:white">重大风险</view>
+              <view class="weui-media-box__title" wx:if="{{item.riskact__level == '低风险'}}" style="background-color:blue;color:white">低风险</view>
+              <view class="weui-media-box__title" wx:if="{{item.riskact__level == '一般风险'}}" style="background-color:yellow">一般风险</view>
+              <view class="weui-media-box__title" wx:if="{{item.riskact__level == '较大风险'}}" style="background-color:orange">较大风险</view>
+              <view class="weui-media-box__title" wx:if="{{item.riskact__level == '重大风险'}}" style="background-color:red;color:white">重大风险</view>
               <view wx:if="{{item.user__userid!=null}}" class="weui-media-box__title" style="background-color:green;color:white">已完成</view>
-              <view class="weui-media-box__desc">
-              风险数量
-              <span style="color:red">{{item.num}}</span>
-              </view>
             </view>
           </navigator>
         </block>
@@ -74,24 +70,24 @@
       <view class="head">共{{total}}条任务</view>
       <view class="weui-cells weui-cells_after-title">
         <block wx:for="{{alllist}}" wx:key="unique">
-          <navigator url="check?riskact={{item.risk__riskact__id}}&group={{item.risk__group__groupid}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+          <navigator url="../riskact/check?riskact={{item.riskact__id}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
             <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
               <view class="weui-media-box__title">
                 <span style="background-color:green;color:white">风险点</span>
-                {{item.risk__riskact__area__name}} {{item.risk__riskact__name}}
+                {{item.riskact__area__name}} {{item.riskact__name}}
               </view>
               <view class="weui-media-box__desc">
                 <span style="background-color:orange;color:white">排查岗位</span>
-                {{item.risk__group__groupname}}
+                {{item.group__groupname}}
               </view>
               <view class="weui-media-box__desc">任务生成时间:{{item.taskadd}}</view>
               <view class="weui-media-box__desc">任务过期时间:{{item.taskexpire}}</view>
             </view>
             <view class="weui-panel__ft weui-cell__ft_in-access">
-              <view class="weui-media-box__title" wx:if="{{item.risk__riskact__level == '低风险'}}" style="background-color:blue;color:white">低风险</view>
-              <view class="weui-media-box__title" wx:if="{{item.risk__riskact__level == '一般风险'}}" style="background-color:yellow">一般风险</view>
-              <view class="weui-media-box__title" wx:if="{{item.risk__riskact__level == '较大风险'}}" style="background-color:orange">较大风险</view>
-              <view class="weui-media-box__title" wx:if="{{item.risk__riskact__level == '重大风险'}}" style="background-color:red;color:white">重大风险</view>
+              <view class="weui-media-box__title" wx:if="{{item.riskact__level == '低风险'}}" style="background-color:blue;color:white">低风险</view>
+              <view class="weui-media-box__title" wx:if="{{item.riskact__level == '一般风险'}}" style="background-color:yellow">一般风险</view>
+              <view class="weui-media-box__title" wx:if="{{item.riskact__level == '较大风险'}}" style="background-color:orange">较大风险</view>
+              <view class="weui-media-box__title" wx:if="{{item.riskact__level == '重大风险'}}" style="background-color:red;color:white">重大风险</view>
               <view wx:if="{{item.user__userid!=null}}" class="weui-media-box__title" style="background-color:green;color:white">已完成</view>
             </view>
           </navigator>

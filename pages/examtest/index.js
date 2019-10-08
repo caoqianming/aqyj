@@ -189,5 +189,27 @@ Page({
       })
     }
     
-  }
+  },
+  scan: function () {
+    wx.scanCode({
+      onlyFromCamera: true,
+      success(res) {
+        console.log(res)
+        if (res.result.indexOf("examtest") != -1) {
+          let id = res.result.split('=')[1]
+          wx.navigateTo({
+            url: 'note?examtestid=' + id,
+          })
+        } else {
+          wx.showModal({
+            title: "系统提示",
+            content: '请扫考试二维码!',
+            showCancel: false,
+            confirmText: "确定"
+          })
+        }
+
+      }
+    })
+  },
 });

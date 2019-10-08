@@ -33,33 +33,11 @@ Page({
         if (res.statusCode === 200) {
           wx.hideLoading()
           console.log(res.data)
-          if (res.data.rows.length == 0) {
-            if (page == 1) {
-              this.setData({
-                total: 0,
-                alllist: []
-              })
-            }
-            else {
-              wx.showModal({
-                content: "已经到底啦!",
-                showCancel: false,
-                confirmText: "确定",
-              })
-            }
-          } else {
-            let list
-            if (page == 1) {
-              list = res.data.rows
-            } else {
-              list = this.data.alllist.concat(res.data.rows)
-            }
             this.setData({
               total: res.data.total,
-              alllist: list
+              alllist: res.data.rows
             })
           }
-        }
         wx.hideLoading();
       }
     });
@@ -121,7 +99,7 @@ Page({
   submit: function () {
     console.log(this.data.alllist)
     let alllist = this.data.alllist
-    let data = {'checks':[]}
+    let data = {'checks':[],'riskact':this.data.riskact}
     for (var i = 0; i < alllist.length; i++) {
       if (i.trouble != undefined){
         data.checks.push({ 'id': alllist[i].id })
@@ -134,7 +112,7 @@ Page({
       title: '提交中',
     })
     wx.request({
-      url: getApp().globalData.serverUrl + 'api/riskcheck?a=add',
+      url: getApp().globalData.serverUrl + 'api/riskcheck2?a=add',
       header: {
         'content-type': 'application/json', // 默认值
         'Cookie': wx.getStorageSync("sessionid"),
@@ -143,6 +121,14 @@ Page({
       data: data,
       success: res => {
         if (res.statusCode === 200) {
+          var pages = getCurrentPages();
+          var currPage = pages[pages.length - 1];   //当前页面
+          var prevPage = pages[pages.length - 2];  //上一个页面
+
+          //直接调用上一个页面对象的setData()方法，把数据存到上一个页面中去
+          prevPage.setData({
+            riskact: this.data.riskact
+          });
           wx.navigateBack({
           })
         }

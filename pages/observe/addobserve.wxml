@@ -25,6 +25,19 @@
     </view>
     <view class="weui-cells__title">观察信息</view>
     <view class="weui-cells weui-cells_after-title">
+          <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">观察人员</view>
+        </view>
+        <view class="weui-cell__bd">
+          <navigator url="/pages/userSelect/userSelect">
+            <view class="weui-select">请选择</view>
+          </navigator>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_access" style="height: 5.3em">
+        {{gcryname}}
+      </view>
       <view class="weui-cell weui-cell_input">
         <view class="weui-cell__hd">
           <view class="weui-label">被观察人员</view>
