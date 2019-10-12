@@ -121,8 +121,8 @@
             <icon class="weui-icon-checkbox_success" type="success" size="23" wx:if="{{item.checked}}"></icon>
           </view>
           <view>
-          <view class="weui-media-box__desc" style='color:red'>{{item.fxfx}}</view>
-          <view class="weui-media-box__desc" style='color:green'>{{item.aqcs}}</view>
+          <view style='color:red'>{{item.fxfx}}</view>
+          <view style='color:green'>{{item.aqcs}}</view>
           <view class="weui-media-box__desc">{{item.cslx}}</view>
           </view>
         </label>

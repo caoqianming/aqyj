@@ -1,147 +1,187 @@
-<view class="weui-cells__title">
-  作业详情
-</view>
-<view class="weui-cells weui-cells_after-title">
-  <view class="weui-cell weui-cell_access">
-    <view class="weui-cell__bd weui-cell_primary">
-      <view>当前状态</view>
-    </view>
-    <view class="weui-cell__ft" style="color:green" wx:if="{{zyzt.zyzt=='已关闭'}}">已关闭</view>
-    <view class="weui-cell__ft" style="color:green" wx:else>{{zyzt.zyzt}}</view>
-  </view>
-  <view class="weui-cell weui-cell_access">
-    <view class="weui-cell__bd weui-cell_primary">
-      <view>作业类型</view>
-    </view>
-    <view class="weui-cell__ft">
-      {{zylx__dickeyname}}
-    </view>
-  </view>
-    <view class="weui-cell weui-cell_access">
-    <view class="weui-cell__bd weui-cell_primary">
-      <view>作业地点</view>
-    </view>
-    <view class="weui-cell__ft">
-      {{zydd}}
-    </view>
-  </view>
-  <view class="weui-cell weui-cell_access">
-    <view class="weui-cell__bd weui-cell_primary">
-      <view>作业部门</view>
-    </view>
-    <view class="weui-cell__ft">
-      {{zybm__partname}}
-    </view>
-  </view>
-  <view class="weui-cell weui-cell_access">
-    <view class="weui-cell__bd weui-cell_primary">
-      <view>作业负责人</view>
-    </view>
-    <view class="weui-cell__ft">
-      {{zyfzr__name}}
-    </view>
-  </view>
-  <view class="weui-cell weui-cell_access">
-    <view class="weui-cell__bd weui-cell_primary">
-      <view>属地部门</view>
-    </view>
-    <view class="weui-cell__ft">
-      {{sdbm__partname}}
-    </view>
-  </view>
-
-  <view class="weui-cell weui-cell_access">
-    <view class="weui-cell__bd weui-cell_primary">
-      <view>开始时间</view>
-    </view>
-    <view class="weui-cell__ft">
-      {{kssj}}
-    </view>
-  </view>
-  <view class="weui-cell weui-cell_access">
-    <view class="weui-cell__bd weui-cell_primary">
-      <view>结束时间</view>
-    </view>
-    <view class="weui-cell__ft">
-      {{jssj}}
-    </view>
-  </view>
-  <view class="weui-cell weui-cell_access">
-    <view class="weui-cell__bd weui-cell_primary">
-      <view>作业内容</view>
-      <view class="weui-cell__ft">
-        {{zynr}}
+<view class="weui-tab">
+  <view class="weui-navbar">
+    <block wx:for="{{tabs}}" wx:key="*this">
+      <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+        <view class="weui-navbar__title">{{item}}</view>
       </view>
-    </view>
+    </block>
+    <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
   </view>
-  <view class="weui-cell weui-cell_access">
-    <view class="weui-cell__bd weui-cell_primary">
-      <view>现场图片</view>
-      <view class="weui-uploader__files">
-        <block wx:for="{{zyimg}}" wx:for-item="image" wx:key="unique">
-          <view class="weui-uploader__file">
-            <image class="weui-uploader__img" src="{{image}}" data-src="{{image}}" bindtap="zyimgPreview" bindlongpress="deleteyhImage"></image>
+  <view class="weui-tab__panel">
+    <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_access">
+          <view class="weui-cell__bd weui-cell_primary">
+            <view>当前状态</view>
           </view>
-        </block>
-        <!-- <view class="weui-uploader__input-box" wx:if="{{zyzt ==0}}">
+          <view class="weui-cell__ft" style="color:green" wx:if="{{zyzt.zyzt=='审批中'}}">{{zyzt.jdmc}}-{{zyzt.zyzt}}</view>
+          <view class="weui-cell__ft" style="color:green" wx:else>{{zyzt.zyzt}}</view>
+        </view>
+        <view class="weui-cell weui-cell_access">
+          <view class="weui-cell__bd weui-cell_primary">
+            <view>作业类型</view>
+          </view>
+          <view class="weui-cell__ft">
+            {{zylx__dickeyname}}
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_access">
+          <view class="weui-cell__bd weui-cell_primary">
+            <view>作业地点</view>
+          </view>
+          <view class="weui-cell__ft">
+            {{zydd}}
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_access">
+          <view class="weui-cell__bd weui-cell_primary">
+            <view>作业部门</view>
+          </view>
+          <view class="weui-cell__ft">
+            {{zybm__partname}}
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_access">
+          <view class="weui-cell__bd weui-cell_primary">
+            <view>作业负责人</view>
+          </view>
+          <view class="weui-cell__ft">
+            {{zyfzr__name}}
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_access">
+          <view class="weui-cell__bd weui-cell_primary">
+            <view>属地部门</view>
+          </view>
+          <view class="weui-cell__ft">
+            {{sdbm__partname}}
+          </view>
+        </view>
+
+        <view class="weui-cell weui-cell_access">
+          <view class="weui-cell__bd weui-cell_primary">
+            <view>开始时间</view>
+          </view>
+          <view class="weui-cell__ft">
+            {{kssj}}
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_access">
+          <view class="weui-cell__bd weui-cell_primary">
+            <view>结束时间</view>
+          </view>
+          <view class="weui-cell__ft">
+            {{jssj}}
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_access">
+          <view class="weui-cell__bd weui-cell_primary">
+            <view>作业内容</view>
+            <view class="weui-cell__ft">
+              {{zynr}}
+            </view>
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_access">
+          <view class="weui-cell__bd weui-cell_primary">
+            <view>作业人员</view>
+            <view class="weui-cell__ft">
+              {{zyry}}
+            </view>
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_access">
+          <view class="weui-cell__bd weui-cell_primary">
+            <view>现场图片</view>
+            <view class="weui-uploader__files">
+              <block wx:for="{{zyimg}}" wx:for-item="image" wx:key="unique">
+                <view class="weui-uploader__file">
+                  <image class="weui-uploader__img" src="{{image}}" data-src="{{image}}" bindtap="zyimgPreview" bindlongpress="deleteyhImage"></image>
+                </view>
+              </block>
+              <!-- <view class="weui-uploader__input-box" wx:if="{{zyzt ==0}}">
           <view class="weui-uploader__input" bindtap="chooseyhImage"></view>
         </view> -->
+            </view>
+          </view>
+        </view>
       </view>
-    </view>
-  </view>
-</view>
 
-<view class="weui-cells__title">风险分析和安全措施</view>
-<view class="weui-cells weui-cells_after-title">
-  <block wx:for="{{fxcs}}" wx:key="unique" wx:for-item="item">
-    <view class="weui-media-box">
-      <view class="weui-media-box__desc" style='color:red'>{{item.fxfx}}</view>
-      <view class="weui-media-box__desc" style='color:green'>{{item.aqcs}}</view>
-      <view class="weui-media-box__desc">{{item.cslx}}</view>
-    </view>
+      <view class="weui-cells__title">风险分析和安全措施</view>
+      <view class="weui-cells weui-cells_after-title">
+        <block wx:for="{{fxcs}}" wx:key="unique" wx:for-item="item">
+          <view class="weui-media-box">
+            <view style='color:red'>{{item.fxfx}}</view>
+            <view style='color:green'>{{item.aqcs}}</view>
+            <view class="weui-media-box__desc">{{item.cslx}}</view>
+          </view>
 
-  </block>
-</view>
-<view class="weui-cells__title">作业人员确认详情</view>
-<view class="weui-cells weui-cells_after-title">
-  <block wx:for="{{qrxq}}" wx:key="unique" wx:for-item="item">
-    <view class="weui-cell weui-cell_access">
-      <view class="weui-cell__bd weui-cell_primary">
-        <view>{{item.operzyry__name}}</view>
+        </block>
       </view>
-      <view class="weui-cell__ft" wx:if="{{item.checked == 0}}" style="color:red">
-        待确认
-      </view>
-      <view class="weui-cell__ft" wx:if="{{item.checked == 1}}" style="color:green">
-        已确认
-      </view>
-    </view>
-  </block>
-</view>
-<view class="weui-cells__title">审批详情</view>
-<view class="weui-cells weui-cells_after-title">
-  <block wx:for="{{spxq}}" wx:key="unique" wx:for-item="item">
-    <view class="weui-cell weui-cell_access">
-      <view class="weui-cell__bd weui-cell_primary">
-        <view>{{item.jdmc}}</view>
-        <view class="weui-media-box__desc">{{item.spr__name}} {{item.submittime}}</view>
-      </view>
-      <view class="weui-cell__ft" wx:if="{{item.checked == 0}}" style="color:red">
-        待审批
-      </view>
-      <view class="weui-cell__ft" wx:if="{{item.checked == 1}}" style="color:green">
-        已通过
-      </view>
-    </view>
-  </block>
-</view>
-<view class="weui-cells__title">关闭现场图片</view>
-<view class="weui-cell weui-cell_access">
-      <view class="weui-uploader__files">
-        <block wx:for="{{zyimg2}}" wx:for-item="image" wx:key="unique">
-          <view class="weui-uploader__file">
-            <image class="weui-uploader__img" src="{{image}}" data-src="{{image}}" bindtap="zyimg2Preview" ></image>
+      <view class="weui-cells__title">审批流程</view>
+      <view class="weui-cells weui-cells_after-title">
+        <block wx:for="{{zyzt.splc}}" wx:key="unique" wx:for-item="item">
+          <view class="weui-cell weui-cell_access">
+            <view class="weui-cell__bd weui-cell_primary">
+              <view>{{index+1}} {{item.jdmc}}</view>
+            </view>
+            <view class="weui-cell__ft" wx:if="{{zyzt.index > index }}" style="color:green">
+              已执行
+            </view>
+            <view class="weui-cell__ft" wx:if="{{zyzt.index == index && zyzt.zyzt=='待关闭' }}" style="color:green">
+              已执行
+            </view>
           </view>
         </block>
       </view>
+      <view class="weui-cells__title">关闭现场图片</view>
+      <view class="weui-cell weui-cell_access">
+        <view class="weui-uploader__files">
+          <block wx:for="{{zyimg2}}" wx:for-item="image" wx:key="unique">
+            <view class="weui-uploader__file">
+              <image class="weui-uploader__img" src="{{image}}" data-src="{{image}}" bindtap="zyimg2Preview"></image>
+            </view>
+          </block>
+        </view>
+      </view>
+    </view>
+    <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
+          <view class="weui-cells__title">作业人员确认详情</view>
+      <view class="weui-cells weui-cells_after-title">
+        <block wx:for="{{qrxq}}" wx:key="unique" wx:for-item="item">
+          <view class="weui-cell weui-cell_access">
+            <view class="weui-cell__bd weui-cell_primary">
+              <view>{{item.operzyry__name}}</view>
+            </view>
+            <view class="weui-cell__ft" wx:if="{{item.checked == 0}}" style="color:red">
+              待确认
+            </view>
+            <view class="weui-cell__ft" wx:if="{{item.checked == 1}}" style="color:green">
+              已确认
+            </view>
+          </view>
+        </block>
+      </view>
+      <view class="weui-cells__title">审批详情</view>
+      <view class="weui-cells weui-cells_after-title">
+        <block wx:for="{{spxq}}" wx:key="unique" wx:for-item="item">
+          <view class="weui-cell weui-cell_access">
+            <view class="weui-cell__bd weui-cell_primary">
+              <view>{{item.jdmc}}</view>
+              <view class="weui-media-box__desc">{{item.spr__name}} {{item.submittime}}</view>
+            </view>
+            <view class="weui-cell__ft" wx:if="{{item.checked == 0}}" style="color:red">
+              待审批
+            </view>
+            <view class="weui-cell__ft" wx:if="{{item.checked == 1}}" style="color:green">
+              已通过
+            </view>
+            <view class="weui-cell__ft" wx:if="{{item.checked == 2}}" style="color:green">
+              转交审批
+            </view>
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>
 </view>

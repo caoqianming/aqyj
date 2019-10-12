@@ -10,18 +10,24 @@
   <view class="weui-tab__panel">
     <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
       <view class="head">
-        共{{todototal}}条待参加考试</view>
+        共{{todototal}}条考试</view>
       <view class="weui-cells weui-cells_after-title">
         <block wx:for="{{todokslist}}" wx:key="unique">
           <navigator url="note?examtestid={{item.examtest__id}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
             <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
               <view class="weui-media-box__title">{{item.examtest__name}}
               </view>
-              <view class="weui-media-box__desc" style="color:green">答卷时长:{{item.examtest__duration}}分钟  通过分数:{{item.examtest__passscore}}</view>
+              <view class="weui-media-box__desc" style="color:green">答卷时长:{{item.examtest__duration}}分钟 通过分数:{{item.examtest__passscore}}</view>
+
             </view>
+                          <view class="weui-panel__ft weui-cell__ft_in-access">
+                <view wx:if="{{item.isActive}}" class="weui-media-box__title" style="background-color:green;color:white">可参加</view>
+                <view wx:else class="weui-media-box__title" style="background-color:red;color:white">已过期</view>
+              </view>
           </navigator>
         </block>
       </view>
+
     </view>
     <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
       <view class="head">
@@ -33,14 +39,14 @@
               <view class="weui-media-box__title">{{item.examtest__name}}
               </view>
               <view class="weui-media-box__desc">参加时间:{{item.starttime}}</view>
-              <view class="weui-media-box__desc" style="color:blue">耗时:{{item.took}}分钟  得分:{{item.score}}</view>
+              <view class="weui-media-box__desc" style="color:blue">耗时:{{item.took}}分钟 得分:{{item.score}}</view>
             </view>
             <view class="weui-panel__ft weui-cell__ft_in-access">
-              <view class="weui-media-box__title" >
-              <view wx:if="{{item.passcode==1}}" style="color:green">通过</view>
-              <view wx:if="{{item.passcode==0 && item.ison==1}}" style="color:red">未通过</view>
-              <view wx:if="{{item.examtest__state==1}}" style="color:green">进行中</view>
-              <view wx:else >已关闭</view>
+              <view class="weui-media-box__title">
+                <view wx:if="{{item.passcode==1}}" style="color:green">通过</view>
+                <view wx:if="{{item.passcode==0 && item.ison==1}}" style="color:red">未通过</view>
+                <view wx:if="{{item.examtest__state==1}}" style="color:green">进行中</view>
+                <view wx:else>已关闭</view>
               </view>
             </view>
           </view>
@@ -52,5 +58,5 @@
   </view>
 </view>
 <view style="position:fixed;bottom:0;left:0;width:100%;" hidden="{{activeIndex == 1}}">
-    <button class="weui-btn" type="primary" style="width:auto;margin:5px" bindtap="scan" >扫一扫参加考试</button>
+  <button class="weui-btn" type="primary" style="width:auto;margin:5px" bindtap="scan">扫一扫参加考试</button>
 </view>

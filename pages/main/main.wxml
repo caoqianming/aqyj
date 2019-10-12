@@ -1,4 +1,21 @@
 <view class="page">
+<swiper indicator-dots="{{indicatorDots}}" 
+        autoplay="{{autoplay}}" 
+        circular="{{circular}}" 
+        vertical="{{vertical}}" 
+        interval="{{interval}}" 
+        duration="{{duration}}" 
+        previous-margin="{{previousMargin}}px" 
+        next-margin="{{nextMargin}}px">
+    
+    <block wx:for='{{images}}' wx:key='index'>
+      <swiper-item>
+        <image src='{{item}}' mode='aspectFill' class='swiper-item-images'/>
+      </swiper-item>
+    </block>
+
+</swiper>
+
   <view class="page__bd">
     <view class="weui-cells__title">数据采集</view>
     <view class="weui-grids">

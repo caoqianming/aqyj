@@ -1,5 +1,6 @@
 // pages/operation/operationcheck.js
 var util = require('../../utils/util.js')
+var sliderWidth = 96;
 Page({
 
   /**
@@ -7,6 +8,17 @@ Page({
    */
   data: {
     serverUrl: getApp().globalData.serverUrl,
+    tabs: ["作业详情","流程详情"],
+    activeIndex: 0,
+    sliderOffset: 0,
+    sliderLeft: 0
+  },
+  tabClick: function (e) {
+    var that = this
+    that.setData({
+      sliderOffset: e.currentTarget.offsetLeft,
+      activeIndex: e.currentTarget.id
+    });
   },
   getZy: function (zyid) {
     wx.showLoading({
@@ -31,8 +43,6 @@ Page({
               zydata.zyimg2[i] = this.data.serverUrl + zydata.zyimg2[i];
             }
             this.setData(zydata)
-            switch (zydata.zyzt) {
-            }
             //console.log(this.data.yhzt)
           }
         }
@@ -42,7 +52,31 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getZy(options.zyid);
+    var fromwx = options.fromwx
+    if(fromwx==1){
+      var pages = getCurrentPages();//页面指针数组
+      var prepage = pages[pages.length - 2];//上一页面指针
+      var zydata = prepage.data
+      //格式化信息
+      for (var i = 0; i < zydata.zyimg.length; i++) {
+        zydata.zyimg[i] = this.data.serverUrl + zydata.zyimg[i];
+      }
+      for (var i = 0; i < zydata.zyimg2.length; i++) {
+        zydata.zyimg2[i] = this.data.serverUrl + zydata.zyimg2[i];
+      }
+      this.setData(zydata)
+    }else{
+      this.getZy(options.zyid);
+    }
+    var that = this
+    wx.getSystemInfo({
+      success: function (res) {
+        that.setData({
+          sliderLeft: (res.windowWidth / that.data.tabs.length - sliderWidth) / 2,
+          sliderOffset: res.windowWidth / that.data.tabs.length * that.data.activeIndex
+        });
+      }
+    });
   },
 
   /**

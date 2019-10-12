@@ -8,7 +8,9 @@ Page({
   data: {
     serverUrl: getApp().globalData.serverUrl,
     zyimg2: [],
-    zjsp:false
+    zjsp:false,
+    zyspryname: '',
+    spry: [],
   },
   getZy: function (zyid) {
     wx.showLoading({
@@ -122,7 +124,7 @@ Page({
     wx.request({
       url: that.data.serverUrl + 'api/operation?a=qrzy',
       header: {
-        'content-type': 'application/x-www-form-urlencoded', // 
+        'content-type': 'aapplication/json', // 
         'Cookie': wx.getStorageSync("sessionid"),
       },
       method: 'POST',
@@ -142,7 +144,7 @@ Page({
     wx.request({
       url: that.data.serverUrl + 'api/operation?a=spzy',
       header: {
-        'content-type': 'application/x-www-form-urlencoded', // 
+        'content-type': 'application/json', // 
         'Cookie': wx.getStorageSync("sessionid"),
       },
       method: 'POST',
@@ -252,6 +254,24 @@ Page({
       }
     });
   },
+  zjsp: function () {
+    var that=this
+    wx.request({
+      url: getApp().globalData.serverUrl + 'api/operation?a=spzy',
+      header: {
+        'content-type': 'application/json', // 
+        'Cookie': wx.getStorageSync("sessionid"),
+      },
+      method: 'POST',
+      data: { 'zyid': that.data.zyid, 'zjsp': true, 'newsprs': that.data.spry },
+      success: res => {
+        if (res.statusCode === 200) {
+          wx.hideLoading();
+          wx.navigateBack()
+        }
+      }
+    });
+  },
   openaction: function () {
     var that = this
     wx.showActionSheet({
@@ -270,7 +290,7 @@ Page({
             wx.request({
               url: that.data.serverUrl + 'api/operation?a=spzy',
               header: {
-                'content-type': 'application/x-www-form-urlencoded', // 
+                'content-type': 'application/json', // 
                 'Cookie': wx.getStorageSync("sessionid"),
               },
               method: 'POST',

@@ -224,6 +224,7 @@ Page({
       tmIndex:tmIndex,
     })
     that.showChecked(tmIndex)
+    console.log(that.tmdata.tms)
   },
   previous: function () {
     var that = this

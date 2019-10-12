@@ -2,13 +2,13 @@
   作业详情
 </view>
 <view class="weui-cells weui-cells_after-title">
-  <view class="weui-cell weui-cell_access">
+  <navigator url="operationdetail?zyid={{zyid}}&fromwx=1" class="weui-cell weui-cell_access">
     <view class="weui-cell__bd weui-cell_primary">
       <view>当前状态</view>
     </view>
-        <view class="weui-cell__ft" style="color:green" wx:if="{{zyzt.zyzt=='已关闭'}}">已关闭</view>
-    <view class="weui-cell__ft" style="color:green" wx:else>{{zyzt.zyzt}}</view>
-  </view>
+        <view class="weui-cell__ft_in-access" style="color:green" wx:if="{{zyzt.zyzt=='审批中'}}">{{zyzt.jdmc}}-{{zyzt.zyzt}}</view>
+          <view class="weui-cell__ft_in-access" style="color:green" wx:else>{{zyzt.zyzt}}</view>
+  </navigator>
   <view class="weui-cell weui-cell_access">
     <view class="weui-cell__bd weui-cell_primary">
       <view>作业类型</view>
@@ -87,9 +87,9 @@
 <view class="weui-cells weui-cells_after-title">
   <block wx:for="{{fxcs}}" wx:key="unique" wx:for-item="item">
     <view class="weui-media-box">
-      <view class="weui-media-box__desc" style='color:red'>{{item.fxfx}}</view>
-      <view class="weui-media-box__desc" style='color:green'>{{item.aqcs}}</view>
-      <view class="weui-media-box__desc">{{item.cslx}}</view>
+      <view style='color:red'>{{item.fxfx}}</view>
+      <view style='color:green'>{{item.aqcs}}</view>
+      <view class="weui-media-box__desc" >{{item.cslx}}</view>
     </view>
 
   </block>

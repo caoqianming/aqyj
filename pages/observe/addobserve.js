@@ -263,6 +263,7 @@ Page({
       otherunsafe: this.data.otherunsafe,
       safecontent: this.data.safecontent,
       unsafe: this.getunsafe(),
+      lookers:this.data.lookers
     }
     //console.log(gcdata.unsafe)
     wx.request({
