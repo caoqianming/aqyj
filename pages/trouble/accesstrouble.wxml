@@ -384,18 +384,19 @@
       </view>
     </view>
 
-    <view class="weui-cell weui-cell_switch" wx:if="{{yhzt ==4||yhzt==5}}">
-      <view class="weui-cell__bd">是否通过</view>
+
+  </view>
+      <view class="weui-cell weui-cell_switch" wx:if="{{yhzt ==4||yhzt==5}}">
+      <view class="weui-cell__bd">驳回</view>
       <view class="weui-cell__ft">
-        <switch checked bindchange="shChange" />
+        <switch bindchange="shChange" />
       </view>
     </view>
-  </view>
 </view>
 <view class="weui-cells weui-cells_after-title" wx:if="{{yhzt==0||shresult=='reject'}}">
   <view class="weui-cell weui-cell_access">
     <view class="weui-cell__bd weui-cell_primary">
-      <view>退回原因</view>
+      <view>驳回原因</view>
       <view class="weui-cell__bd" wx:if="{{yhzt==0}}">
         {{pgyj}}
       </view>

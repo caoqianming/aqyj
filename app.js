@@ -3,6 +3,7 @@ App({
   onLaunch: function () {
     var that = this
     that.mplogin()
+    setInterval(that.reflesh,20*60*1000)
   },
   mplogin: function () {
     var that = this;
@@ -16,19 +17,26 @@ App({
           },
           method: 'POST',
           header: {
-            'content-type': 'application/json'
+            'Content-Type': 'application/x-www-form-urlencoded'
           },
           success: function (res) {
             if (res.data.code == 1) {
               //console.log(res.header["Set-Cookie"])
-              //console.log(res)
+              console.log(res)
               wx.setStorageSync('userid', res.data.userid)
               wx.setStorageSync('username', res.data.username)
-              wx.setStorageSync('sessionid', res.header["Set-Cookie"])
+              if (res.header.hasOwnProperty('Set-Cookie')){
+                wx.setStorageSync('sessionid', res.header["Set-Cookie"])
+              }else{
+                wx.setStorageSync('sessionid', res.header["set-cookie"])
+              }
               wx.setStorageSync('mpopenid', res.data.mpopenid)
+              //console.log(res.header["Set-Cookie"])
+              //console.log(wx.getStorageSync("sessionid"))
               if (that.callback) { //这个函数名字和你定义的一样即可
                 that.callback() //执行定义的回调函数
               }
+              
               //获取是否是安全员
               wx.request({
                 url: that.globalData.serverUrl + 'api/user?a=checkaqy',
@@ -71,6 +79,19 @@ App({
         })
       }
     })
+  },
+  reflesh: function(){//刷新session
+    var that = this
+    wx.request({
+      url: that.globalData.serverUrl + 'api/check_session',
+      header: {
+        'content-type': 'application/json', // 默认值
+        'Cookie': wx.getStorageSync("sessionid"),
+      },
+      data: {},
+      success: res => {
+      }
+    });
   },
   globalData: {
     userInfo: null,

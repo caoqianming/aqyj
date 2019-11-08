@@ -91,7 +91,14 @@ Page({
   bindzgcsInput: function (e) {
     this.data.zgcs = e.detail.value
   },
-  
+  shChange:function(e){
+    console.log('switch 发生 change 事件，携带值为', e.detail.value)
+    if(e.detail.value){
+      this.data.shresult = 'reject'
+    }else{
+      this.data.shresult = 'pass'
+    }
+  },
   getYh: function (troubleid) {
     wx.showLoading({
       title: '加载中',

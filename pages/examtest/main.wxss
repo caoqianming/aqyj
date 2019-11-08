@@ -1,6 +1,12 @@
 .head{
+  z-index: 1;
+  position: fixed;
+  top: 0rpx;
+  width:100%;
+  height:60rpx;
   color:#fff;
   background-color: cornflowerblue;
+  /* text-align: center; */
 }
 .txlabel{
   color:#fff;
@@ -9,10 +15,26 @@
 }
 .weui-btn{
   width:auto;
-  margin: 5px;
+  margin: 5rpx;
 }
 .sheet{
   color:#fff;
   background-color: red;
-  float:right
+  float:right;
+  height:64rpx;
+}
+.body-v{
+  position: fixed;
+  z-index: -1;
+  top:64rpx;
+  bottom:124rpx;
+}
+.footer{
+  z-index: 1;
+  position: fixed;
+  bottom: 0rpx;
+  width:100%;
+  height:120rpx;
+  text-align: center;
+  border-top:1rpx solid red;
 }

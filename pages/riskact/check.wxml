@@ -10,7 +10,7 @@
               <span wx:if="{{item.level == '重大风险'}}" style="background-color:red;color:white">重大风险</span>
               {{item.step}}
               </view>
-              <view class="weui-media-box__desc">
+              <view>
               <span style="background-color:orange;color:white">标准/危害因素</span>
               {{item.hazard}}
               </view>

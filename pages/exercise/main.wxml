@@ -3,8 +3,8 @@
 
   <view style="float:left">题量 {{tmIndex+1}}/{{tmtotal}}</view>
 </view>
-<view>
-</view>
+<scroll-view class='body-v' scroll-y>
+
 <view class="weui-article">
   <view class="weui-article__h2">{{tmIndex+1}}.
     <span wx:if="{{currentTm.type==1}}" class="txlabel">单选题</span>
@@ -16,9 +16,10 @@
 <radio-group bindchange="radioChange" wx:if="{{(currentTm.type==1 ||currentTm.type==3)}}">
   <label class="weui-cell weui-check__label" wx:for="{{answerChoices}}" wx:key="value">
     <radio class="weui-check" value="{{item.value}}" checked="{{item.checked}}" />
-
+    <view wx:if="{{currentTm.answer[item.value]!=''}}">
     <view class="weui-cell__bd" wx:if="{{item.right}}" style="color:green;font-weight:bold">{{item.name}}: {{currentTm.answer[item.value]}}</view>
     <view class="weui-cell__bd" wx:else>{{item.name}}: {{currentTm.answer[item.value]}}</view>
+    </view>
     <view class="weui-cell__ft weui-cell__ft_in-radio" wx:if="{{item.checked}}">
       <icon class="weui-icon-radio" type="success_no_circle" size="16"></icon>
     </view>
@@ -36,6 +37,8 @@
   </label>
 </checkbox-group>
 <view class="weui-article" wx:if="{{answerP}}">
+  <view class="weui-article__h2" wx:if="{{answerright}}" style="color:green;font-weight:bold">回答正确!</view>
+  <view class="weui-article__h2" wx:else style="color:red;font-weight:bold">回答错误!</view>
   <view class="weui-article__h2">正确答案是{{currentTm.right}},你的答案是{{currentTm.userchecked}}</view>
   <!-- <view class="weui-article__h2" style="color:green" wx:if="{{currentTm.iscore == currentTm.score}}">回答正确</view>
   <view class="weui-article__h2" style="color:red" wx:else>回答有误</view> -->
@@ -44,7 +47,8 @@
   <view class="weui-article__title" wx:else>
     <span style="color:blue">解析: </span>无</view>
 </view>
-<view style="position:fixed;bottom:0;left:0;width:100%;">
+</scroll-view>
+<view class="footer">
   <view style="width:30%;float:left">
     <button class="weui-btn" type="primary" bindtap="previous" disabled="{{tmIndex==0}}">上一题</button>
   </view>

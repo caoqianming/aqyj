@@ -108,11 +108,6 @@ Page({
               } else {
                 list = this.data.todokslist.concat(res.data.rows)
               }
-              for(var n=0;n<list.length;n++){
-                let value = new Date(list[n].examtest__endtime) - new Date();
-                let isActive = value > 0 ? true : false;
-                list[n].isActive = isActive;
-              }
               this.setData({
                 todototal: res.data.total,
                 todokslist: list

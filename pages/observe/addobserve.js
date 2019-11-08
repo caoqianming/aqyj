@@ -285,14 +285,18 @@ Page({
   getunsafe: function () {
     var x = []
     var that = this.data;
+    
     var items = [that.unsafe24.child, that.unsafe25.child, that.unsafe26.child, that.unsafe27.child, that.unsafe28.child, that.unsafe29.child, that.unsafe30.child]
     for (var i = 0, lenI = items.length; i < lenI; i++) {
       var y = items[i]
-      for (var m = 0, lenI = y.length; m < lenI; m++) {
-        if (y[m].checked) {
-          x.push(y[m].value)
+      if(y!=undefined){
+        for (var m = 0, lenI = y.length; m < lenI; m++) {
+          if (y[m].checked) {
+            x.push(y[m].value)
+          }
         }
       }
+      
     }
     return x
   },
