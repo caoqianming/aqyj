@@ -17,7 +17,7 @@ Page({
     yhdjArray: [],
     yhdjIndex: null,
     jclxArray: [],
-    jclxIndex: null,
+    jclxIndex: 0,
     troubleid: '',
     yhdj: '',
     jclx: '',
@@ -352,6 +352,7 @@ Page({
           this.data.jclxArray = res.data;
           this.setData({
             jclxArray: res.data,
+            jclx:res.data[0]//默认检查类型
           })
         }
       }

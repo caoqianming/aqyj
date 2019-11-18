@@ -26,9 +26,9 @@ Page({
     // 采用衔接滑动
     circular: true,
     // 自动切换时间间隔2s
-    interval: 4000,
+    interval: 8000,
     // 滑动动画时长0.5s
-    duration: 1000,
+    duration: 1500,
     // 前边距，可用于露出前一项的一小部分，接受 px 和 rpx 值
     previousMargin: 0,
     // 后边距，可用于露出后一项的一小部分，接受 px 和 rpx 值
@@ -64,7 +64,8 @@ Page({
   onShow: function () {
     var that = this
     //获取待阅读通知数目
-    if (wx.getStorageSync("sessionid")) {
+    //console.log(wx.getStorageSync('sessionid'))
+    if (wx.getStorageSync("sessionid").indexOf('sessionid')!=-1) {
       this.getnoread()
       this.getyhtodonum()
       this.getzytodonum()

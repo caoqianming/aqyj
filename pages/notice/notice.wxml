@@ -7,7 +7,7 @@
         <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
           <view class="weui-media-box__title">{{item.noticeid__title}}</view>
           <view class="weui-media-box__desc">{{item.noticeid__pubpart__partname}} {{item.noticeid__pubuser__name}}发布</view>
-          <view class="weui-media-box__desc">{{item.noticeid__submittime}}</view>
+          <view class="weui-media-box__desc">发布时间:{{item.noticeid__submittime}}</view>
         </view>
         <view class="weui-panel__ft weui-cell__ft_in-access">
         <view class="weui-media-box__title" wx:if="{{item.read == 0}}" style="background-color:yellow">未读</view>

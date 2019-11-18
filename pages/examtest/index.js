@@ -198,7 +198,7 @@ Page({
         if (res.result.indexOf("examtest") != -1) {
           let id = res.result.split('=')[1]
           wx.navigateTo({
-            url: 'note?examtestid=' + id,
+            url: 'note?id=' + id,
           })
         } else {
           wx.showModal({

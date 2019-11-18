@@ -6,15 +6,28 @@ Page({
    * 页面的初始数据
    */
   data: {
-    testdisable:false
+    testdisable:false,
+    fromWx:false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var examtestid
+    if (options.id) {
+      examtestid = options.id
+    } else {
+      let q = decodeURIComponent(options.q)
+      if (q) {
+        examtestid = util.getQueryString(q, 'id')
+        this.setData({
+          fromWx: true
+        })
+      }
+    }
     wx.request({
-      url: getApp().globalData.serverUrl + 'api/examtest?a=detail&id='+options.examtestid,
+      url: getApp().globalData.serverUrl + 'api/examtest?a=detail&id='+examtestid,
       header: {
         'content-type': 'application/json', // 默认值
         'Cookie': wx.getStorageSync("sessionid"),

@@ -10,12 +10,12 @@
     <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell weui-cell_input">
         <view class="weui-cell__bd">
-          <input class="weui-input" placeholder="请输入账号" bindinput="bindusernameInput"/>
+          <input class="weui-input" placeholder="请输入账号" bindinput="usernameChange"/>
         </view>
       </view>
       <view class="weui-cell weui-cell_input">
         <view class="weui-cell__bd">
-          <input class="weui-input" placeholder="请输入密码" bindinput="bindpasswordInput" password="true"/>
+          <input class="weui-input" placeholder="请输入密码" bindinput="passwordChange" password="true"/>
         </view>
       </view>
     </view>
@@ -26,5 +26,6 @@
             <!-- <view class="weui-footer__links">
                 <navigator url="" class="weui-footer__link">WeUI首页</navigator>
             </view> -->
-            <view class="weui-footer__text">Copyright © 2018-2019 国检集团</view>
-        </view>
+    <view class="weui-footer__text" bindtap="intro">点击下载系统/小程序文档介绍</view>
+    <view class="weui-footer__text">Copyright © 2018-2019 国检集团</view>
+</view>
