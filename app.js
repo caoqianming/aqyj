@@ -3,7 +3,7 @@ App({
   onLaunch: function () {
     var that = this
     that.mplogin()
-    setInterval(that.reflesh,20*60*1000)
+    setInterval(that.reflesh,10*1000)
   },
   mplogin: function () {
     var that = this;
@@ -82,6 +82,7 @@ App({
   },
   reflesh: function(){//刷新session
     var that = this
+    console.log(wx.getStorageSync("sessionid"))
     wx.request({
       url: that.globalData.serverUrl + 'api/check_session',
       header: {
@@ -90,6 +91,11 @@ App({
       },
       data: {},
       success: res => {
+        if (res.header.hasOwnProperty('Set-Cookie')) {
+          wx.setStorageSync('sessionid', res.header["Set-Cookie"])
+        } else {
+          wx.setStorageSync('sessionid', res.header["set-cookie"])
+        }
       }
     });
   },

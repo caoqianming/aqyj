@@ -66,30 +66,43 @@ Page({
     //获取待阅读通知数目
     //console.log(wx.getStorageSync('sessionid'))
     if (wx.getStorageSync("sessionid").indexOf('sessionid')!=-1) {
-      this.getnoread()
-      this.getyhtodonum()
-      this.getzytodonum()
-      this.getpxqdnum()
-      this.getdknum() //待考
-      this.getgcnoreadnum()
-      this.getwsnoreadnum()//未遂未读
-      this.getjytodonum()
-      this.gettasknum()
+      wx.request({
+        url: getApp().globalData.serverUrl + 'api/check_session',
+        header: {
+          'content-type': 'application/json', // 默认值
+          'Cookie': wx.getStorageSync("sessionid"),
+        },
+        data: {},
+        success: res => {
+          if(res.data.code==1){
+            this.getNew()
+          }else{
+            getApp().callback = () => {
+              this.getNew()
+            };
+          }
+        }
+      });
+      
     } else {
       getApp().callback = () => {
-        this.getnoread()
-        this.getyhtodonum()
-        this.getzytodonum()
-        this.getpxqdnum()
-        this.getdknum()
-        this.getgcnoreadnum()
-        this.getjytodonum()
-        this.gettasknum()
+        this.getNew()
       };
     }
 
   },
 
+  getNew:function(){
+    this.getnoread()
+    this.getyhtodonum()
+    this.getzytodonum()
+    this.getpxqdnum()
+    this.getdknum() //待考
+    this.getgcnoreadnum()
+    this.getwsnoreadnum()//未遂未读
+    this.getjytodonum()
+    this.gettasknum()
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */

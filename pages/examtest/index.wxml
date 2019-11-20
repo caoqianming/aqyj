@@ -13,7 +13,7 @@
         共{{todototal}}条考试</view>
       <view class="weui-cells weui-cells_after-title">
         <block wx:for="{{todokslist}}" wx:key="unique">
-          <navigator url="note?examtestid={{item.examtest__id}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+          <navigator url="note?id={{item.examtest__id}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
             <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
               <view class="weui-media-box__title">{{item.examtest__name}}
               </view>

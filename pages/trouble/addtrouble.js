@@ -348,11 +348,12 @@ Page({
       data: {},
       success: res => {
         if (res.statusCode === 200) {
-          //console.log(res.data)
+          console.log(res.data)
           this.data.jclxArray = res.data;
           this.setData({
             jclxArray: res.data,
-            jclx:res.data[0]//默认检查类型
+            jclxIndex:0,
+            jclx:res.data[0].value//默认检查类型
           })
         }
       }
