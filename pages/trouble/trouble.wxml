@@ -16,17 +16,18 @@
           <navigator url="troubledetail?troubleid={{item.troubleid}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
             <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
               <view class="weui-media-box__title">{{item.yhdj__dickeyname}}
-                <span wx:if="{{item.yhlb__dickeyname != null}}">{{item.yhlb__dickeyname}}</span>
+                <span wx:if="{{item.yhlb__dickeyname != null}}" 
+                style="color:orange;font-weight:bold">{{item.yhlb__dickeyname}}</span>
               </view>
-              <view class="weui-media-box__desc">{{item.yhnum}} {{item.fxr__name}}填报</view>
-              <view class="weui-media-box__desc">{{item.tbsj}}</view>
+              <view class="weui-media-box__desc">{{item.tbsj}} {{item.fxr__name}}填报</view>
             </view>
             <view class="weui-panel__ft weui-cell__ft_in-access">
               <view class="weui-media-box__title" wx:if="{{item.yhzt == 7}}">措施/方案待提交</view>
               <view class="weui-media-box__title" wx:elif="{{item.yhzt == 5}}">待复查</view>
               <view class="weui-media-box__title" wx:elif="{{item.yhzt == 1}}">待评估</view>
               <view class="weui-media-box__title" wx:elif="{{item.yhzt == 3}}">待整改</view>
-              <view class="weui-media-box__title" wx:elif="{{item.yhzt == 6}}">已归档</view>
+              <view class="weui-media-box__title" wx:elif="{{item.yhzt == 6}}"
+              style="background-color:green;color:white">已归档</view>
               <view class="weui-media-box__title" wx:elif="{{item.yhzt == 2}}">措施/方案待确认</view>
               <view class="weui-media-box__title" wx:elif="{{item.yhzt == 4}}">待审核</view>
               <view class="weui-media-box__title" wx:elif="{{item.yhzt == 0}}">待新增</view>
@@ -45,7 +46,8 @@
           <navigator url="accesstrouble?troubleid={{item.troubleid}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
             <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
               <view class="weui-media-box__title">{{item.yhdj__dickeyname}}
-                <span wx:if="{{item.yhlb__dickeyname != null}}">{{item.yhlb__dickeyname}}</span>
+                <span wx:if="{{item.yhlb__dickeyname != null}}"
+                style="color:orange;font-weight:bold">{{item.yhlb__dickeyname}}</span>
               </view>
               <view class="weui-media-box__desc">{{item.yhnum}} {{item.fxr__name}}填报</view>
               <view class="weui-media-box__desc">{{item.tbsj}}</view>
@@ -55,7 +57,8 @@
               <view class="weui-media-box__title" wx:elif="{{item.yhzt == 5}}">待复查</view>
               <view class="weui-media-box__title" wx:elif="{{item.yhzt == 1}}">待评估</view>
               <view class="weui-media-box__title" wx:elif="{{item.yhzt == 3}}">待整改</view>
-              <view class="weui-media-box__title" wx:elif="{{item.yhzt == 6}}">已归档</view>
+              <view class="weui-media-box__title" wx:elif="{{item.yhzt == 6}}" 
+              style="background-color:green;color:white">已归档</view>
               <view class="weui-media-box__title" wx:elif="{{item.yhzt == 2}}">措施/方案待确认</view>
               <view class="weui-media-box__title" wx:elif="{{item.yhzt == 4}}">待审核</view>
               <view class="weui-media-box__title" wx:elif="{{item.yhzt == 0}}">待新增</view>
@@ -75,7 +78,8 @@
           <navigator url="troubledetail?troubleid={{item.troubleid}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
             <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
               <view class="weui-media-box__title">{{item.yhdj__dickeyname}}
-                <span wx:if="{{item.yhlb__dickeyname != null}}">{{item.yhlb__dickeyname}}</span>
+                <span wx:if="{{item.yhlb__dickeyname != null}}"
+                style="color:orange;font-weight:bold">{{item.yhlb__dickeyname}}</span>
               </view>
               <view class="weui-media-box__desc">{{item.yhnum}} {{item.fxr__name}}填报</view>
               <view class="weui-media-box__desc">{{item.tbsj}}</view>
@@ -85,7 +89,8 @@
               <view class="weui-media-box__title" wx:elif="{{item.yhzt == 5}}">待复查</view>
               <view class="weui-media-box__title" wx:elif="{{item.yhzt == 1}}">待评估</view>
               <view class="weui-media-box__title" wx:elif="{{item.yhzt == 3}}">待整改</view>
-              <view class="weui-media-box__title" wx:elif="{{item.yhzt == 6}}">已归档</view>
+              <view class="weui-media-box__title" wx:elif="{{item.yhzt == 6}}"
+              style="background-color:green;color:white">已归档</view>
               <view class="weui-media-box__title" wx:elif="{{item.yhzt == 2}}">措施/方案待确认</view>
               <view class="weui-media-box__title" wx:elif="{{item.yhzt == 4}}">待审核</view>
               <view class="weui-media-box__title" wx:elif="{{item.yhzt == 0}}">待新增</view>

@@ -3,7 +3,7 @@ App({
   onLaunch: function () {
     var that = this
     that.mplogin()
-    setInterval(that.reflesh,10*1000)
+    setInterval(that.reflesh,10*60*1000)
   },
   mplogin: function () {
     var that = this;
@@ -21,8 +21,6 @@ App({
           },
           success: function (res) {
             if (res.data.code == 1) {
-              //console.log(res.header["Set-Cookie"])
-              console.log(res)
               wx.setStorageSync('userid', res.data.userid)
               wx.setStorageSync('username', res.data.username)
               if (res.header.hasOwnProperty('Set-Cookie')){
@@ -31,8 +29,6 @@ App({
                 wx.setStorageSync('sessionid', res.header["set-cookie"])
               }
               wx.setStorageSync('mpopenid', res.data.mpopenid)
-              //console.log(res.header["Set-Cookie"])
-              //console.log(wx.getStorageSync("sessionid"))
               if (that.callback) { //这个函数名字和你定义的一样即可
                 that.callback() //执行定义的回调函数
               }
@@ -47,10 +43,8 @@ App({
                 data: {},
                 success: res => {
                   if (res.data.code == 1) {
-                    //console.log(res.data)
                     that.globalData.isaqy = 1
                   }
-                  console.log(that.globalData.isaqy)
                 }
               });
               //拉取权限
@@ -82,22 +76,18 @@ App({
   },
   reflesh: function(){//刷新session
     var that = this
-    console.log(wx.getStorageSync("sessionid"))
     wx.request({
       url: that.globalData.serverUrl + 'api/check_session',
       header: {
         'content-type': 'application/json', // 默认值
         'Cookie': wx.getStorageSync("sessionid"),
       },
-      data: {},
       success: res => {
-        if (res.header.hasOwnProperty('Set-Cookie')) {
-          wx.setStorageSync('sessionid', res.header["Set-Cookie"])
-        } else {
-          wx.setStorageSync('sessionid', res.header["set-cookie"])
+        if(res.data.code!=1){
+          that.mplogin()
         }
       }
-    });
+    })
   },
   globalData: {
     userInfo: null,

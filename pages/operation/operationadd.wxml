@@ -21,7 +21,7 @@
       </view>
       <view class="weui-cell weui-cell_select">
         <view class="weui-cell__hd weui-cell__hd_in-select-after">
-          <view class="weui-label">结束时间</view>
+          <view class="weui-label">预计结束</view>
         </view>
         <view class="weui-cell__bd">
           <picker mode="multiSelector" value="{{dateTime2}}" bindchange="changeDateTime2" bindcolumnchange="changeDateTimeColumn2" range="{{dateTimeArray2}}">
