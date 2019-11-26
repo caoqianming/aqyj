@@ -18,15 +18,13 @@
               <view class="weui-media-box__title">{{item.zylx__dickeyname}}
               </view>
               <view class="weui-media-box__desc">{{item.zynum}} {{item.zyfzr__name}}发起</view>
-              <view class="weui-media-box__desc">{{item.submittime}}</view>
+              <view class="weui-media-box__desc"><span>{{item.submittime}} </span>
+              <span style="color:orange;font-weight:bold">{{item.zyzt.jdmc}}</span>
+              </view>
             </view>
             <view class="weui-panel__ft weui-cell__ft_in-access">
               <view class="weui-media-box__title" style="color:white;background-color:green" wx:if="{{item.zyzt.zyzt == '已关闭'}}">{{item.zyzt.zyzt}}</view>
               <view class="weui-media-box__title" wx:else>{{item.zyzt.zyzt}}</view>
-              <view class="weui-media-box__desc" wx:if="{{item.todouser__name != null}}">{{item.todouser__name}}</view>
-              <!-- <view wx:if="{{item.todouser__name != null}}">
-                    <view class="weui-media-box__desc">{{item.todouser__name}}</view>
-                  </view> -->
             </view>
           </navigator>
         </block>
@@ -43,13 +41,12 @@
               <view class="weui-media-box__title">{{item.zylx__dickeyname}}
               </view>
               <view class="weui-media-box__desc">{{item.zynum}} {{item.zyfzr__name}}发起</view>
-              <view class="weui-media-box__desc">{{item.submittime}}</view>
+              <view class="weui-media-box__desc"><span>{{item.submittime}} </span>
+              <span style="color:orange;font-weight:bold">{{item.zyzt.jdmc}}</span>
+              </view>
             </view>
             <view class="weui-panel__ft weui-cell__ft_in-access">
               <view class="weui-media-box__title">{{item.zyzt.zyzt}}</view>
-              <!-- <view wx:if="{{item.todouser__name != null}}">
-                    <view class="weui-media-box__desc">{{item.todouser__name}}</view>
-                  </view> -->
             </view>
           </navigator>
         </block>
@@ -67,15 +64,14 @@
               <view class="weui-media-box__title">{{item.zylx__dickeyname}}
               </view>
               <view class="weui-media-box__desc">{{item.zynum}} {{item.zyfzr__name}}发起</view>
-              <view class="weui-media-box__desc">{{item.submittime}}</view>
+              <view class="weui-media-box__desc">
+              <span>{{item.submittime}} </span>
+              <span style="color:orange;font-weight:bold">{{item.zyzt.jdmc}}</span>
+              </view>
             </view>
             <view class="weui-panel__ft weui-cell__ft_in-access">
               <view class="weui-media-box__title" style="color:white;background-color:green" wx:if="{{item.zyzt.zyzt == '已关闭'}}">{{item.zyzt.zyzt}}</view>
               <view class="weui-media-box__title" wx:else>{{item.zyzt.zyzt}}</view>
-              <view class="weui-media-box__desc" wx:if="{{item.todouser__name != null}}">{{item.todouser__name}}</view>
-              <!-- <view wx:if="{{item.todouser__name != null}}">
-                    <view class="weui-media-box__desc">{{item.todouser__name}}</view>
-                  </view> -->
             </view>
           </navigator>
         </block>
