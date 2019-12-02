@@ -154,7 +154,7 @@
       </view>
       <view class="weui-cell__bd">
         <picker bindchange="bindspr1change" value="{{spr1index}}" range="{{spr1Array}}" range-key="text">
-          <view class="weui-select">{{spr1Array[spr1index].text}}</view>
+          <view class="weui-select" style="color:blue;font-weight:bold">{{spr1Array[spr1index].text}}</view>
         </picker>
       </view>
     </view>
@@ -164,7 +164,7 @@
       </view>
       <view class="weui-cell__bd">
         <picker bindchange="bindspr2change" value="{{spr2index}}" range="{{spr2Array}}" range-key="text">
-          <view class="weui-select">{{spr2Array[spr2index].text}}</view>
+          <view class="weui-select" style="color:blue;font-weight:bold">{{spr2Array[spr2index].text}}</view>
         </picker>
       </view>
     </view>

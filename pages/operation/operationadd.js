@@ -10,6 +10,18 @@ Page({
     zyqy:'',
     chosespr:false
   },
+  bindspr1change: function (e) {
+    this.setData({
+      spr1index: e.detail.value,
+    })
+    this.data.spr1s = this.data.spr1Array[e.detail.value].value
+  },
+  bindspr2change: function (e) {
+    this.setData({
+      spr2index: e.detail.value,
+    })
+    this.data.spr2s = this.data.spr2Array[e.detail.value].value
+  },
   checkboxChangefxcs: function (e) {
     var x = this.data.fxcslist;
     var values = e.detail.value;
@@ -258,13 +270,13 @@ Page({
         'content-type': 'application/json', // 
         'Cookie': wx.getStorageSync("sessionid"),
       },
-      method: 'GET',
+      method: 'POST',
       data: {'sdbm':this.data.sdbm},
       success: res => {
         if (res.statusCode === 200) {
           this.setData({
-            spr1Array:res.data.spr1Array,
-            spr2Array:res.data.spr2Array
+            spr1Array:res.data.data.spr1Array,
+            spr2Array:res.data.data.spr2Array
           })
         }
       }
@@ -287,6 +299,12 @@ Page({
       that.Tap1('请输入作业内容！')
     } else if (!that.data.fxcs) {
       that.Tap1('请确认分析措施！')
+    } else if (that.data.chosespr==true) {
+      if(!that.data.spr1s||!that.data.spr2s){
+        that.Tap1('审批人未选择！')
+      }else{
+        this.upimg(0, this.data.zyimg.length);
+      }
     }else {
       this.upimg(0, this.data.zyimg.length);
     }
@@ -350,6 +368,12 @@ Page({
       zyimg: this.data.zyimg,
       sdbm:this.data.sdbm,
       fxcs: this.data.fxcs,
+      chosespr:this.data.chosespr,
+    }
+    if(this.data.chosespr){
+      zydata.spr1s = this.data.spr1s
+      zydata.spr2s = this.data.spr2s
+      zydata.chosespr = this.data.chosespr
     }
     //console.log(gcdata.unsafe)
     wx.showLoading({

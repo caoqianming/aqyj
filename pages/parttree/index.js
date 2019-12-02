@@ -16,6 +16,9 @@ Page({
       newbm__partname: e.detail.name,
       newbm: e.detail.id,
     })
+    if(prevPage.route.indexOf('operation')!=-1){
+      prevPage.getspr12array()
+    }
     wx.request({
       url: getApp().globalData.serverUrl + 'getuser?a=combobox&partid='+e.detail.id,
       header: {
