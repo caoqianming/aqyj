@@ -98,7 +98,10 @@
   </view>
 </view>
 <button type="primary" bindtap="openaction" class="weui-btn" wx:if="{{yhzt ==1}}">选择操作</button>
-<view wx:if="{{yhzt ==1}}"><span>当前操作：</span><span style="color:blue">{{action}}</span></view>
+<view wx:if="{{yhzt ==1}}">
+  <span>当前操作：</span>
+  <span style="color:blue">{{action}}</span>
+</view>
 <view wx:if='{{yhzt!=0}}'>
   <view wx:if="{{zppg=='yes' && shresult !='reject' }}">
     <view class="weui-cells__title">新评估人</view>
@@ -225,10 +228,10 @@
         </view>
         <view class="weui-cell__bd">
           <picker mode="multiSelector" value="{{dateTime1}}" bindchange="changeDateTime1" bindcolumnchange="changeDateTimeColumn1" range="{{dateTimeArray1}}">
-                        <view class="weui-select" wx:if="{{dateshow==1}}">
+            <view class="weui-select" wx:if="{{dateshow==1}}">
               {{dateTimeArray1[0][dateTime1[0]]}}-{{dateTimeArray1[1][dateTime1[1]]}}-{{dateTimeArray1[2][dateTime1[2]]}} {{dateTimeArray1[3][dateTime1[3]]}}:{{dateTimeArray1[4][dateTime1[4]]}}
             </view>
-          <view class="weui-select" wx:else>
+            <view class="weui-select" wx:else>
             </view>
           </picker>
         </view>
@@ -386,12 +389,12 @@
 
 
   </view>
-      <view class="weui-cell weui-cell_switch" wx:if="{{yhzt ==4||yhzt==5}}">
-      <view class="weui-cell__bd">驳回</view>
-      <view class="weui-cell__ft">
-        <switch bindchange="shChange" />
-      </view>
+  <view class="weui-cell weui-cell_switch" wx:if="{{yhzt ==4||yhzt==5}}">
+    <view class="weui-cell__bd">驳回</view>
+    <view class="weui-cell__ft">
+      <switch bindchange="shChange" />
     </view>
+  </view>
 </view>
 <view class="weui-cells weui-cells_after-title" wx:if="{{yhzt==0||shresult=='reject'}}">
   <view class="weui-cell weui-cell_access">

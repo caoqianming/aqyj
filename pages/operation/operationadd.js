@@ -7,7 +7,8 @@ Page({
    */
   data: {
     zyimg:[],
-    zyqy:''
+    zyqy:'',
+    chosespr:false
   },
   checkboxChangefxcs: function (e) {
     var x = this.data.fxcslist;
@@ -31,6 +32,17 @@ Page({
   },
   bindzynrInput: function (e) {
     this.data.zynr = e.detail.value
+  },
+  chosesprChange: function (e) {
+    if (e.detail.value) {
+      this.setData({
+        chosespr:true
+      })
+    } else {
+      this.setData({
+        chosespr:false
+      })
+    }
   },
   /**
    * 生命周期函数--监听页面加载
@@ -239,6 +251,25 @@ Page({
       }
     })
   },
+  getspr12array:function(){
+    wx.request({
+      url: getApp().globalData.serverUrl + 'api/operation?a=getspr12',
+      header: {
+        'content-type': 'application/json', // 
+        'Cookie': wx.getStorageSync("sessionid"),
+      },
+      method: 'GET',
+      data: {'sdbm':this.data.sdbm},
+      success: res => {
+        if (res.statusCode === 200) {
+          this.setData({
+            spr1Array:res.data.spr1Array,
+            spr2Array:res.data.spr2Array
+          })
+        }
+      }
+    });
+  },
   submit:function(){
     var that = this;
     if (!that.data.kssj) {
@@ -321,6 +352,9 @@ Page({
       fxcs: this.data.fxcs,
     }
     //console.log(gcdata.unsafe)
+    wx.showLoading({
+      title: '',
+    })
     wx.request({
       url: getApp().globalData.serverUrl + 'api/operation?a=add',
       header: {

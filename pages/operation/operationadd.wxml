@@ -54,7 +54,7 @@
           <input class="weui-input" placeholder="请输入" bindinput="bindzyddInput" />
         </view>
       </view>
-            <view class="weui-cell weui-cell_select">
+      <view class="weui-cell weui-cell_select">
         <view class="weui-cell__hd weui-cell__hd_in-select-after">
           <view class="weui-label">属地部门</view>
         </view>
@@ -73,7 +73,7 @@
         </view>
         <view class="weui-cell__bd">
           <navigator url="/pages/userSelect/userSelect">
-        <view class="weui-select">请选择</view>
+            <view class="weui-select">请选择</view>
           </navigator>
         </view>
       </view>
@@ -85,8 +85,8 @@
     <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell">
         <view class="weui-cell__bd">
-          <textarea  class="weui-textarea" placeholder="请输入描述" style="height: 3.3em" bindinput="bindzynrInput"/>
-          
+          <textarea class="weui-textarea" placeholder="请输入描述" style="height: 3.3em" bindinput="bindzynrInput" />
+
         </view>
       </view>
     </view>
@@ -112,7 +112,7 @@
       </view>
     </view>
     <view class="weui-cells__title">风险分析和安全措施</view>
-        <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cells weui-cells_after-title">
       <checkbox-group bindchange="checkboxChangefxcs">
         <label class="weui-cell weui-check__label" wx:for="{{fxcslist}}" wx:key="value">
           <checkbox class="weui-check" value="{{item.id}}" />
@@ -121,14 +121,14 @@
             <icon class="weui-icon-checkbox_success" type="success" size="23" wx:if="{{item.checked}}"></icon>
           </view>
           <view>
-          <view style='color:red'>{{item.fxfx}}</view>
-          <view style='color:green'>{{item.aqcs}}</view>
-          <view class="weui-media-box__desc">{{item.cslx}}</view>
+            <view style='color:red'>{{item.fxfx}}</view>
+            <view style='color:green'>{{item.aqcs}}</view>
+            <view class="weui-media-box__desc">{{item.cslx}}</view>
           </view>
         </label>
       </checkbox-group>
-</view>
-<!-- <view class="weui-cells__title">审批人</view>
+    </view>
+    <!-- <view class="weui-cells__title">审批人</view>
           <view class="weui-cell weui-cell_select">
         <view class="weui-cell__hd weui-cell__hd_in-select-after">
           <view class="weui-label">审批人</view>
@@ -142,9 +142,32 @@
       <view class="weui-cell weui-cell_access" style="height: 4.3em">
         {{spryname}}
     </view> -->
-      <button class="weui-btn" type="primary" bindtap="submit">分析完毕,发起作业</button>
+    <view class="weui-cell weui-cell_switch">
+      <view class="weui-cell__bd">手动选择审批人</view>
+      <view class="weui-cell__ft">
+        <switch bindchange="chosesprChange" />
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_select" wx:if="{{chosespr}}">
+      <view class="weui-cell__hd weui-cell__hd_in-select-after">
+        <view>作业部门审批人</view>
+      </view>
+      <view class="weui-cell__bd">
+        <picker bindchange="bindspr1change" value="{{spr1index}}" range="{{spr1Array}}" range-key="text">
+          <view class="weui-select">{{spr1Array[spr1index].text}}</view>
+        </picker>
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_select" wx:if="{{chosespr}}">
+      <view class="weui-cell__hd weui-cell__hd_in-select-after">
+        <view>属地部门审批人</view>
+      </view>
+      <view class="weui-cell__bd">
+        <picker bindchange="bindspr2change" value="{{spr2index}}" range="{{spr2Array}}" range-key="text">
+          <view class="weui-select">{{spr2Array[spr2index].text}}</view>
+        </picker>
+      </view>
+    </view>
+    <button class="weui-btn" type="primary" bindtap="submit">分析完毕,发起作业</button>
   </view>
 </view>
-
-
-

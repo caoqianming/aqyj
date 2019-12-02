@@ -141,6 +141,9 @@ Page({
   },
   submit2: function () {
     var that = this;
+    wx.showLoading({
+      title: '',
+    })
     wx.request({
       url: that.data.serverUrl + 'api/operation?a=spzy',
       header: {
@@ -256,6 +259,9 @@ Page({
   },
   zjsp: function () {
     var that=this
+    wx.showLoading({
+      title: '',
+    })
     wx.request({
       url: getApp().globalData.serverUrl + 'api/operation?a=spzy',
       header: {
@@ -275,7 +281,7 @@ Page({
   openaction: function () {
     var that = this
     wx.showActionSheet({
-      itemList: ['确认无误,审批通过', '转交他人审批', '终止审批开始作业'],
+      itemList: ['确认无误,审批通过', '提交上级审批'],
       success: function (res) {
         if (!res.cancel) {
           if (res.tapIndex == 0) {
@@ -284,7 +290,7 @@ Page({
           else if (res.tapIndex == 1) {
             that.setData({
               'zjsp': true,
-              'action':'转交他人审批'
+              'action':'提交上级审批'
             })
           } else if (res.tapIndex == 2) {
             wx.request({

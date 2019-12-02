@@ -124,6 +124,7 @@
           <view class="weui-cell weui-cell_access">
             <view class="weui-cell__bd weui-cell_primary">
               <view>{{index+1}} {{item.jdmc}}</view>
+              <view class="weui-media-box__desc" wx:if="{{index>0}}">可审批人:{{item.sprs}}</view>
             </view>
             <view class="weui-cell__ft" wx:if="{{zyzt.index > index }}" style="color:green">
               已执行
@@ -177,7 +178,7 @@
               已通过
             </view>
             <view class="weui-cell__ft" wx:if="{{item.checked == 2}}" style="color:green">
-              转交审批
+              通过并提交上级
             </view>
           </view>
         </block>
